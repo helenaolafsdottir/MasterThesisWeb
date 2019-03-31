@@ -1,1 +1,1 @@
-# RecognitionAPI
+# MasterThesisAPI
