@@ -20,18 +20,19 @@ parser = reqparse.RequestParser()
 #Makes it a must to include a imgText param in the request
 parser.add_argument('imgText', type=str)
 
-class ImageList(Resource):
+class Test(Resource):
     def get(self):
         return {'hello': 'world'}
 
     def post(self):
-        return data[image_id], 201
+        args = parser.parse_args()
+        return {'Your data': args}, 201
 
 
 ##
 ## Actually setup the Api resource routing here
 ##
-api.add_resource(ImageList, '/')
+api.add_resource(Test, '/')
 
 #api.add_resource(Todo, '/todos/<todo_id>')
 if __name__ == '__main__':
