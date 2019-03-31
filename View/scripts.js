@@ -132,12 +132,61 @@ const program = (() => {
     }
   }
 
+  function loadLocalJson(slug) {
+    return fetch(this.url)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Gat ekki sótt fyrirlestra');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        const found = data.lectures.find(i => i.slug === slug);
+
+        if (!found) {
+          throw new Error('Fyrirlestur fannst ekki');
+        }
+
+        return found;
+      });
+  }
+
+  function renderFullJsonData(data) {
+    for (let section of data) {
+      renderSection(section);
+    }
+  }
+
+  function renderSection(section) {
+    header = el(Object.keys(section)[0], section[Object.keys(section)[0]])
+    results.appendChild(header);
+    for (let paragraphs of section['paragraphs']) {
+      let div = el('div')
+      div.classList.add('paragraph')
+      div.classList.add(Object.keys(section)[0]);
+      for (let paragraphObj of paragraphs) {
+        paragraph = el('p', paragraphObj['sentence']);
+        if (paragraphObj['Highlighted'] === 'True') {
+          paragraph.classList.add('highlighted');
+        }
+        div.appendChild(paragraph);
+      }
+      results.appendChild(div);
+    }
+    for (let subSection of section['sub-sections']) {
+      renderSection(subSection);
+    }
+  }
+
   function init(domains) {
     const form = domains.querySelector('form');
     input = form.querySelector('input');
     results = domains.querySelector('.results');
 
     form.addEventListener('submit', onSubmit);
+
+
+    renderFullJsonData(storedResults);
   }
 
   return {

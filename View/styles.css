@@ -16,13 +16,19 @@ main {
   display: flex;
   flex-direction: column;
 
-  max-width: 600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
+.highlighted {
+  background-color: yellow;
+}
+
 h1 {
-  margin-bottom: 20px;
+  font-size: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 
   text-align: center;
 }
@@ -75,4 +81,25 @@ dd {
   padding-left: 20px;
 
   word-break: break-word;
+}
+
+.paragraph {
+  margin-bottom: 16px;
+  font-size: 26px;
+}
+
+.h2 {
+  font-size: 22px;
+}
+
+.h3 {
+  font-size: 18px;
+}
+
+.h4 {
+  font-size: 14px;
+}
+
+.h5 {
+  font-size: 10px;
 }
