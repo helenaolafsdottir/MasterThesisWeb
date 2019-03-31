@@ -51,43 +51,7 @@ const program = (() => {
   }
 
   function showResults(item) {
-    if (item.length === 0) {
-      showMessage('Lén er ekki skráð');
-      return;
-    }
-
-    const [{
-      domain,
-      registered,
-      lastChange,
-      expires,
-      registrantname,
-      address,
-      country,
-      email,
-    }] = item;
-
-    const result = el(
-      'dl', el('dt', 'Lén'),
-      el('dd', domain),
-      el('dt', 'Skráð'),
-      el('dd', formatDate(registered)),
-      el('dt', 'Seinast breytt'),
-      el('dd', formatDate(lastChange)),
-      el('dt', 'Rennur út'),
-      el('dd', formatDate(expires)),
-      registrantname ? el('dt', 'Skráningaraðili') : null,
-      registrantname ? el('dd', registrantname) : null,
-      email ? el('dt', 'Netfang') : null,
-      email ? el('dd', email) : null,
-      address ? el('dt', 'Heimilisfang') : null,
-      address ? el('dd', address) : null,
-      country ? el('dt', 'Land') : null,
-      country ? el('dd', country) : null,
-    );
-
-    empty(results);
-    results.appendChild(result);
+    
   }
 
   function showLoading() {
@@ -130,25 +94,6 @@ const program = (() => {
     } else {
       fetchResults(domain);
     }
-  }
-
-  function loadLocalJson(slug) {
-    return fetch(this.url)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Gat ekki sótt fyrirlestra');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        const found = data.lectures.find(i => i.slug === slug);
-
-        if (!found) {
-          throw new Error('Fyrirlestur fannst ekki');
-        }
-
-        return found;
-      });
   }
 
   function renderFullJsonData(data) {
