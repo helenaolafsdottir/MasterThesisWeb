@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import reqparse, abort, Api, Resource
 import json
 import base64
@@ -17,7 +17,9 @@ def abort_if_image_doesnt_exist(image_arg):
 
 #init parser
 parser = reqparse.RequestParser()
+
 parser.add_argument('blaa')
+
 
 class Test(Resource):
     def get(self):
@@ -25,7 +27,10 @@ class Test(Resource):
 
     def post(self):
         args = parser.parse_args()
+
         print(args)
+        print(request.form.get('hello'))
+
         return {'Your data': args}, 201
 
 
