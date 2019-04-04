@@ -3,11 +3,12 @@ from flask_restful import reqparse, abort, Api, Resource
 import json
 import base64
 from modules.request import queryManager
+from flask_cors import CORS
 
 app = Flask(__name__)
 api = Api(app)
 queryManager = queryManager.InformationRetriever()
-
+CORS(app)
 
 #init parser
 parser = reqparse.RequestParser()
@@ -25,9 +26,9 @@ class Test(Resource):
 
     @app.route('/query/question', methods=['POST'])
     def question1():
-        currQuestion = request.form.get('currQuestion')
-        print(currQuestion)
-
+        data = request.data
+        dataDict = json.loads(data)
+        currQuestion = dataDict['currQuestion']
         if currQuestion == 'question1':
             results = queryManager.getAllFeatureAndRrelevantClasses()
 
@@ -35,15 +36,23 @@ class Test(Resource):
             results = queryManager.getOneFeatureAndRrelevantClasses('4.2.2.1 Display products')
             #results = queryManager.getOneFeatureAndRrelevantClasses('4.2.2.2 Purchase Products')
             #results = queryManager.getOneFeatureAndRrelevantClasses('4.2.2.3 User management')
-            print('features&Stuff: ', results)
+ 
 
         elif currQuestion == 'questionTest':
             results = queryManager.getOBjectsByClass('onto:UserStory')
             #funcReqs = queryManager.getOBjectsByClass('onto:FunctionalRequirementAndBehaviour')
             #useCases = queryManager.getOBjectsByClass('onto:UseCase')
-            print('types: ', results)
 
-        return json.dumps(results)
+        else:
+            results = 'error'
+        print(len(results))
+        print(results)
+        response = app.response_class(
+            response=json.dumps(results),
+            status=200,
+            mimetype='application/json'
+        )
+        return response
             
 
     def get(self):
