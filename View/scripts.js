@@ -89,7 +89,7 @@ const program = (() => {
 
     const domain = input.value;
 
-    if (typeof domain !== 'string' || domain === '') {
+    if (typeof domain !== 'string'|| domain === '') {
       showMessage('Lén verður að vera strengur');
     } else {
       fetchResults(domain);

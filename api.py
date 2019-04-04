@@ -33,11 +33,13 @@ class Test(Resource):
             results = queryManager.getAllFeatureAndRrelevantClasses()
 
         elif currQuestion == 'question2':
-            results = queryManager.getOneFeatureAndRrelevantClasses('4.2.2.1 Display products')
-            #results = queryManager.getOneFeatureAndRrelevantClasses('4.2.2.2 Purchase Products')
-            #results = queryManager.getOneFeatureAndRrelevantClasses('4.2.2.3 User management')
- 
-
+            results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.1 Display products')
+            #results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.2 Purchase Products')
+            #results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.3 User management')
+        elif currQuestion == 'question3':
+            results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.2 Purchase Products')
+        elif currQuestion == 'question4':
+            results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.3 User management')
         elif currQuestion == 'questionTest':
             results = queryManager.getOBjectsByClass('onto:UserStory')
             #funcReqs = queryManager.getOBjectsByClass('onto:FunctionalRequirementAndBehaviour')

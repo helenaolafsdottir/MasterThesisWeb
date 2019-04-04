@@ -63,7 +63,7 @@ const program = (() => {
         'body':  JSON.stringify({'currQuestion': currentQuestion})
     })
       .then(data =>{
-        data.json().then(stuff => renderHighlightedData(stuff))
+        data.json().then(stuff => renderResponseToUserQuery(stuff))
 
         //renderSection(data.results));
       }) 
@@ -73,10 +73,38 @@ const program = (() => {
       });
   }
 
-  function renderHighlightedData(data){
-    //console.log(data)
-    for(let sentenceToHighlight of data){
-      //console.log('----- new search starting -----')
+  function renderResponseToUserQuery(relevantSentences){
+    groupResults(relevantSentences)
+    renderHighlightedData(relevantSentences)
+  }
+
+  function groupResults(relevantSentences){
+    features=0;
+    usecases=0;
+    funcreqs=0;
+    for(let sentence of relevantSentences){
+      if(sentence['type'].includes('Feature')){
+        features++;
+      }
+      if(sentence['type'].includes('UseCase')){
+        usecases++;
+      }
+      if(sentence['type'].includes('FunctionalRequirementAndBehaviour')){
+        funcreqs++;
+      }
+    }
+    
+    summary1 = el('p', `The system identified ${features} sentences related to features`);
+    summary2 = el('p', `The system identified ${usecases} sentences related to features`);
+    summary3 = el('p', `The system identified ${funcreqs} sentences related to features`);
+    summary.appendChild(summary1)
+    summary.appendChild(summary2)
+    summary.appendChild(summary3)
+  }
+
+  function renderHighlightedData(relevantSentences){
+    for(let sentenceToHighlight of relevantSentences){
+      //console.log(sentenceToHighlight['sentence'])
       for (let section of storedResults) {
         highlightData(section, sentenceToHighlight['sentence'].toLowerCase());
       }
@@ -85,46 +113,28 @@ const program = (() => {
     renderFullJsonData(storedResults)
   }
   function highlightData(section, sentenceToHighlight){
-    //console.log(sentenceToHighlight)
-    //console.log(sentenceToHighlight.length)
-    //console.log(section[Object.keys(section)[0]])
-    //console.log(section[Object.keys(section)[0]].length)
-    
+  
     //checking headers
-
-    //console.log(sentenceToHighlight)
-    sentenceToHighlight = sentenceToHighlight.replace(/[,;:.]$/,'');
-    //console.log(sentenceToHighlight)
-    if(section[Object.keys(section)[0]]){
-      header = section[Object.keys(section)[0]].toLowerCase()
-      header = header.replace(/[,;:.]$/,'');
+    if(section[Object.keys(section)[0]]['sentence']){
+      header = section[Object.keys(section)[0]]['sentence'].toLowerCase()
       if(sentenceToHighlight == header){
-        //paragraphObj['Highlighted']='True'
-        console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
-        console.log(header)
+        section[Object.keys(section)[0]]['Highlighted']='True'
+        //console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
       }
     }
     
     for (let paragraphs of section['paragraphs']) {
       if(paragraphs.length>0){
         for (let paragraphObj of paragraphs) {
-          paragraph = paragraphObj['sentence'].toLowerCase().replace(/[,;:.]$/,'');
-          //console.log('sentence 1: ', sentenceToHighlight['sentence'] )
-          //console.log('sentence 2: ', paragraph)
-          if(sentenceToHighlight.includes('sort by name') && paragraph.includes('sort by name')){
-            console.log(sentenceToHighlight)
-            console.log(paragraph)
-          }
+          paragraph = paragraphObj['sentence'].toLowerCase();
           if(sentenceToHighlight == paragraph){
             paragraphObj['Highlighted']='True'
-            console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
-            console.log(paragraph)
+            //console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
           }
         } 
       }
     }    
     for (let subSection of section['sub-sections']) {
-      //console.log(subSection)
       highlightData(subSection, sentenceToHighlight);
     }
   }
@@ -139,6 +149,7 @@ const program = (() => {
   }
 
   function onChangeQuestion(){
+    empty(summary)
     storedResults = JSON.parse(JSON.stringify(initData));
     var selectObj = document.getElementById('front-search-question')
     var currentSelection = selectObj.options[selectObj.selectedIndex].value
@@ -150,18 +161,22 @@ const program = (() => {
   }
 
   function renderSection(section) {
-    header = el(Object.keys(section)[0], section[Object.keys(section)[0]])
+    header = el(Object.keys(section)[0], section[Object.keys(section)[0]]['sentence'])
+    if (section[Object.keys(section)[0]]['Highlighted'] === 'True') {
+      header.classList.add('highlighted');
+    }
+    header.classList.add(Object.keys(section)[0]);
     results.appendChild(header);
     for (let paragraphs of section['paragraphs']) {
       let div = el('div')
       div.classList.add('paragraph')
-      div.classList.add(Object.keys(section)[0]);
+      //div.classList.add(Object.keys(section)[0]);
       for (let paragraphObj of paragraphs) {
-        paragraph = el('p', paragraphObj['sentence']);
+        sentence = el('p', paragraphObj['sentence']);
         if (paragraphObj['Highlighted'] === 'True') {
-          paragraph.classList.add('highlighted');
+          sentence.classList.add('highlighted');
         }
-        div.appendChild(paragraph);
+        div.appendChild(sentence);
       }
       results.appendChild(div);
     }
@@ -174,6 +189,7 @@ const program = (() => {
     const form = domains.querySelector('form');
     input = form.querySelector('input');
     results = domains.querySelector('.results');
+    summary = domains.querySelector('.summary');
     dropdown = document.querySelector('#front-search-question');
     dropdown.addEventListener('change', onChangeQuestion);
 

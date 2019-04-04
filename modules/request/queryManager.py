@@ -7,7 +7,7 @@ import urllib.request
 class InformationRetriever:
 
     def __init__(self):
-        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS5')
+        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS11')
     
     def query(self, query):
         self.sparql.setQuery(query)
@@ -66,15 +66,15 @@ class InformationRetriever:
             return 'Error in query'
 
 
-    def getOneFeatureAndRrelevantClasses(self, feature):
+    def getOneFeatureAndRelevantClasses(self, feature):
 
         query = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>'\
                 'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>'\
                 'PREFIX owl: <http://www.w3.org/2002/07/owl#>'\
                 'PREFIX onto: <http://www.semanticweb.org/masterThesisOntology#> '\
                 'SELECT ?label ?lab ?typ WHERE {{'\
-                '{{?type rdf:type onto:Feature }} UNION {{?type rdf:type onto:UseCase }} . '\
-                '?type rdfs:label ?label . '\
+                '{{?type rdf:type onto:Feature }} UNION {{?type rdf:type onto:UseCase }} .'\
+                '?type rdfs:label ?label .'\
                 '?relatedIndividuals onto:BelongsTo ?type .'\
                 '?relatedIndividuals rdfs:label ?lab .'\
                 '?relatedIndividuals rdf:type ?typ .'\
@@ -101,8 +101,8 @@ class InformationRetriever:
                 'PREFIX owl: <http://www.w3.org/2002/07/owl#>'\
                 'PREFIX onto: <http://www.semanticweb.org/masterThesisOntology#> '\
                 'SELECT ?feature ?lab ?typ WHERE {{'\
-                '{{?type rdf:type onto:Feature }} UNION {{?type rdf:type onto:UseCase }} . '\
-                '?type rdfs:label ?feature . '\
+                '{{?type rdf:type onto:Feature }} UNION {{?type rdf:type onto:UseCase }} .'\
+                '?type rdfs:label ?feature .'\
                 '?relatedIndividuals onto:BelongsTo ?type .'\
                 '?relatedIndividuals rdfs:label ?lab .'\
                 '?relatedIndividuals rdf:type ?typ .'\
