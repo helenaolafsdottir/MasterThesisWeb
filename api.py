@@ -1,19 +1,13 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory, render_template, Markup, redirect, url_for
 from flask_restful import reqparse, abort, Api, Resource
 import json
 import base64
+from modules.request import queryManager
 
 app = Flask(__name__)
 api = Api(app)
+queryManager = queryManager.InformationRetriever()
 
-with open('description.json') as f:
-    data = json.load(f)
-
-
-#Function used to send error if id does not exist
-def abort_if_image_doesnt_exist(image_arg):
-    if 'imgText' not in image_arg:
-        abort(404, message="Image {} doesn't exist".format(image_arg))
 
 #init parser
 parser = reqparse.RequestParser()
@@ -22,6 +16,36 @@ parser.add_argument('blaa')
 
 
 class Test(Resource):
+    @app.route('/', methods=["GET","POST"])
+    def index():
+        #types = queryManager.getAllUserStories()
+        #print('types: ',types)
+
+        return render_template('index.html')
+
+    @app.route('/query/question', methods=['POST'])
+    def question1():
+        currQuestion = request.form.get('currQuestion')
+        print(currQuestion)
+
+        if currQuestion == 'question1':
+            results = queryManager.getAllFeatureAndRrelevantClasses()
+
+        elif currQuestion == 'question2':
+            results = queryManager.getOneFeatureAndRrelevantClasses('4.2.2.1 Display products')
+            #results = queryManager.getOneFeatureAndRrelevantClasses('4.2.2.2 Purchase Products')
+            #results = queryManager.getOneFeatureAndRrelevantClasses('4.2.2.3 User management')
+            print('features&Stuff: ', results)
+
+        elif currQuestion == 'questionTest':
+            results = queryManager.getOBjectsByClass('onto:UserStory')
+            #funcReqs = queryManager.getOBjectsByClass('onto:FunctionalRequirementAndBehaviour')
+            #useCases = queryManager.getOBjectsByClass('onto:UseCase')
+            print('types: ', results)
+
+        return json.dumps(results)
+            
+
     def get(self):
         return {'hello': 'world'}
 

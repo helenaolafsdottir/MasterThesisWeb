@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="is">
+  <head>
+    <script src="/static/data.js"></script>
+    <script src="/static/scripts.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>Master thesis website</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+  </head>
+  <body>
+    <main>
+      <section class="domains">
+        <form method="get" action="/">
+          <select method='post' id='front-search-question' onchange=onChangeQuestion()>
+            <option disabled selected>Ask a question</option>
+            <option value = 'question1'>What functionalities exist in the system?</option>
+            <option value = 'question2'>What functionality does the feature provide and what is its responsibility?</option>
+            <option value = 'questionTest'>What are the system's user stories?</option>
+          </select> 
+      </form>
+
+        <div class="results">
+
+        </div>
+      </section>
+    </main>   
+    <script>
+
+      function onChangeQuestion(){
+        var selectObj = document.getElementById('front-search-question')
+        var currentSelection = selectObj.options[selectObj.selectedIndex].value
+        console.log(currentSelection)
+
+        $.post('http://127.0.0.1:5000/query/question', {currQuestion: currentSelection}, function(data){
+          console.log(data)
+          })
+
+
+
+      }
+
+    </script>
+  </body>
+</html>

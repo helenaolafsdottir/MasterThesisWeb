@@ -1,5 +1,13 @@
 import requests
+import queryManager
+from flask import Flask, request, send_from_directory, render_template, Markup
 from configparser import ConfigParser
+
+queryManager = queryManager.InformationRetriever()  
+types = queryManager.getAllUserStories()
+print('types: ',types)
+
+
 
 def processRequest( method, url, **kwargs):
 
