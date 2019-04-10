@@ -7,8 +7,8 @@ import urllib.request
 class InformationRetriever:
 
     def __init__(self):
-        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS11')
-    
+        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS12')
+
     def query(self, query):
         self.sparql.setQuery(query)
         self.sparql.setReturnFormat(JSON)
@@ -80,6 +80,8 @@ class InformationRetriever:
                 '?relatedIndividuals rdf:type ?typ .'\
                 'FILTER (?label="{feature}") .'\
                 'FILTER (regex(str(?typ ),"^(?!http://www.w3.org/2002/07/owl#).+")) .'\
+                'FILTER (regex(str(?typ), "Functional") || regex(str(?typ), "UseCase")) .'\
+                'FILTER (!regex(str(?typ), "NonFunctional"))'\
                 '}}'
         
         query = query.format(feature=feature)
@@ -94,7 +96,7 @@ class InformationRetriever:
         except:      
             return 'Error in query'
 
-    def getAllFeatureAndRrelevantClasses(self):
+    def getAllFeatureAndRelevantClasses(self):
 
         query = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>'\
                 'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>'\
@@ -106,7 +108,9 @@ class InformationRetriever:
                 '?relatedIndividuals onto:BelongsTo ?type .'\
                 '?relatedIndividuals rdfs:label ?lab .'\
                 '?relatedIndividuals rdf:type ?typ .'\
-                'FILTER (regex(str(?typ ),"^(?!http://www.w3.org/2002/07/owl#).+")) .'\
+                'FILTER (regex(str(?typ ),"^(?!http://www.w3.org/2002/07/owl#).+")) . '\
+                'FILTER (regex(str(?typ), "Functional") || regex(str(?typ), "UseCase") || regex(str(?typ), "Feature") ) .'\
+                'FILTER (!regex(str(?typ), "NonFunctional"))'\
                 '}}'
         types = []
         try:

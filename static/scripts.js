@@ -93,18 +93,24 @@ const program = (() => {
         funcreqs++;
       }
     }
-    
-    summary1 = el('p', `The system identified ${features} sentences related to features`);
-    summary2 = el('p', `The system identified ${usecases} sentences related to features`);
-    summary3 = el('p', `The system identified ${funcreqs} sentences related to features`);
-    summary.appendChild(summary1)
-    summary.appendChild(summary2)
-    summary.appendChild(summary3)
+    if(features>0){
+      summary1 = el('p', `The system identified ${features} sentences related to features`);
+      summary.appendChild(summary1)
+    }
+    if(usecases>0){
+      summary2 = el('p', `The system identified ${usecases} sentences related to use cases`);
+      summary.appendChild(summary2)
+    }
+    if(funcreqs>0){
+      summary3 = el('p', `The system identified ${funcreqs} sentences related to functional requirements`);
+      summary.appendChild(summary3)
+    }
+
   }
 
   function renderHighlightedData(relevantSentences){
     for(let sentenceToHighlight of relevantSentences){
-      //console.log(sentenceToHighlight['sentence'])
+      console.log(sentenceToHighlight['sentence'])
       for (let section of storedResults) {
         highlightData(section, sentenceToHighlight['sentence'].toLowerCase());
       }
@@ -119,7 +125,7 @@ const program = (() => {
       header = section[Object.keys(section)[0]]['sentence'].toLowerCase()
       if(sentenceToHighlight == header){
         section[Object.keys(section)[0]]['Highlighted']='True'
-        //console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
       }
     }
     
@@ -129,7 +135,7 @@ const program = (() => {
           paragraph = paragraphObj['sentence'].toLowerCase();
           if(sentenceToHighlight == paragraph){
             paragraphObj['Highlighted']='True'
-            //console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
           }
         } 
       }
@@ -161,25 +167,30 @@ const program = (() => {
   }
 
   function renderSection(section) {
-    header = el(Object.keys(section)[0], section[Object.keys(section)[0]]['sentence'])
-    if (section[Object.keys(section)[0]]['Highlighted'] === 'True') {
-      header.classList.add('highlighted');
-    }
-    header.classList.add(Object.keys(section)[0]);
-    results.appendChild(header);
-    for (let paragraphs of section['paragraphs']) {
-      let div = el('div')
-      div.classList.add('paragraph')
-      //div.classList.add(Object.keys(section)[0]);
-      for (let paragraphObj of paragraphs) {
-        sentence = el('p', paragraphObj['sentence']);
-        if (paragraphObj['Highlighted'] === 'True') {
-          sentence.classList.add('highlighted');
-        }
-        div.appendChild(sentence);
+    if(section['included']==='yes'){
+      header = el(Object.keys(section)[0], section[Object.keys(section)[0]]['sentence'])
+      if(section[Object.keys(section)[0]]['Highlighted'] === 'True') {
+        header.classList.add('highlighted');
       }
-      results.appendChild(div);
+    
+      header.classList.add(Object.keys(section)[0]);
+      results.appendChild(header);
+    
+      for (let paragraphs of section['paragraphs']) {
+        let div = el('div')
+        div.classList.add('paragraph')
+        //div.classList.add(Object.keys(section)[0]);
+        for (let paragraphObj of paragraphs) {
+          sentence = el('p', paragraphObj['sentence']);
+          if (paragraphObj['Highlighted'] === 'True') {
+            sentence.classList.add('highlighted');
+          }
+          div.appendChild(sentence);
+        }
+        results.appendChild(div);
+      }
     }
+    
     for (let subSection of section['sub-sections']) {
       renderSection(subSection);
     }

@@ -30,7 +30,7 @@ class Test(Resource):
         dataDict = json.loads(data)
         currQuestion = dataDict['currQuestion']
         if currQuestion == 'question1':
-            results = queryManager.getAllFeatureAndRrelevantClasses()
+            results = queryManager.getAllFeatureAndRelevantClasses()
 
         elif currQuestion == 'question2':
             results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.1 Display products')
@@ -47,8 +47,8 @@ class Test(Resource):
 
         else:
             results = 'error'
-        print(len(results))
-        print(results)
+        #print(len(results))
+        #print(results)
         response = app.response_class(
             response=json.dumps(results),
             status=200,
@@ -62,9 +62,6 @@ class Test(Resource):
 
     def post(self):
         args = parser.parse_args()
-
-        print(args)
-        print(request.form.get('hello'))
 
         return {'Your data': args}, 201
 
