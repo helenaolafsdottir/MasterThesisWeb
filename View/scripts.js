@@ -1,8 +1,6 @@
 const API_URL = 'https://apis.is/isnic?domain=';
 
-/**
- * Leit að lénum á Íslandi gegnum apis.is
- */
+
 const program = (() => {
   let input;
   let results;

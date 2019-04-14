@@ -1,10 +1,7 @@
 const API_URL = 'https://apis.is/isnic?domain=';
 
-function changeInputType(){
-  console.log('ajgfækoasjfæladjfædlasjkæl')
-}
-
 const program = (() => {
+
   let input;
   let results;
   let dropdown;
@@ -15,6 +12,11 @@ const program = (() => {
       element.removeChild(element.firstChild);
     }
   }
+
+  function deleteEl(element) {
+    element.parentNode.removeChild(element);
+  }
+  
 
   function el(name, ...children) {
     const element = document.createElement(name);
@@ -63,9 +65,7 @@ const program = (() => {
         'body':  JSON.stringify({'currQuestion': currentQuestion})
     })
       .then(data =>{
-        data.json().then(stuff => renderResponseToUserQuery(stuff))
-
-        //renderSection(data.results));
+        data.json().then(stuff => renderResponseToUserQuery(stuff, currentQuestion))
       }) 
       .catch((error) => {
         console.error('Villa við að sækja gögn', error);
@@ -73,15 +73,39 @@ const program = (() => {
       });
   }
 
-  function renderResponseToUserQuery(relevantSentences){
-    groupResults(relevantSentences)
-    renderHighlightedData(relevantSentences)
+  function renderResponseToUserQuery(relevantSentences, currentQuestion){
+    if(currentQuestion == 'question1'){
+      groupResults(relevantSentences)
+      renderHighlightedData(relevantSentences)
+    }
+    if(currentQuestion == 'feature1'){
+      createClusterGraph(relevantSentences, "displayProduct")
+      groupResults(relevantSentences)
+      renderHighlightedData(relevantSentences)
+    }
+    if(currentQuestion == 'feature2'){
+      createClusterGraph(relevantSentences, "purchaseProduct")
+      groupResults(relevantSentences)
+      renderHighlightedData(relevantSentences)
+    }
+    if(currentQuestion == 'feature3'){
+      createClusterGraph(relevantSentences, "userManagement")
+      groupResults(relevantSentences)
+      renderHighlightedData(relevantSentences)
+    }
+    if(currentQuestion == 'question3'){
+      createTreeVisualisation(relevantSentences)
+    }
   }
 
+ 
   function groupResults(relevantSentences){
     features=0;
     usecases=0;
     funcreqs=0;
+
+    console.log(relevantSentences)
+
     for(let sentence of relevantSentences){
       if(sentence['type'].includes('Feature')){
         features++;
@@ -110,7 +134,7 @@ const program = (() => {
 
   function renderHighlightedData(relevantSentences){
     for(let sentenceToHighlight of relevantSentences){
-      console.log(sentenceToHighlight['sentence'])
+      //console.log(sentenceToHighlight['sentence'])
       for (let section of storedResults) {
         highlightData(section, sentenceToHighlight['sentence'].toLowerCase());
       }
@@ -125,7 +149,7 @@ const program = (() => {
       header = section[Object.keys(section)[0]]['sentence'].toLowerCase()
       if(sentenceToHighlight == header){
         section[Object.keys(section)[0]]['Highlighted']='True'
-        console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        //console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
       }
     }
     
@@ -135,7 +159,7 @@ const program = (() => {
           paragraph = paragraphObj['sentence'].toLowerCase();
           if(sentenceToHighlight == paragraph){
             paragraphObj['Highlighted']='True'
-            console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
+            //console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
           }
         } 
       }
@@ -154,11 +178,16 @@ const program = (() => {
     }
   }
 
+  //Currently not using this function!
   function onChangeQuestion(){
     empty(summary)
+    svg = d3.getElementById("svg")
+    console.log(svg)
     storedResults = JSON.parse(JSON.stringify(initData));
     var selectObj = document.getElementById('front-search-question')
     var currentSelection = selectObj.options[selectObj.selectedIndex].value
+    console.log('currSelection:')
+    console.log(currentSelection)
     fetchResults('http://127.0.0.1:5000/query/question', currentSelection);
     //$.post('http://127.0.0.1:5000/query/question', {currQuestion: currentSelection}, function(data){
     //  console.log(data)
@@ -196,15 +225,69 @@ const program = (() => {
     }
   }
 
+  function showFeatureSelector() {
+    var featureOpt = document.getElementById("featureSelector");
+    featureOpt.style.visibility = "visible";
+  }
+
   function init(domains) {
-    const form = domains.querySelector('form');
-    input = form.querySelector('input');
+       
     results = domains.querySelector('.results');
     summary = domains.querySelector('.summary');
-    dropdown = document.querySelector('#front-search-question');
-    dropdown.addEventListener('change', onChangeQuestion);
+    
+    jQuery("#question1").click(function(e){
+      // TODO: create a function for the next four lines - they reset everything.
+      empty(summary)
+      svg = domains.querySelector('svg');
+      if(svg){deleteEl(svg)}
+      storedResults = JSON.parse(JSON.stringify(initData));
+      fetchResults('http://127.0.0.1:5000/query/question', 'question1');
+      e.preventDefault();
+    });
+    jQuery("#question2").click(function(e){
+      empty(summary)
+      svg = domains.querySelector('svg');
+      if(svg){deleteEl(svg)}
+      storedResults = JSON.parse(JSON.stringify(initData));
+      showFeatureSelector()
+      e.preventDefault();
+    });
+    jQuery("#feature1").click(function(e){
+      empty(summary)
+      svg = domains.querySelector('svg');
+      if(svg){deleteEl(svg)}
+      storedResults = JSON.parse(JSON.stringify(initData));
+      fetchResults('http://127.0.0.1:5000/query/question', 'feature1');
+      e.preventDefault();
+    });
+    jQuery("#feature2").click(function(e){
+      empty(summary)
+      svg = domains.querySelector('svg');
+      if(svg){deleteEl(svg)}
+      storedResults = JSON.parse(JSON.stringify(initData));
+      fetchResults('http://127.0.0.1:5000/query/question', 'feature2');
+      e.preventDefault();
+    });
+    jQuery("#feature3").click(function(e){
+      empty(summary)
+      svg = domains.querySelector('svg');
+      if(svg){deleteEl(svg)}
+      storedResults = JSON.parse(JSON.stringify(initData));
+      fetchResults('http://127.0.0.1:5000/query/question', 'feature3');
+      e.preventDefault();
+    });
 
-    form.addEventListener('onchange', changeInputType);
+
+    jQuery("#question3").click(function(e){
+      empty(summary)
+      svg = domains.querySelector('svg');
+      if(svg){deleteEl(svg)}
+      storedResults = JSON.parse(JSON.stringify(initData));
+      fetchResults('http://127.0.0.1:5000/query/question', 'question3');
+      e.preventDefault();
+    });
+    
+
 
     renderFullJsonData(storedResults);
   }

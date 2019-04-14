@@ -2,12 +2,13 @@ from flask import Flask, request, send_from_directory, render_template, Markup, 
 from flask_restful import reqparse, abort, Api, Resource
 import json
 import base64
-from modules.request import queryManager
+from modules.request import queryManager, treude
 from flask_cors import CORS
 
 app = Flask(__name__)
 api = Api(app)
 queryManager = queryManager.InformationRetriever()
+treude = treude.InformationRetriever()
 CORS(app)
 
 #init parser
@@ -19,8 +20,6 @@ parser.add_argument('blaa')
 class Test(Resource):
     @app.route('/', methods=["GET","POST"])
     def index():
-        #types = queryManager.getAllUserStories()
-        #print('types: ',types)
 
         return render_template('index.html')
 
@@ -31,31 +30,47 @@ class Test(Resource):
         currQuestion = dataDict['currQuestion']
         if currQuestion == 'question1':
             results = queryManager.getAllFeatureAndRelevantClasses()
-
-        elif currQuestion == 'question2':
+        
+        elif currQuestion == 'feature1':
             results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.1 Display products')
-            #results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.2 Purchase Products')
-            #results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.3 User management')
-        elif currQuestion == 'question3':
+        
+        elif currQuestion == 'feature2':
             results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.2 Purchase Products')
-        elif currQuestion == 'question4':
+        
+        elif currQuestion == 'feature3':
             results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.3 User management')
-        elif currQuestion == 'questionTest':
-            results = queryManager.getOBjectsByClass('onto:UserStory')
-            #funcReqs = queryManager.getOBjectsByClass('onto:FunctionalRequirementAndBehaviour')
-            #useCases = queryManager.getOBjectsByClass('onto:UseCase')
+        
+        elif currQuestion == 'question3':
+            results = treude.getCategoryOfSentence('As a customer, I want to add a particular product to the shopping cart, so that I can buy it with the next order (1).')
+            
+            #Here we go into the ontology and get the categories of the sentences in the clusters.
+            updatedResults = []
+            for cluster in results:
+                word = cluster['word']
+                updatedCluster = []
+                for sentence in cluster['cluster']:
+                    sentenceType = queryManager.getSentenceType(sentence['sentence'])
+                    if sentenceType != None:
+                        for instance in sentenceType:
+                            updatedCluster.append(instance)
+                
+                updatedResults.append({'name': word, 'children': updatedCluster})
+            updatedResults = {"name": "root", "children": updatedResults}
+            #print(updatedResults)
+            results = updatedResults
 
         else:
             results = 'error'
-        #print(len(results))
-        #print(results)
+
         response = app.response_class(
             response=json.dumps(results),
             status=200,
             mimetype='application/json'
         )
         return response
-            
+
+
+
 
     def get(self):
         return {'hello': 'world'}

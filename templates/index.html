@@ -3,42 +3,70 @@
   <head>
     <script src="../static/data.js"></script>
     <script src="../static/scripts.js"></script>
+    <script src="../static/visualisation.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!--<script src="http://d3js.org/d3.v3.min.js"></script>-->
+    <script src="../static/libraries/d3.min.js"></script>
+    <script src="../static/libraries/dagre-d3.js"></script>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Master thesis website</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/styles.css"> 
   </head>
   <body>
     <main>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+          </div>
+          <ul class="nav navbar-nav", id='dropdown1'>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown">Select a Question
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu" method='post' id='front-search-question1' class="askQuestion">
+                <li><a id='question1'>What functionalities exist in the system?</a></li>
+                <li><a id='question2'>What functionality does the feature provide and what is its responsibility?</a></li>
+                <li><a id='question3'>Find everything related to some requirement?</a></li>
+              </ul>
+            </li>
+            <li class="dropdown" id='featureSelector' style="visibility: hidden">
+              <a class="dropdown-toggle" data-toggle="dropdown">Select a feature
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu" method='post' id='front-search-question2' class="askQuestion">
+                <li><a id='feature1'>Display product</a></li>
+                <li><a id='feature2'>Purchase product</a></li>
+                <li><a id='feature3'>User management</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+          
       <section class="domains">
         
+        <div class="container-fluid">
         
-        <div class="modal-body">
         
-            <div class="first-column">
-                <div class="results">
-                </div>  
-            </div>
-
-            <div class="second-column">
-              <form method="get" action="/">
-                <select method='post' id='front-search-question' class="askQuestion">
-                  <option disabled selected>Ask a question</option>
-                  <option value = 'question1'>What functionalities exist in the system?</option>
-                  <option value = 'question2'>What functionality does the "display product" provide and what is its responsibility?</option>
-                  <option value = 'question3'>What functionality does the "purchase product" provide and what is its responsibility?</option>
-                  <option value = 'question4'>What functionality does the "user management" provide and what is its responsibility?</option>
-                </select> 
-              </form>
-              <div class="summary">
-              </div>
-            </div>
-        
+          <div class="modal-body">
           
-        
-        
-        </div>
+              <div class="first-column">
+                  <div class="results">
+                  </div>  
+              </div>
+
+              <div class="second-column">
+                <div class="summary">
+                </div>
+                <div id='interactive_diagram_svg'>
+                </div>
+                
+              </div>
+          
+           </div>
+          </div>
 
         
       </section>

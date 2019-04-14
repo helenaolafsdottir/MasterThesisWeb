@@ -7,14 +7,14 @@ import urllib.request
 class InformationRetriever:
 
     def __init__(self):
-        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS12')
+        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS13')
 
     def query(self, query):
         self.sparql.setQuery(query)
         self.sparql.setReturnFormat(JSON)
         return self.sparql.query().convert()
 
-    def toQueryUri(self, uri):
+    def toQueryUri(self, uri): #remove function
         return '<' + uri + '>'
 
     def getAllOntologyTypes(self):
@@ -122,4 +122,30 @@ class InformationRetriever:
                 return types
         except:      
             return 'Error in query'
+
+    def getSentenceType(self, sentence):
+        #print(sentence)
+        query = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>'\
+                'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>'\
+                'PREFIX owl: <http://www.w3.org/2002/07/owl#>'\
+                'PREFIX onto: <http://www.semanticweb.org/masterThesisOntology#> '\
+                'SELECT ?label ?typ WHERE {{'  \
+                '?type rdfs:label ?label .' \
+                '?type rdf:type ?typ .' \
+                'FILTER (?label="{sentence}")' \
+                'FILTER (regex(str(?typ ),"^(?!http://www.w3.org/2002/07/owl#).+")) . ' \
+                '}}'
+        query = query.format(sentence=sentence)
+        types = []
+        try:
+            queryResult = self.query(query)
+            results = queryResult['results']['bindings']
+            if results:
+                for r in results:
+                    types.append({'name': r['label']['value'], 'type': r['typ']['value']}) 
+                return types
+        except:      
+            return 'Error in query'
+    
+
     

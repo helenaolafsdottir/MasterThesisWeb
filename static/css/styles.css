@@ -30,12 +30,42 @@ main {
   font-size:12px;
   
 }
-.askQuestion, .summary {
-  position: fixed;
+
+.svg {
+  float: right;
+}
+
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.node text {
+  font: 12px sans-serif;
+}
+#test-circle {
+  fill: #fff;
+  stroke: #fff
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 2px;
 }
 
 .highlighted {
   background-color: yellow;
+}
+
+.modal-body {
+  padding-top: 80px;
 }
 
 
@@ -84,4 +114,37 @@ input {
 
 .h5 {
   font-size: 12px;
+}
+
+
+
+
+
+
+#interactive_diagram_svg svg {
+  height: 10000px;
+  width: 10000px;
+}
+
+.clusters rect {
+  fill: #00ffd0;
+  stroke: #999;
+  stroke-width: 1.5px;
+}
+
+text {
+  font-weight: 300;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serf;
+  font-size: 14px;
+}
+
+.node rect {
+  stroke: #999;
+  fill: #fff;
+  stroke-width: 1.5px;
+}
+
+.edgePath path {
+  stroke: #333;
+  stroke-width: 1.5px;
 }
