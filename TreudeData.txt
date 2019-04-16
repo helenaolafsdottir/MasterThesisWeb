@@ -1624,7 +1624,7 @@ As a customer, I want to place an order, so that I can actually buy the items in
 
 Payment:
 
-As a customer, I want to be able to pay online my orders, so that I can pay immediately the moment I buy them instead of using other possibly unpleasant billing options (4)
+As a customer, I want to be able to pay online my orders, so that I can pay immediately the moment I buy them instead of using other possibly unpleasant billing options (4).
 {[use] [other unpleasant billing options] [ ]}
 List orders
 {[list] [orders] [ ]}
@@ -1660,7 +1660,7 @@ As a registered customer, I want to change my current password to another one of
 {[change] [current password] [ ]}
 Add address:
 {[add] [address] [ ]}
-As a registered customer, I want to add a postal address to my address book, so that I can select it as shipping or billing address when placing an order (5)
+As a registered customer, I want to add a postal address to my address book, so that I can select it as shipping or billing address when placing an order (5).
 {[add] [postal address] [to address book]}{[select] [] [as shipping billing address]}
 Update address:
 

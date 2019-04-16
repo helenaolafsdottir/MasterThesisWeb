@@ -109,7 +109,7 @@ class InformationRetriever:
                 '?relatedIndividuals rdfs:label ?lab .'\
                 '?relatedIndividuals rdf:type ?typ .'\
                 'FILTER (regex(str(?typ ),"^(?!http://www.w3.org/2002/07/owl#).+")) . '\
-                'FILTER (regex(str(?typ), "Functional") || regex(str(?typ), "UseCase") || regex(str(?typ), "Feature") ) .'\
+                'FILTER (regex(str(?typ), "Functional") || regex(str(?typ), "UseCase")) .'\
                 'FILTER (!regex(str(?typ), "NonFunctional"))'\
                 '}}'
         types = []
@@ -142,7 +142,7 @@ class InformationRetriever:
             results = queryResult['results']['bindings']
             if results:
                 for r in results:
-                    types.append({'name': r['label']['value'], 'type': r['typ']['value']}) 
+                    types.append({'sentence': r['label']['value'], 'type': r['typ']['value']}) 
                 return types
         except:      
             return 'Error in query'

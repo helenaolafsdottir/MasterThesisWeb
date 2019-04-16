@@ -103,7 +103,7 @@ class InformationRetriever:
             return False
             
 
-    def findWordClusters(self, wordToMatch, treudeData):
+    def findWordClusters(self, wordToMatch, treudeData, sentenceToCluster):
 
         wordToMatch = wordToMatch.lower()
         wordToMatch = self.lemma(wordToMatch)
@@ -113,16 +113,17 @@ class InformationRetriever:
         
         for result in treudeData:
             sentence = result
-            treudeValues = treudeData[result]
-            for results in treudeValues:
-                for words in results:
-                    words = words.split(' ')
-                    for word in words:
-                        word = word.lower()
-                        word = self.lemma(word)
-                        word = self.stem(word)
-                        if word == wordToMatch:
-                            cluster.append(sentence)
+            if sentence != sentenceToCluster: #We don't want the sentence itself to be a result
+                treudeValues = treudeData[result]
+                for results in treudeValues:
+                    for words in results:
+                        words = words.split(' ')
+                        for word in words:
+                            word = word.lower()
+                            word = self.lemma(word)
+                            word = self.stem(word)
+                            if word == wordToMatch:
+                                cluster.append(sentence)
 
         cluster = list(set(cluster)) #set removes duplicates, then I change it to a list again.
         
@@ -134,9 +135,8 @@ class InformationRetriever:
         
         
     def findSentenceClusters(self, sentence, treudeData, wordBank):
-
-        treudeValues = treudeData[sentence]
-                
+        
+        treudeValues = treudeData[sentence]   
         wordsToCluster = []
         for value in treudeValues:
             for words in value:
@@ -147,7 +147,7 @@ class InformationRetriever:
                     
         wordClusters = []
         for word in wordsToCluster:
-            cluster = self.findWordClusters(word, treudeData)
+            cluster = self.findWordClusters(word, treudeData, sentence)
             wordCluster = {"word": word, "cluster": cluster}    
             wordClusters.append(wordCluster)
             
@@ -169,15 +169,8 @@ class InformationRetriever:
 
         #print(wordBank)
         #print(len(wordBank))
-        
-        #sentenceClusters = findSentenceClusters("Finally, the third goal involves checking the payment or shipping status of the order, or any additional related information.")
-        #sentenceClusters = findSentenceClusters("As a customer, I want to add a particular product to the shopping cart, so that I can buy it with the next order (1).")
-        sentenceClusters = self.findSentenceClusters(sentence, TreudeDataFormat2, wordBank)
 
-        # print(sentenceClusters['sentence'])
-        # for result in sentenceClusters['clusters']:
-        #         print(result)
-        #         print('')
+        sentenceClusters = self.findSentenceClusters(sentence, TreudeDataFormat2, wordBank)
         
         return sentenceClusters['clusters']
 

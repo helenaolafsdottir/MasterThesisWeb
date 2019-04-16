@@ -25,6 +25,7 @@ class Test(Resource):
 
     @app.route('/query/question', methods=['POST'])
     def question1():
+        
         data = request.data
         dataDict = json.loads(data)
         currQuestion = dataDict['currQuestion']
@@ -43,7 +44,7 @@ class Test(Resource):
         elif currQuestion == 'question3':
             results = treude.getCategoryOfSentence('As a customer, I want to add a particular product to the shopping cart, so that I can buy it with the next order (1).')
             
-            #Here we go into the ontology and get the categories of the sentences in the clusters.
+            #Here we go into the ontology and get the classifications of the sentences in the clusters.
             updatedResults = []
             for cluster in results:
                 word = cluster['word']
@@ -52,11 +53,33 @@ class Test(Resource):
                     sentenceType = queryManager.getSentenceType(sentence['sentence'])
                     if sentenceType != None:
                         for instance in sentenceType:
-                            updatedCluster.append(instance)
+                            if 'Uncertain' not in instance['type'] and 'Non-Information' not in instance['type']:
+                                updatedCluster.append(instance)
                 
-                updatedResults.append({'name': word, 'children': updatedCluster})
-            updatedResults = {"name": "root", "children": updatedResults}
-            #print(updatedResults)
+                updatedResults.append({'word': word, 'cluster': updatedCluster})
+
+            results = updatedResults
+
+        elif "userStory" in currQuestion:
+            currUserStory = currQuestion.replace('userStory','')
+
+            results = treude.getCategoryOfSentence(currUserStory)
+
+            
+            #Here we go into the ontology and get the classifications of the sentences in the clusters.
+            updatedResults = []
+            for cluster in results:
+                word = cluster['word']
+                updatedCluster = []
+                for sentence in cluster['cluster']:
+                    sentenceType = queryManager.getSentenceType(sentence['sentence'])
+                    if sentenceType != None:
+                        for instance in sentenceType:
+                            if 'Uncertain' not in instance['type'] and 'Non-Information' not in instance['type']:
+                                updatedCluster.append(instance)
+                
+                updatedResults.append({'word': word, 'cluster': updatedCluster})
+
             results = updatedResults
 
         else:
