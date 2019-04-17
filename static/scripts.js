@@ -137,6 +137,56 @@ const program = (() => {
       summary.appendChild(btn);   
     }
   }
+  function addGroupButtonsToPage(relevantSentences, feature, question){
+    
+    if(question == 'Q3'){
+
+      groups = []
+      for(cluster of relevantSentences){
+        for(sentence of cluster['cluster']){
+          groups.push(sentence['type'].replace(baseURI,''))
+        }
+      }
+      groups = [...new Set(groups)];
+    }
+    else {
+      groups = ["FunctionalRequirementAndBehaviour", "UseCase", "UserStory"]
+    }
+
+    for(let group of groups){
+      var btn = document.createElement("BUTTON");
+      btn.innerHTML = group;
+      btn.setAttribute("chosen", "True")
+      btn.setAttribute("class", "groupButtonForGraph")
+      btn.setAttribute("id", group)
+      btn.addEventListener("click", function(){
+        if(this.getAttribute("chosen") == "True"){
+          this.setAttribute("chosen", "False")
+          console.log("new chosen value: False")
+        }
+        else {
+          this.setAttribute("chosen", "True")
+          console.log("new chosen value: True")
+        }
+        svg = document.querySelector("svg");
+        console.log("svg: ")
+        console.log(svg)
+        if(svg){deleteEl(svg)}
+        if(question == 'Q2'){
+          createClusterGraph(relevantSentences, feature)
+        }
+        else if(question == 'Q1'){
+          createClusterGraphQuestion1(relevantSentences)
+        }
+        else if (question == 'Q3'){
+          createClusterGraphQuestion3(relevantSentences)
+        }
+        
+        
+      });
+      summary.appendChild(btn);   
+    }
+  }
 
   function fetchResults(domain, currentQuestion) {
     //fetch(`${domain}`, {'method': 'POST', 'body': {'currQuestion': currentQuestion}})
@@ -158,38 +208,46 @@ const program = (() => {
   }
 
   function renderResponseToUserQuery(relevantSentences, currentQuestion){
-    console.log("Current question: ")
-    console.log(currentQuestion)
+
     if(currentQuestion == 'question1'){
       groupResults(relevantSentences)
       addFeatureButtonsToPage(relevantSentences)
+      addGroupButtonsToPage(relevantSentences, '', "Q1")
       createClusterGraphQuestion1(relevantSentences)
       renderHighlightedData(relevantSentences)
     }
     if(currentQuestion == 'feature1'){
-      createClusterGraph(relevantSentences, "displayProduct")
       groupResults(relevantSentences)
+      addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
+      createClusterGraph(relevantSentences, "displayProduct")
       renderHighlightedData(relevantSentences)
     }
     if(currentQuestion == 'feature2'){
-      createClusterGraph(relevantSentences, "purchaseProduct")
       groupResults(relevantSentences)
+      addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
+      createClusterGraph(relevantSentences, "purchaseProduct")
       renderHighlightedData(relevantSentences)
     }
     if(currentQuestion == 'feature3'){
-      createClusterGraph(relevantSentences, "userManagement")
       groupResults(relevantSentences)
+      addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
+      createClusterGraph(relevantSentences, "userManagement")
       renderHighlightedData(relevantSentences)
     }
-    // if(currentQuestion == 'question3'){
-    //   addReqSentenceAndButtonsToPage('As a customer, I want to add a particular product to the shopping cart, so that I can buy it with the next order (1).', relevantSentences)
-    //   createClusterGraphQuestion3(relevantSentences)     
-    // }
     if(currentQuestion.includes('userStory')){
-      currUserStory = currentQuestion.replace('userStory', '')
-      console.log(currUserStory)
-      addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
-      createClusterGraphQuestion3(relevantSentences)     
+      if(relevantSentences == 'There are no results for this requirement.'){
+        var message = document.createElement("p");
+        message.innerHTML = relevantSentences;
+        message.setAttribute("class", "noRequirementMessage");       
+        summary.appendChild(message);   
+      }
+      else{
+        currUserStory = currentQuestion.replace('userStory', '')
+        console.log(currUserStory)
+        addGroupButtonsToPage(relevantSentences, '', "Q3")
+        addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
+        createClusterGraphQuestion3(relevantSentences)
+      }        
     }
   }
 
@@ -382,12 +440,6 @@ const program = (() => {
     jQuery("#question3").click(function(e){
       hideSelector("featureSelector")
       showSelector("userStorySelector")
-      // empty(summary)
-      // svg = domains.querySelector('svg');
-      // if(svg){deleteEl(svg)}
-      // storedResults = JSON.parse(JSON.stringify(initData));
-      // fetchResults('http://127.0.0.1:5000/query/question', 'question3');
-      // e.preventDefault();
     });
     jQuery(".req").click(function(e){
       requirement = this.textContent

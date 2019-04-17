@@ -148,3 +148,8 @@ text {
   stroke: #333;
   stroke-width: 1.5px;
 }
+
+
+.noRequirementMessage {
+  font-size: 1.5em;
+}

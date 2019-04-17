@@ -118,6 +118,7 @@ class InformationRetriever:
                 for results in treudeValues:
                     for words in results:
                         words = words.split(' ')
+                        words = list(set(words))
                         for word in words:
                             word = word.lower()
                             word = self.lemma(word)
@@ -144,7 +145,7 @@ class InformationRetriever:
                 for word in words:
                     if self.matchWordToWordBank(word, wordBank):
                         wordsToCluster.append(word)                        
-                    
+        wordsToCluster = list(set(wordsToCluster))
         wordClusters = []
         for word in wordsToCluster:
             cluster = self.findWordClusters(word, treudeData, sentence)

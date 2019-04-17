@@ -40,47 +40,31 @@ class Test(Resource):
         
         elif currQuestion == 'feature3':
             results = queryManager.getOneFeatureAndRelevantClasses('4.2.2.3 User management')
-        
-        elif currQuestion == 'question3':
-            results = treude.getCategoryOfSentence('As a customer, I want to add a particular product to the shopping cart, so that I can buy it with the next order (1).')
-            
-            #Here we go into the ontology and get the classifications of the sentences in the clusters.
-            updatedResults = []
-            for cluster in results:
-                word = cluster['word']
-                updatedCluster = []
-                for sentence in cluster['cluster']:
-                    sentenceType = queryManager.getSentenceType(sentence['sentence'])
-                    if sentenceType != None:
-                        for instance in sentenceType:
-                            if 'Uncertain' not in instance['type'] and 'Non-Information' not in instance['type']:
-                                updatedCluster.append(instance)
-                
-                updatedResults.append({'word': word, 'cluster': updatedCluster})
-
-            results = updatedResults
+    
 
         elif "userStory" in currQuestion:
             currUserStory = currQuestion.replace('userStory','')
-
             results = treude.getCategoryOfSentence(currUserStory)
-
             
-            #Here we go into the ontology and get the classifications of the sentences in the clusters.
-            updatedResults = []
-            for cluster in results:
-                word = cluster['word']
-                updatedCluster = []
-                for sentence in cluster['cluster']:
-                    sentenceType = queryManager.getSentenceType(sentence['sentence'])
-                    if sentenceType != None:
-                        for instance in sentenceType:
-                            if 'Uncertain' not in instance['type'] and 'Non-Information' not in instance['type']:
-                                updatedCluster.append(instance)
-                
-                updatedResults.append({'word': word, 'cluster': updatedCluster})
+            if len(results)>0:
+                #Here we go into the ontology and get the classifications of the sentences in the clusters.
+                updatedResults = []
+                for cluster in results:
+                    word = cluster['word']
+                    updatedCluster = []
+                    for sentence in cluster['cluster']:
+                        sentenceType = queryManager.getSentenceType(sentence['sentence'])
+                        if sentenceType != None:
+                            for instance in sentenceType:
+                                # The uncertain and non-information categories shouldn't be of interest to the user.
+                                if 'Uncertain' not in instance['type'] and 'Non-Information' not in instance['type']:
+                                    updatedCluster.append(instance)
+                    
+                    updatedResults.append({'word': word, 'cluster': updatedCluster})
 
-            results = updatedResults
+                results = updatedResults
+            else:
+                results = "There are no results for this requirement."
 
         else:
             results = 'error'
