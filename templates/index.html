@@ -20,31 +20,44 @@
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
-          </div>
-          <ul class="nav navbar-nav", id='dropdown1'>
+            <a class="navbar-brand" href="#" style="font-size:1.6em;"> WebSiteName</a>
+          
+            <ul class="nav navbar-nav", id='dropdown1' style="height:100%;">
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown">Select a Question
+              <a class="dropdown-toggle" data-toggle="dropdown" style="font-size:1.6em;">Select a Question
               <span class="caret"></span></a>
-              <ul class="dropdown-menu" method='post' id='front-search-question1' class="askQuestion">
+              <ul class="dropdown-menu" method='post' id='front-search-question1' class="askQuestion" style="font-size:1.6em;">
                 <li><a id='question1'>What functionalities exist in the system?</a></li>
                 <li><a id='question2'>What functionality does the feature provide and what is its responsibility?</a></li>
-                <li><a id='question3'>Find everything related to some requirement?</a></li>
+                <li><a disabled value>----------------------------</a></li>
+                <li><a id='question3'>Find everything related to this functional requirement?</a></li>
+                <li><a id='question4'>How is this functionality implemented?</a></li>
+                <li><a id='question5'>What is the behaviour of this functionality?</a></li>
+                <li><a id='question6'>What is the structure of this functionality?</a></li>
+                <li><a id='question7'>What is the UI design of this functionality?</a></li>
+                <li><a id='question8'>What was the development process related to this functionality?</a></li>
+                <li><a disabled value>----------------------------</a></li>
+                <li><a id='question9'>Find everything related to this non-functional requirement?</a></li>
+                <li><a id='question10'>How is this non-functional requirement implemented?</a></li>
+                <li><a id='question11'>What is the behaviour of this non-functional requirement?</a></li>
+                <li><a id='question12'>What is the structure of this non-functional requirement?</a></li>
+                <li><a id='question13'>What is the UI design of this non-functional requirement?</a></li>
+                <li><a id='question14'>What was the development process related to this non-functional requirement?</a></li>
               </ul>
             </li>
-            <li class="dropdown" id='featureSelector' style="visibility: hidden">
-              <a class="dropdown-toggle" data-toggle="dropdown">Select a feature
+            <li class="dropdown" id='featureSelector' style="display:none">
+              <a class="dropdown-toggle" data-toggle="dropdown" style="font-size:1.6em;">Select a feature
               <span class="caret"></span></a>
-              <ul class="dropdown-menu" method='post' id='front-search-question2' class="askQuestion">
+              <ul class="dropdown-menu" method='post' id='front-search-question2' class="askQuestion" style="font-size:1.6em;">
                 <li><a id='feature1'>Display product</a></li>
                 <li><a id='feature2'>Purchase product</a></li>
                 <li><a id='feature3'>User management</a></li>
               </ul>
             </li>
-            <li class="dropdown" id='userStorySelector' style="visibility: hidden">
-              <a class="dropdown-toggle" data-toggle="dropdown">Select a user story
+            <li class="dropdown" id='userStorySelector' style="display:none">
+              <a class="dropdown-toggle" data-toggle="dropdown" style="font-size:1.6em;">Select a user story
               <span class="caret"></span></a>
-              <ul class="dropdown-menu" method='post' id='front-search-question3' class="askQuestion">
+              <ul class="dropdown-menu" method='post' id='front-search-question3' class="askQuestion" style="font-size:1.6em;">
                 <li><a disabled value>Display products</a></li>
                 <li><a class='req'>As a customer, I want to list all products of the shop (1).</a></li>
                 <li><a class='req'>As a customer, I want to see only those products that belong to a particular category and any category descendant, so that I can narrow down the list to what fits best my needs (2).</a></li>
@@ -77,27 +90,65 @@
                 <li><a class='req'>As a registered customer, I want to remove a particular postal address from my address book, so that I cannot longer select it when placing an order (5).</a></li>
               </ul>
             </li>
+            <li class="dropdown" id='userStoryNonFuncSelector' style="display:none">
+              <a class="dropdown-toggle" data-toggle="dropdown" style="font-size:1.6em;">Select a user story
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu" method='post' id='front-search-question3' class="askQuestion" style="font-size:1.6em;">
+                <li><a disabled value>Usability</a></li>
+                <li><a class='req'>As a developer, I want to identify and understand a particular business logic code of the template in less than 1 person-hour (2).</a></li>
+                <li><a class='req'>As a developer, I want to learn how the application is structured and how I can modify and extend it to build my own web-shop in less than 8 person-hour (3).</a></li>
+                <li><a class='req'>As a customer, I want to learn how to purchase an item for the first time in less than 5 minutes (7).</a></li>
+                <li><a class='req'>The template should achieve an average of 7 out of 10 points from users when asked of how much do they like it (10).</a></li>
+                <li><a disabled value>Maintainability</a></li>
+                <li><a class='req'>As a developer, I want to be able to test any new feature of my web application with unit, integration and acceptance tests, in less than 2 person-hour (4).</a></li>
+                <li><a class='req'>As a developer, I want to be able to safely change the set of data fetched from the platform without affecting the proper functioning of the template, at least in 95% of the cases (6).</a></li>
+                <li><a class='req'>As a developer, I want to be able to perform simple changes on user interface elements of the template in less than 10 minutes (4).</a></li>
+                <li><a disabled value>Functionability</a></li>
+                <li><a class='req'>The system must block any external attacker from reading or modifying sensitive information (6).</a></li>
+                <li><a class='req'>The system must avoid to store or process any payment data. (2)</a></li>
+                <li><a class='req'>As a merchant, I want my web-shop with a SEO-friendly URL structure, so that my web-shop can improve its ranking position in Internet search engines (8).</a></li>
+                <li><a class='req'>As a customer, I want the web-shop with a human-readable URL structure, so that I can identify the type of content before visiting the web page.</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
       </nav>
           
       <section class="domains">
         
-        <div class="container-fluid">
-        
+        <div class="container-fluid">   
         
           <div class="modal-body">
           
               <div class="first-column">
-                  <div class="results">
+                  <div class="results pre-scrollable">
                   </div>  
               </div>
 
               <div class="second-column">
-                <div class="summary">
+                <!-- <div class="summary panel-body">
+                </div> -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">Summary of results</div>
+                    <div class="summary panel-body">
                 </div>
-                <div id='interactive_diagram_svg'>
+                
+                
+                <div class="divider panel-body" id="wordButtons"></div>
+                <div class="divider panel-body" id="groupButtons"></div>
+                  
+                
                 </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading">Result graph</div>
+                    <div class="panel-body" id='interactive_diagram_svg'>
+                      
+                    </div>
+                    <div class="message panel-body"></div>
+                </div>
+                <!-- <div id='interactive_diagram_svg'>
+                </div> -->
                 
               </div>
           

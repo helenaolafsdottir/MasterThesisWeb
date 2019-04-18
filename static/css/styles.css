@@ -6,35 +6,66 @@
 html {
   box-sizing: border-box;
   font-size: 6px;
+  height: 100%;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
+body {
+  height: 100%;
+}
+.domains , .container-fluid, .modal-body{
+  height: 100%;
+}
 main {
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
+  background-color: #efeff5;
+  height: 100%;
 }
 
 .first-column {
-  width: 55%;
+  width: 45%;
   float: left;
   font-size: 6px;
+  height: 100%;
+  
 }
 .second-column {
-  width: 40%;
+  width: 53%;
   float: right;
   font-size:12px;
+  height: 100%;
+}
+
+.results{
+  height: 100%;
+}
+.pre-scrollable{
+  max-height: 100%;
   
 }
 
 .svg {
   float: right;
 }
+/* 
+.summary {
+  background-color:#d1d1e0 
+} */
 
+.btn {
+  margin: 2px 2px 2px 2px;
+}
+
+.divider{
+  height:auto;
+  display:inline-block;
+}
 
 .node {
   cursor: pointer;
@@ -118,12 +149,20 @@ input {
 
 
 
+p {
+  font-size: 1.6em;
+}
+.message {
+  font-size: 1.6em;
+}
+.panel-heading {
+  font-size: 1.6em;
+}
 
 
-
-#interactive_diagram_svg svg {
-  height: 10000px;
-  width: 10000px;
+ svg {
+  height: 5000px;
+  width: 3500px;
 }
 
 .clusters rect {
@@ -151,5 +190,17 @@ text {
 
 
 .noRequirementMessage {
-  font-size: 1.5em;
+  font-size: 1.6em;
+}
+
+
+[chosen = "True"] {
+  background: #e5e5e5;
+  outline: none;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+          box-shadow: inset 0px 0px 5px #c1c1c1;
+}
+[chosen = "False"] {
+  background: #ededed;
 }

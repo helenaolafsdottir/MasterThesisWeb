@@ -36,14 +36,14 @@ class InformationRetriever:
 
     
     def getOBjectsByClass(self, classToFind):
-        query1 = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"\
-                "PREFIX owl: <http://www.w3.org/2002/07/owl#>"\
-                "PREFIX onto: <http://www.semanticweb.org/masterThesisOntology#> "\
-                "SELECT ?x ?y ?z WHERE {{"\
-                "?x rdf:type onto:UserStory . "\
-                "?x rdfs:label ?y . "\
-                "?x onto:PartOf ?z ."\
-                "}}"
+        # query1 = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"\
+        #         "PREFIX owl: <http://www.w3.org/2002/07/owl#>"\
+        #         "PREFIX onto: <http://www.semanticweb.org/masterThesisOntology#> "\
+        #         "SELECT ?x ?y ?z WHERE {{"\
+        #         "?x rdf:type onto:UserStory . "\
+        #         "?x rdfs:label ?y . "\
+        #         "?x onto:PartOf ?z ."\
+        #         "}}"
 
         query = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"\
                 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"\

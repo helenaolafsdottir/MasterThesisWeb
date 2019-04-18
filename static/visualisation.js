@@ -1,11 +1,37 @@
 var baseURI = "http://www.semanticweb.org/masterThesisOntology#"
 
+function scaleDiagram(){
+    var self = this
+    var svgBCR = d3.select('#interactive_diagram_svg').select('svg').node().getBoundingClientRect()
+
+  
+    svgBCR.width = svgBCR.width * 0.63
+    
+    var gBBox = d3.select('#interactive_diagram_svg').select('.output').node().getBBox()
+    
+    var widthScale = svgBCR.width / gBBox.width
+    var heightScale = svgBCR.height / gBBox.height
+    
+    var abswidth = gBBox.width * widthScale - svgBCR.width
+    var absheight = gBBox.height * widthScale - svgBCR.height
+
+    if(absheight < abswidth){
+        var heightDiff = svgBCR.height / widthScale - gBBox.height
+        d3.select('#interactive_diagram_svg').select('.output')
+        .style('transform','scale(' + widthScale + ') translate(' + 0 + 'px, '+ (heightDiff/2) +'px)')
+    }else{
+        var widthDiff = svgBCR.width / heightScale - gBBox.width
+        d3.select('#interactive_diagram_svg').select('.output')
+        .style('transform','scale(' + heightScale + ') translate(' + widthDiff/2 + 'px, '+ 0 +'px)')
+    }
+}
+
 function createClusterGraphQuestion1(sentences){
     
-    //remove words that the user doesn't want to see
     features = ["Display product", "Purchase product", "User management"]
     filteredSentences = []
     
+    //remove words that the user doesn't want to see
     buttons = document.getElementsByClassName("buttonForGraph")
     for(button of buttons){
         feature = button.getAttribute("id")
@@ -22,23 +48,15 @@ function createClusterGraphQuestion1(sentences){
     //find the groups that the user has chosen to see
     groups = []
     buttons = document.getElementsByClassName("groupButtonForGraph")
+    console.log('buttons: ', buttons)
     for(button of buttons){
+        console.log(button)
         group = button.getAttribute("id")
         chosen = button.getAttribute("chosen")
         if(chosen == "True"){groups.push(group)}
-        // if(chosen == "False"){ //remove unwanted sentences
-            
-        //     for(sentence in filteredSentences){
-        //         if(filteredSentences[sentence]['type'].replace(baseURI,'').includes(group)){
-        //             filteredSentences.splice(sentence, 1); 
-        //         }
-        //     }
-        // }
     }
     console.log('groups: ', groups)
-    console.log('filtered sentences: ', filteredSentences)
 
-    
     // Create the input graph
     var g = new dagreD3.graphlib.Graph({compound:true})
     .setGraph({edgesep: 20, ranksep: 200, nodesep:10, rankdir: 'RL'})
@@ -50,34 +68,6 @@ function createClusterGraphQuestion1(sentences){
     g.setNode('featureGroup', {label: 'Feature', clusterLabelPos: 'top', style: 'fill: #ffeecc'});
     
 
-    // g.setNode('funcReqGroup', {label: 'Functional requirements', clusterLabelPos: 'top', style: 'fill: #ffeecc'});
-    // g.setNode('useCasesGroup', {label: 'Use cases', clusterLabelPos: 'top', style: 'fill: #ffeecc'});    
-    // g.setParent('funcReqGroup', 'requirementAnalysisGroup');
-    // g.setParent('useCasesGroup', 'requirementAnalysisGroup');
-   
-
-    //build nodes and parent-child connections for all sentences
-    // for(let sentence of filteredSentences){
-
-    //     g.setNode(sentence['sentence'], {label:sentence["sentence"]})
-    
-    //     if(sentence['type'] == "http://www.semanticweb.org/masterThesisOntology#FunctionalRequirementAndBehaviour"){
-    //         g.setParent(sentence['sentence'],'funcReqGroup')
-    //         for(let feature of features){
-    //             if(sentence['feature'].toLowerCase().includes(feature.toLowerCase())){
-    //                 g.setEdge(sentence['sentence'], feature, {label: 'BelongsTo'})
-    //             }
-    //         }
-    //     }
-    //     else if(sentence['type'] == "http://www.semanticweb.org/masterThesisOntology#UseCase") {
-    //         g.setParent(sentence['sentence'],'useCasesGroup')
-    //         for(let feature of features){
-    //             if(sentence['feature'].toLowerCase().includes(feature.toLowerCase())){
-    //                 g.setEdge(sentence['sentence'], feature, {label: 'BelongsTo'})
-    //             }
-    //         }
-    //     }
-    // }
     for(let group of groups){
         g.setNode(group, {label: group, clusterLabelPos: 'top', style: 'fill: #ffeecc'}); 
         g.setParent(group, 'requirementAnalysisGroup'); 
@@ -85,11 +75,14 @@ function createClusterGraphQuestion1(sentences){
         
             // create nodes, add them to their categories and createa an edge to the feature
             if(sentence['type'].includes(group)){
+                if(group=='UserStory'){
+                    console.log('Found user story!')
+                }
                 g.setNode(sentence['sentence'], {label:sentence["sentence"]})
                 g.setParent(sentence['sentence'], group)
                 for(let feature of features){
                     if(sentence['feature'].toLowerCase().includes(feature.toLowerCase())){
-                        g.setEdge(sentence['sentence'], feature, {label: 'BelongsTo'})
+                        g.setEdge(sentence['sentence'], feature, {label: 'BelongsTo', curve: d3.curveBasis})
                     }
                 }
                 
@@ -105,13 +98,12 @@ function createClusterGraphQuestion1(sentences){
         g.setParent(feature, 'featureGroup')
 
     }
-
+    // Rounding edges of all entity nodes
     g.nodes().forEach(function(v) {
-    var node = g.node(v);
-    // Round the corners of the nodes
-    node.rx = node.ry = 5;
+        var node = g.node(v);
+        node.rx = 5
+        node.ry = 5
     });
-
 
     // Create the renderer
     var render = new dagreD3.render();
@@ -120,8 +112,26 @@ function createClusterGraphQuestion1(sentences){
     var svg = d3.select("#interactive_diagram_svg").append("svg"),
     svgGroup = svg.append("g");
 
+    // // Set up zoom support
+    // var zoom = d3.zoom()
+    // .on("zoom", function() {
+    //     svgGroup.attr("transform", d3.event.transform);
+    // });
+    
+    // //Disable double click zoom
+    // svg.call(zoom).on("dblclick.zoom", null);
+
     // Run the renderer. This is what draws the final graph.
     render(d3.select("svg g"), g);
+
+    // var gBBox = d3.select('#interactive_diagram_svg').select('.output').node().getBBox()
+    // console.log(gBBox.height)
+    
+    // var svg = d3.select('SVG').node()
+    // console.log(svg.innerHTML)
+    // svg.append("style").height(gBBox.height)
+
+    // scaleDiagram()
 
 }
 
@@ -164,7 +174,7 @@ function createClusterGraph(relevantSentences, feature){
             if(sentence['type'].includes(group)){
                 g.setNode(sentence['sentence'], {label:sentence["sentence"]})
                 g.setParent(sentence['sentence'], group)
-                g.setEdge(sentence['sentence'], feature, {label: 'BelongsTo'})
+                g.setEdge(sentence['sentence'], feature, {label: 'BelongsTo', curve: d3.curveBasis})
             }
         }  
     }
@@ -191,13 +201,6 @@ function createClusterGraph(relevantSentences, feature){
 }
 
 
-
-
-
-
-
-
-
 function createClusterGraphQuestion3(wordClusters, feature){
 
     //remove words that the user doesn't want to see - (filtered by word)
@@ -205,14 +208,11 @@ function createClusterGraphQuestion3(wordClusters, feature){
     
     buttons = document.getElementsByClassName("buttonForGraph")
     for(button of buttons){
-        console.log(button.getAttribute("id"))
-        console.log(button.getAttribute("chosen"))
         word = button.getAttribute("id")
         chosen = button.getAttribute("chosen")
         if(chosen == "True"){
             for(wordCluster in wordClusters){
                 if(wordClusters[wordCluster]['word'] == word){
-                    console.log(wordClusters[wordCluster])
                     filteredWordClusters.push(wordClusters[wordCluster])
                 }
             }
@@ -228,12 +228,7 @@ function createClusterGraphQuestion3(wordClusters, feature){
         chosen = button.getAttribute("chosen")
         if(chosen == "True"){groupsTest.push(group)}
     }
-    console.log('groupsTest: ', groupsTest)
     
-    // Create the input graph
-    var g = new dagreD3.graphlib.Graph({compound:true})
-    .setGraph({edgesep: 20, ranksep: 200, nodesep:10, rankdir: 'LR'})
-    .setDefaultEdgeLabel(function() { return {}; });
 
     //Find relevant groups that need to be created
     let groups = new Array()
@@ -249,10 +244,21 @@ function createClusterGraphQuestion3(wordClusters, feature){
     console.log(groups)
     console.log('-----------')
 
+    //create an array that contains the groups that the wordGroup and categoryGroup have in common
     commonGroups = groups.filter(value => groupsTest.includes(value))
-    console.log(commonGroups)
-    
-    
+
+    //check if the requirement has any related sentences in the chosen categories
+    if(commonGroups.length == 0){
+        noMatchingSentences = 'This requirement has no matching sentences in the chosen categories.'
+        jQuery(".message").append(noMatchingSentences)
+    }
+
+    else{
+    // Create the input graph
+    var g = new dagreD3.graphlib.Graph({compound:true})
+    .setGraph({edgesep: 20, ranksep: 200, nodesep:10, rankdir: 'LR'})
+    .setDefaultEdgeLabel(function() { return {}; });
+
     //Create super-groups
     if(commonGroups.includes('Stakeholder')){
         //create Domain super-group
@@ -324,12 +330,16 @@ function createClusterGraphQuestion3(wordClusters, feature){
         else if(group == 'UseCase' || group == 'FunctionalRequirementAndBehaviour' || group == 'NonFunctionalRequirementAndBehaviour' || group == 'RequirementGeneral' || group == 'Feature'){
             g.setNode(group, {label: group, clusterLabelPos: 'top', style: 'fill: #ffeecc'});
             g.setParent(group, 'Requirements Analysis');
-        }else if (group == 'UserStory'){
-            if(commonGroups.includes('FunctionalRequirementAndBehaviour')){
-                g.setNode(group, {label: group, clusterLabelPos: 'top', style: 'fill: #fff7e6'});
-                g.setParent(group, 'FunctionalRequirementAndBehaviour');
-            }
         }
+        else if( group == 'UserStory'){
+            //Do nothing
+        }
+        // else if (group == 'UserStory'){
+        //     if(commonGroups.includes('FunctionalRequirementAndBehaviour')){
+        //         g.setNode(group, {label: group, clusterLabelPos: 'top', style: 'fill: #fff7e6'});
+        //         g.setParent(group, 'FunctionalRequirementAndBehaviour');
+        //     }
+        // }
 
         else if (group == 'S-Architecture'){            
             g.setNode(group, {label: group, clusterLabelPos: 'top', style: 'fill: #dde1ee'});
@@ -367,39 +377,67 @@ function createClusterGraphQuestion3(wordClusters, feature){
     }
 
     for(let group of commonGroups){
-        
-        //Add sentences as node and append to their clusterWords
-        for(let wordCluster of filteredWordClusters){
-            for (let cluster of wordCluster['cluster']){
-
-                //TODO: better handling of this userStory exception 
-                if(group == 'UserStory'){
-                    if(commonGroups.includes('FunctionalRequirementAndBehaviour')){
+        if(group != 'UserStory'){
+            //Add sentences as node and append to their clusterWords
+            for(let wordCluster of filteredWordClusters){
+                for (let cluster of wordCluster['cluster']){
+                    if(!(group == 'FunctionalRequirementAndBehaviour' && cluster['sentence'].startsWith('As a ')) && !(group == 'NonFunctionalRequirementAndBehaviour' && cluster['sentence'].startsWith('As a '))){
                         if(cluster['type'].replace(baseURI,'') == group){
-                            g.setNode(cluster['sentence'], {label: cluster['sentence']})
 
+                            g.setNode(cluster['sentence'], {label: cluster['sentence']})
+    
                             //append to its group
                             type = cluster['type'].replace(baseURI,'')
                             g.setParent(cluster['sentence'], type);
-
+    
                             //create edge to cluster
-                            g.setEdge( wordCluster['word'], cluster['sentence'])
+                            g.setEdge( wordCluster['word'], cluster['sentence'], {curve: d3.curveBasis})
+                        
+                        }
+                    }            
+                }
+            }
+        }
+    }
+
+    //userStory handling
+    if(commonGroups.includes('UserStory')){
+        
+        userStorySentences = []
+        //Find if it should be included in func.req, non-func.req. or both
+        for(let wordCluster of filteredWordClusters){
+            for (let cluster of wordCluster['cluster']){
+                if(cluster['type'].replace(baseURI,'') == 'UserStory'){
+                    for(clusterToMatch of wordCluster['cluster']){
+                        if(clusterToMatch['sentence'] == cluster['sentence'] && clusterToMatch['type'].replace(baseURI,'') != 'UserStory'){
+                            clusterToMatch.edge = wordCluster['word']
+                            userStorySentences.push(clusterToMatch)
                         }
                     }
-                }
-                else {
-                    if(cluster['type'].replace(baseURI,'') == group){
+                }        
+            }   
+        }
+        console.log("userStorySentences: ", userStorySentences)
 
-                        g.setNode(cluster['sentence'], {label: cluster['sentence']})
-
-                        //append to its group
-                        type = cluster['type'].replace(baseURI,'')
-                        g.setParent(cluster['sentence'], type);
-
-                        //create edge to cluster
-                        g.setEdge( wordCluster['word'], cluster['sentence'])
-                    }
-                }
+        for(sentence of userStorySentences){
+            if(sentence['type'].replace(baseURI,'') == 'NonFunctionalRequirementAndBehaviour' && commonGroups.includes('NonFunctionalRequirementAndBehaviour')){
+                console.log('create nonfunc')
+                g.setNode('UserStoryFunc', {label: 'UserStory', clusterLabelPos: 'top', style: 'fill: #fff7e6'});
+                g.setParent('UserStoryFunc', 'NonFunctionalRequirementAndBehaviour');
+                
+                //create node
+                g.setNode(sentence['sentence'],{label: sentence['sentence']})
+                g.setParent(sentence['sentence'], 'UserStoryFunc');
+                g.setEdge( sentence['edge'], sentence['sentence'], {curve: d3.curveBasis})
+            }
+            else if (sentence['type'].replace(baseURI,'') == 'FunctionalRequirementAndBehaviour'  && commonGroups.includes('FunctionalRequirementAndBehaviour')){
+                g.setNode('UserStoryNonFunc', {label: 'UserStory', clusterLabelPos: 'top', style: 'fill: #fff7e6'});
+                g.setParent('UserStoryNonFunc', 'FunctionalRequirementAndBehaviour');
+                
+                //create node
+                g.setNode(sentence['sentence'],{label: sentence['sentence']})
+                g.setParent(sentence['sentence'], 'UserStoryNonFunc');
+                g.setEdge( sentence['edge'], sentence['sentence'], {curve: d3.curveBasis})
             }
         }
     }
@@ -424,19 +462,8 @@ function createClusterGraphQuestion3(wordClusters, feature){
 
     // Run the renderer. This is what draws the final graph.
     render(d3.select("svg g"), g);
-
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -447,8 +474,6 @@ function createClusterGraphQuestion3Spare(wordClusters, feature){
     
     buttons = document.getElementsByClassName("buttonForGraph")
     for(button of buttons){
-        console.log(button.getAttribute("id"))
-        console.log(button.getAttribute("chosen"))
         word = button.getAttribute("id")
         chosen = button.getAttribute("chosen")
         if(chosen == "True"){
