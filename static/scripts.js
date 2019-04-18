@@ -129,7 +129,7 @@ const program = (() => {
         }
         svg = document.querySelector("svg");
         if(svg){deleteEl(svg)}
-        createClusterGraphQuestion1(relevantSentences)    
+        createClusterGraphQuestion1(relevantSentences)
         
       });
       wordButtons.appendChild(btn);   
@@ -191,6 +191,8 @@ const program = (() => {
       groupButtons.appendChild(btn);   
     }
   }
+  
+  
 
   function fetchResults(domain, currentQuestion) {
     //fetch(`${domain}`, {'method': 'POST', 'body': {'currQuestion': currentQuestion}})
@@ -218,25 +220,22 @@ const program = (() => {
       addFeatureButtonsToPage(relevantSentences)
       addGroupButtonsToPage(relevantSentences, '', "Q1")
       createClusterGraphQuestion1(relevantSentences)
-      renderHighlightedData(relevantSentences)
+      
     }
     if(currentQuestion == 'feature1'){
       groupResults(relevantSentences)
       addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
       createClusterGraph(relevantSentences, "displayProduct")
-      renderHighlightedData(relevantSentences)
     }
     if(currentQuestion == 'feature2'){
       groupResults(relevantSentences)
       addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
       createClusterGraph(relevantSentences, "purchaseProduct")
-      renderHighlightedData(relevantSentences)
     }
     if(currentQuestion == 'feature3'){
       groupResults(relevantSentences)
       addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
       createClusterGraph(relevantSentences, "userManagement")
-      renderHighlightedData(relevantSentences)
     }
     if(currentQuestion.includes('question3')){
       if(relevantSentences == 'There are no results for this requirement.'){
@@ -443,42 +442,41 @@ const program = (() => {
 
   }
 
-  function renderHighlightedData(relevantSentences){
-    for(let sentenceToHighlight of relevantSentences){
-      //console.log(sentenceToHighlight['sentence'])
-      for (let section of storedResults) {
-        highlightData(section, sentenceToHighlight['sentence'].toLowerCase());
-      }
-    }
+  // function renderHighlightedData(relevantSentences){
+  //   for(let sentenceToHighlight of relevantSentences){
+  //     for (let section of storedResults) {
+  //       highlightData(section, sentenceToHighlight['sentence'].toLowerCase());
+  //     }
+  //   }
     
-    renderFullJsonData(storedResults)
-  }
-  function highlightData(section, sentenceToHighlight){
+  //   renderFullJsonData(storedResults)
+  // }
+  // function highlightData(section, sentenceToHighlight){
   
-    //checking headers
-    if(section[Object.keys(section)[0]]['sentence']){
-      header = section[Object.keys(section)[0]]['sentence'].toLowerCase()
-      if(sentenceToHighlight == header){
-        section[Object.keys(section)[0]]['Highlighted']='True'
-        //console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
-      }
-    }
+  //   //checking headers
+  //   if(section[Object.keys(section)[0]]['sentence']){
+  //     header = section[Object.keys(section)[0]]['sentence'].toLowerCase()
+  //     if(sentenceToHighlight == header){
+  //       section[Object.keys(section)[0]]['Highlighted']='True'
+  //       //console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
+  //     }
+  //   }
     
-    for (let paragraphs of section['paragraphs']) {
-      if(paragraphs.length>0){
-        for (let paragraphObj of paragraphs) {
-          paragraph = paragraphObj['sentence'].toLowerCase();
-          if(sentenceToHighlight == paragraph){
-            paragraphObj['Highlighted']='True'
-            //console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
-          }
-        } 
-      }
-    }    
-    for (let subSection of section['sub-sections']) {
-      highlightData(subSection, sentenceToHighlight);
-    }
-  }
+  //   for (let paragraphs of section['paragraphs']) {
+  //     if(paragraphs.length>0){
+  //       for (let paragraphObj of paragraphs) {
+  //         paragraph = paragraphObj['sentence'].toLowerCase();
+  //         if(sentenceToHighlight == paragraph){
+  //           paragraphObj['Highlighted']='True'
+  //           //console.log('MATCH!!!!!!!!!!!!!!!!!!!!!!!!!!')
+  //         }
+  //       } 
+  //     }
+  //   }    
+  //   for (let subSection of section['sub-sections']) {
+  //     highlightData(subSection, sentenceToHighlight);
+  //   }
+  // }
 
 
   

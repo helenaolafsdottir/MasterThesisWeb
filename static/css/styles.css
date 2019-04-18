@@ -60,6 +60,7 @@ main {
 
 .btn {
   margin: 2px 2px 2px 2px;
+  font-size: 1em;
 }
 
 .divider{
@@ -150,13 +151,13 @@ input {
 
 
 p {
-  font-size: 1.6em;
+  font-size: 1em;
 }
 .message {
-  font-size: 1.6em;
+  font-size: 1em;
 }
 .panel-heading {
-  font-size: 1.6em;
+  font-size: 1em;
 }
 
 
@@ -190,7 +191,7 @@ text {
 
 
 .noRequirementMessage {
-  font-size: 1.6em;
+  font-size: 1em;
 }
 
 

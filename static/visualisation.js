@@ -27,7 +27,7 @@ function scaleDiagram(){
 }
 
 function createClusterGraphQuestion1(sentences){
-    
+    unhighlightAllSentences()
     features = ["Display product", "Purchase product", "User management"]
     filteredSentences = []
     
@@ -73,12 +73,14 @@ function createClusterGraphQuestion1(sentences){
         g.setParent(group, 'requirementAnalysisGroup'); 
         for(let sentence of filteredSentences){
         
-            // create nodes, add them to their categories and createa an edge to the feature
+            // create nodes, add them to their categories and create an edge to the feature
             if(sentence['type'].includes(group)){
                 if(group=='UserStory'){
                     console.log('Found user story!')
                 }
                 g.setNode(sentence['sentence'], {label:sentence["sentence"]})
+                highlightMatchingSentence(sentence['sentence'])
+                
                 g.setParent(sentence['sentence'], group)
                 for(let feature of features){
                     if(sentence['feature'].toLowerCase().includes(feature.toLowerCase())){
@@ -112,6 +114,8 @@ function createClusterGraphQuestion1(sentences){
     var svg = d3.select("#interactive_diagram_svg").append("svg"),
     svgGroup = svg.append("g");
 
+    
+
     // // Set up zoom support
     // var zoom = d3.zoom()
     // .on("zoom", function() {
@@ -133,10 +137,86 @@ function createClusterGraphQuestion1(sentences){
 
     // scaleDiagram()
 
+    //Clicking sentences will take you to the relevant place in the document
+    $(document).ready(function() {
+        $('.node').click(function() {
+      
+          // This gets the node name from the 'class' attribute
+          var class_header = $(this).attr('class').split(' ');
+          var node_name = class_header[class_header.length - 1]
+          buttonText = d3.select(this).node().childNodes[1].childNodes[0].textContent
+
+          // Execute your function
+          searchMatchingSentence(buttonText)
+          
+      
+        })
+      })
+
 }
 
+function searchMatchingSentence(sentence){
+    text = d3.select('.results').node().childNodes
+    console.log("sentence to match: ", sentence)
+      
+    for(textnodes of text){
+        if(textnodes.tagName == 'H1' || textnodes.tagName == 'H2' || textnodes.tagName == 'H3' || textnodes.tagName == 'H4' || textnodes.tagName == 'H5'){
+            if(textnodes.innerHTML == sentence){
+                textnodes.setAttribute('id', sentence)
+                window.location.hash = sentence;
+            }
+        }
+        else{
+            for(child of textnodes.childNodes){
+                if(child.innerHTML == sentence){
+                    console.log('matchin child: ', child)
+                    child.setAttribute('id', sentence)
+                    window.location.hash = sentence;
+                }
+            }
+        }
+    }
+}
+
+
+function unhighlightAllSentences(){
+    text = d3.select('.results').node().childNodes
+    for(textnodes of text){
+        if(textnodes.tagName == 'H1' || textnodes.tagName == 'H2' || textnodes.tagName == 'H3' || textnodes.tagName == 'H4' || textnodes.tagName == 'H5'){
+            if(textnodes.getAttribute("class") == 'highlighted'){
+                jQuery(textnodes).removeClass('highlighted')
+            }
+        }
+        else{
+            for(child of textnodes.childNodes){
+                if(child.getAttribute("class") == 'highlighted'){
+                    jQuery(child).removeClass('highlighted')
+                }
+            }
+        }
+    }
+}
+
+function highlightMatchingSentence(sentence){
+    text = d3.select('.results').node().childNodes
+    for(textnodes of text){
+        if(textnodes.tagName == 'H1' || textnodes.tagName == 'H2' || textnodes.tagName == 'H3' || textnodes.tagName == 'H4' || textnodes.tagName == 'H5'){
+            if(textnodes.innerHTML == sentence){
+                textnodes.setAttribute('class', 'highlighted');
+            }
+        }
+        else{
+            for(child of textnodes.childNodes){
+                if(child.innerHTML == sentence){
+                    child.setAttribute('class', 'highlighted');
+                }
+            }
+        }
+    }
+}
 //Question 2
 function createClusterGraph(relevantSentences, feature){
+    unhighlightAllSentences()
     //remove sentences that belong to the categories that the user doesn't want to see
     filteredSentences = []
     groups = []
@@ -175,6 +255,8 @@ function createClusterGraph(relevantSentences, feature){
                 g.setNode(sentence['sentence'], {label:sentence["sentence"]})
                 g.setParent(sentence['sentence'], group)
                 g.setEdge(sentence['sentence'], feature, {label: 'BelongsTo', curve: d3.curveBasis})
+                
+                highlightMatchingSentence(sentence['sentence'])
             }
         }  
     }
@@ -198,11 +280,27 @@ function createClusterGraph(relevantSentences, feature){
     render(d3.select("svg g"), g);
 
     d3.selectAll("svg g .output .nodes .node")
+
+    //Clicking sentences will take you to the relevant place in the document
+    $(document).ready(function() {
+        $('.node').click(function() {
+      
+          // This gets the node name from the 'class' attribute
+          var class_header = $(this).attr('class').split(' ');
+          var node_name = class_header[class_header.length - 1]
+          buttonText = d3.select(this).node().childNodes[1].childNodes[0].textContent
+
+          // Execute your function
+          searchMatchingSentence(buttonText)
+          
+      
+        })
+      })
 }
 
 
 function createClusterGraphQuestion3(wordClusters, feature){
-
+    unhighlightAllSentences()
     //remove words that the user doesn't want to see - (filtered by word)
     filteredWordClusters = []
     
@@ -392,6 +490,8 @@ function createClusterGraphQuestion3(wordClusters, feature){
     
                             //create edge to cluster
                             g.setEdge( wordCluster['word'], cluster['sentence'], {curve: d3.curveBasis})
+
+                            highlightMatchingSentence(cluster['sentence'])
                         
                         }
                     }            
@@ -429,6 +529,8 @@ function createClusterGraphQuestion3(wordClusters, feature){
                 g.setNode(sentence['sentence'],{label: sentence['sentence']})
                 g.setParent(sentence['sentence'], 'UserStoryFunc');
                 g.setEdge( sentence['edge'], sentence['sentence'], {curve: d3.curveBasis})
+
+                highlightMatchingSentence(sentence['sentence'])
             }
             else if (sentence['type'].replace(baseURI,'') == 'FunctionalRequirementAndBehaviour'  && commonGroups.includes('FunctionalRequirementAndBehaviour')){
                 g.setNode('UserStoryNonFunc', {label: 'UserStory', clusterLabelPos: 'top', style: 'fill: #fff7e6'});
@@ -438,6 +540,8 @@ function createClusterGraphQuestion3(wordClusters, feature){
                 g.setNode(sentence['sentence'],{label: sentence['sentence']})
                 g.setParent(sentence['sentence'], 'UserStoryNonFunc');
                 g.setEdge( sentence['edge'], sentence['sentence'], {curve: d3.curveBasis})
+
+                highlightMatchingSentence(sentence['sentence'])
             }
         }
     }
@@ -463,6 +567,23 @@ function createClusterGraphQuestion3(wordClusters, feature){
     // Run the renderer. This is what draws the final graph.
     render(d3.select("svg g"), g);
     }
+
+
+    //Clicking sentences will take you to the relevant place in the document
+    $(document).ready(function() {
+        $('.node').click(function() {
+      
+          // This gets the node name from the 'class' attribute
+          var class_header = $(this).attr('class').split(' ');
+          var node_name = class_header[class_header.length - 1]
+          buttonText = d3.select(this).node().childNodes[1].childNodes[0].textContent
+
+          // Execute your function
+          searchMatchingSentence(buttonText)
+          
+      
+        })
+    })
 }
 
 
