@@ -90,15 +90,12 @@ const program = (() => {
       btn.addEventListener("click", function(){
         if(this.getAttribute("chosen") == "True"){
           this.setAttribute("chosen", "False")
-          console.log("new chosen value: False")
         }
         else {
           this.setAttribute("chosen", "True")
-          console.log("new chosen value: True")
         }
         svg = document.querySelector("svg");
         if(svg){deleteEl(svg)}
-        empty(message)
         createClusterGraphQuestion3(wordClusters)    
         
       });
@@ -121,23 +118,25 @@ const program = (() => {
       btn.addEventListener("click", function(){
         if(this.getAttribute("chosen") == "True"){
           this.setAttribute("chosen", "False")
-          console.log("new chosen value: False")
         }
         else {
           this.setAttribute("chosen", "True")
-          console.log("new chosen value: True")
         }
         svg = document.querySelector("svg");
         if(svg){deleteEl(svg)}
         createClusterGraphQuestion1(relevantSentences)
         
       });
+      
+      console.log('wordbuttons: ',wordButtons)
+      console.log('btn: ', btn)
       wordButtons.appendChild(btn);   
+      console.log('added button: ', wordButtons)
     }
   }
   function addGroupButtonsToPage(relevantSentences, feature, question){
     
-    if(question == 'Q3' || question == 'Q4' || question == 'Q5' || question == 'Q6' || question == 'Q7' || question == 'Q8' || question == 'Q9' || question == 'Q10' || question == 'Q11' || question == 'Q12' || question == 'Q13' || question == 'Q14' ){
+    if(question == 'Q3' || question == 'Q4' || question == 'Q5' || question == 'Q6' || question == 'Q7' || question == 'Q8' || question == 'Q9' || question == 'Q10' || question == 'Q11' || question == 'Q12' || question == 'Q13' || question == 'Q14' || question == 'Q17' ){
 
       groups = []
       for(cluster of relevantSentences){
@@ -163,31 +162,24 @@ const program = (() => {
       btn.addEventListener("click", function(){
         if(this.getAttribute("chosen") == "True"){
           this.setAttribute("chosen", "False")
-          console.log("new chosen value: False")
         }
         else {
           this.setAttribute("chosen", "True")
-          console.log("new chosen value: True")
         }
         svg = document.querySelector("svg");
-        console.log("svg: ")
-        console.log(svg)
         if(svg){deleteEl(svg)}
         if(question == 'Q2'){
-          empty(message)
           createClusterGraph(relevantSentences, feature)
         }
         else if(question == 'Q1'){
-          empty(message)
           createClusterGraphQuestion1(relevantSentences)
         }
-        else if (question == 'Q3' || question == 'Q4' || question == 'Q5'|| question == 'Q6' || question == 'Q7' || question == 'Q8' || question == 'Q9' || question == 'Q10' || question == 'Q11' || question == 'Q12' || question == 'Q13' || question == 'Q14'){
-          empty(message)
+        else if (question == 'Q3' || question == 'Q4' || question == 'Q5'|| question == 'Q6' || question == 'Q7' || question == 'Q8' || question == 'Q9' || question == 'Q10' || question == 'Q11' || question == 'Q12' || question == 'Q13' || question == 'Q14' || question == 'Q17'){
+          empty(graph)
           createClusterGraphQuestion3(relevantSentences)
         }
         
       });
-      console.log('groupButtons: ', groupButtons )
       groupButtons.appendChild(btn);   
     }
   }
@@ -216,24 +208,24 @@ const program = (() => {
   function renderResponseToUserQuery(relevantSentences, currentQuestion){
 
     if(currentQuestion == 'question1'){
-      groupResults(relevantSentences)
+      //groupResults(relevantSentences)
       addFeatureButtonsToPage(relevantSentences)
       addGroupButtonsToPage(relevantSentences, '', "Q1")
       createClusterGraphQuestion1(relevantSentences)
       
     }
     if(currentQuestion == 'feature1'){
-      groupResults(relevantSentences)
+      //groupResults(relevantSentences)
       addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
       createClusterGraph(relevantSentences, "displayProduct")
     }
     if(currentQuestion == 'feature2'){
-      groupResults(relevantSentences)
+      //groupResults(relevantSentences)
       addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
       createClusterGraph(relevantSentences, "purchaseProduct")
     }
     if(currentQuestion == 'feature3'){
-      groupResults(relevantSentences)
+      //groupResults(relevantSentences)
       addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
       createClusterGraph(relevantSentences, "userManagement")
     }
@@ -406,15 +398,124 @@ const program = (() => {
         createClusterGraphQuestion3(relevantSentences)
       }        
     }
+    if(currentQuestion == 'question15'){
+      findWordMatch(relevantSentences, 'Architecture patterns')
+    }
+    if(currentQuestion == 'question16'){
+      findWordMatch(relevantSentences, 'Programming languages')
+    }
+    if(currentQuestion == 'question17'){
+      
+      console.log('relevantSentences: ', relevantSentences)
+      printWords(relevantSentences, 'Architecture patterns')
+
+      addGroupButtonsToPage(relevantSentences, '', "Q17")
+      addReqSentenceAndButtonsToPage('',relevantSentences)
+      createClusterGraphQuestion3(relevantSentences)
+
+      //findWordMatch(relevantSentences, 'Architecture patterns')
+      
+      
+      // matches = findWordMatch(relevantSentences, 'Architecture patterns')
+      // wordMatches = matches[0]
+      // sentenceMatches = matches[1]
+      // console.log(wordMatches)
+      // console.log(sentenceMatches)
+
+
+
+
+      //createClusterGraphWitt(wordMatches, sentenceMatches)
+      // $.ajax({
+      //   type: "POST",
+      //   url: "../modules/request/witt.py",
+      //   data: { param: sentenceMatches}
+      // }).done(function( o ) {
+      //    console.log('Python call worked!')
+      //    console.log(sentenceMatches)
+      // });
+    //   fetch('http://127.0.0.1:5000/query/witt', 
+    //   {
+    //     'method': 'POST',
+    //     'headers': {
+    //       'Content-Type': "application/json"
+    //     },
+    //     'body':  JSON.stringify({'sentenceMatches': sentenceMatches})
+    // })
+    //   .then(data =>{
+    //     data.json().then(stuff => console.log('stuff: ', stuff))
+    //   }) 
+    //   .catch((error) => {
+    //     console.error('Villa við að sækja gögn', error);
+    //     showMessage('Villa við að sækja gögn');
+    //   });
+      
+    }
 }
 
+  function printWords(relevantSentences, lookingFor){
+    summary.append(el('p', lookingFor + ` mentioned in the text:`));
+    for(clusters of relevantSentences){
+        summary.append(el('li', clusters['word']))
+    }
+  }
+
+  function findWordMatch(relevantSentences, lookingFor){
+
+    sentenceMatches = [];
+    wordMatches = [];
+    for(word of relevantSentences){
+      for (let section of storedResults){
+        findMatch(section, word)
+      }
+    }
+    sentenceMatches = [...new Set(sentenceMatches)];
+    wordMatches = [...new Set(wordMatches)];
+
+    //show the matched words in the summary div
+    summary.append(el('p', lookingFor + ` mentioned in the text:`));
+    for(match of wordMatches){
+      summary.append(el('li', match))
+    }
+    
+    //highlight sentences that contain matched words?
+    return [wordMatches, sentenceMatches]
+  }
+
+  function findMatch(section, wordToMatch){
+    if(section['included']==='yes'){
+      header = section[Object.keys(section)[0]]['sentence'].toLowerCase()
+      headerWords = header.split(' ')
+      match = headerWords.indexOf(wordToMatch.toLowerCase())
+          if(match != -1){
+            wordMatches.push(headerWords[match])
+            arr = new Array(headerWords[match], header)
+            sentenceMatches.push(arr)            
+          }
+    
+      for (let paragraphs of section['paragraphs']) {
+        for (let paragraphObj of paragraphs) {
+          sentence = paragraphObj['sentence'].toLowerCase()
+          sentenceWords = sentence.split(' ');
+          
+          match = sentenceWords.indexOf(wordToMatch.toLowerCase())
+          if(match != -1){
+            wordMatches.push(sentenceWords[match])
+            arr = new Array(sentenceWords[match], sentence)
+            sentenceMatches.push(arr)
+          }
+        }
+      }
+    }    
+    for (let subSection of section['sub-sections']) {
+      findMatch(subSection, wordToMatch);
+    }
+  }
  
   function groupResults(relevantSentences){
     features=0;
     usecases=0;
     funcreqs=0;
-
-    console.log(relevantSentences)
 
     for(let sentence of relevantSentences){
       if(sentence['type'].includes('Feature')){
@@ -490,14 +591,10 @@ const program = (() => {
   //Currently not using this function!
   function onChangeQuestion(){
     empty(summary)
-    empty(message)
     svg = d3.getElementById("svg")
-    console.log(svg)
     storedResults = JSON.parse(JSON.stringify(initData));
     var selectObj = document.getElementById('front-search-question')
     var currentSelection = selectObj.options[selectObj.selectedIndex].value
-    console.log('currSelection:')
-    console.log(currentSelection)
     fetchResults('http://127.0.0.1:5000/query/question', currentSelection);
   }
 
@@ -544,26 +641,25 @@ const program = (() => {
   }
 
   function init(domains) {
-       
     results = domains.querySelector('.results');
     summary = domains.querySelector('.summary');
-    message = domains.querySelector('.message');
-    wordButtons = domains.querySelector('#wordButtons');
-    groupButtons = domains.querySelector('#groupButtons');
-    console.log("message element: ", message)
+    wordButtons = document.querySelector('#wordButtons');
+    groupButtons = document.querySelector('#groupButtons');
+    graph = domains.querySelector	("#interactive_diagram_svg")
     jQuery("#question1").click(function(e){
       // TODO: create a function for the next four lines - they reset everything.
       hideSelector("featureSelector")
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       empty(summary)
-      empty(message)
       empty(wordButtons)
       empty(groupButtons)
+      empty(graph)
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
       fetchResults('http://127.0.0.1:5000/query/question', 'question1');
+
       e.preventDefault();
     });
 
@@ -576,9 +672,9 @@ const program = (() => {
     jQuery("#feature1").click(function(e){
       hideSelector("featureSelector")
       empty(summary)
-      empty(message)
       empty(wordButtons)
       empty(groupButtons)
+      empty(graph)
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -588,9 +684,9 @@ const program = (() => {
     jQuery("#feature2").click(function(e){
       hideSelector("featureSelector")
       empty(summary)
-      empty(message)
       empty(wordButtons)
       empty(groupButtons)
+      empty(graph)
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -600,9 +696,9 @@ const program = (() => {
     jQuery("#feature3").click(function(e){
       hideSelector("featureSelector")
       empty(summary)
-      empty(message)
       empty(wordButtons)
       empty(groupButtons)
+      empty(graph)
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -622,9 +718,9 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       empty(summary)
-      empty(message)
       empty(wordButtons)
       empty(groupButtons)
+      empty(graph)
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -686,7 +782,47 @@ const program = (() => {
       hideSelector("userStorySelector")
       showSelector("userStoryNonFuncSelector", "question14")
     });
-    
+    jQuery("#question15").click(function(e){
+      unhighlightAllSentences()
+      hideSelector("featureSelector")
+      hideSelector("userStorySelector")
+      hideSelector("userStoryNonFuncSelector")
+      empty(summary)
+      empty(wordButtons)
+      empty(groupButtons)
+      empty(graph)
+      svg = domains.querySelector('svg');
+      if(svg){deleteEl(svg)}
+      storedResults = JSON.parse(JSON.stringify(initData));
+      fetchResults('http://127.0.0.1:5000/query/question', 'question15');      
+    });
+    jQuery("#question16").click(function(e){
+      unhighlightAllSentences()
+      hideSelector("featureSelector")
+      hideSelector("userStorySelector")
+      hideSelector("userStoryNonFuncSelector")
+      empty(summary)
+      empty(wordButtons)
+      empty(groupButtons)
+      empty(graph)
+      svg = domains.querySelector('svg');
+      if(svg){deleteEl(svg)}
+      storedResults = JSON.parse(JSON.stringify(initData));
+      fetchResults('http://127.0.0.1:5000/query/question', 'question16');
+    });
+    jQuery("#question17").click(function(e){
+      hideSelector("featureSelector")
+      hideSelector("userStorySelector")
+      hideSelector("userStoryNonFuncSelector")
+      empty(summary)
+      empty(wordButtons)
+      empty(groupButtons)
+      empty(graph)
+      svg = domains.querySelector('svg');
+      if(svg){deleteEl(svg)}
+      storedResults = JSON.parse(JSON.stringify(initData));
+      fetchResults('http://127.0.0.1:5000/query/question', 'question17');
+    });
     renderFullJsonData(storedResults);
   }
 

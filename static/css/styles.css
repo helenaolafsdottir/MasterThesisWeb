@@ -29,14 +29,14 @@ main {
 }
 
 .first-column {
-  width: 45%;
+  width: 38%;
   float: left;
   font-size: 6px;
   height: 100%;
   
 }
 .second-column {
-  width: 53%;
+  width: 61%;
   float: right;
   font-size:12px;
   height: 100%;
@@ -53,10 +53,11 @@ main {
 .svg {
   float: right;
 }
-/* 
+
 .summary {
-  background-color:#d1d1e0 
-} */
+  margin-left: 8px;
+  margin-top: 8px;
+} 
 
 .btn {
   margin: 2px 2px 2px 2px;
@@ -66,6 +67,8 @@ main {
 .divider{
   height:auto;
   display:inline-block;
+  margin-left: 8px;
+  margin-bottom: 8px;
 }
 
 .node {
@@ -128,6 +131,9 @@ input {
   margin-bottom: 16px;
   font-size: 12px;
 }
+.paragraph p {
+  display: inline; 
+}
 
 .h1 {
   font-size: 40px;
@@ -161,9 +167,21 @@ p {
 }
 
 
- svg {
-  height: 5000px;
-  width: 3500px;
+svg {
+  height: 97%;
+  width: 100%;
+}
+#interactive_diagram_svg{
+  height: 90%;
+}
+.panel-body {
+  padding: 0;
+}
+/* .panel-upper {
+  height: 45%;
+}*/
+.panel-lower {
+  height:90%
 }
 
 .clusters rect {
@@ -204,4 +222,44 @@ text {
 }
 [chosen = "False"] {
   background: #ededed;
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  height: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }

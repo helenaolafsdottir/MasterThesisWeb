@@ -2,13 +2,14 @@ from flask import Flask, request, send_from_directory, render_template, Markup, 
 from flask_restful import reqparse, abort, Api, Resource
 import json
 import base64
-from modules.request import queryManager, treude
+from modules.request import queryManager, treude, witt
 from flask_cors import CORS
 
 app = Flask(__name__)
 api = Api(app)
 queryManager = queryManager.InformationRetriever()
 treude = treude.InformationRetriever()
+witt = witt.InformationRetriever()
 CORS(app)
 
 #init parser
@@ -29,6 +30,8 @@ class Test(Resource):
         data = request.data
         dataDict = json.loads(data)
         currQuestion = dataDict['currQuestion']
+        print('Current Question: ', currQuestion)
+
         if currQuestion == 'question1':
             results = queryManager.getAllFeatureAndRelevantClasses()
         
@@ -196,9 +199,26 @@ class Test(Resource):
                 results = updatedResults
             else:
                 results = "There are no results for this requirement."
+        
+        elif currQuestion == 'question15':
+            results = witt.get_db_architecture_patterns()
+           
+            if len(results)==0:
+                results = "No architecture patterns found in the database."
 
-
-
+        elif currQuestion == 'question16':
+            results = witt.get_db_programming_languages()
+           
+            if len(results)==0:
+                results = "No programming languages found in the database."
+        
+        elif currQuestion == 'question17':
+            results = witt.get_db_architecture_patterns()
+            results = witt.findWordMatch(results)
+           
+            if len(results)==0:
+                results = "No architecture patterns found in the database."
+       
         else:
             results = 'error'
 

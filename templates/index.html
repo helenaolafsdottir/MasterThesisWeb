@@ -43,6 +43,10 @@
                 <li><a id='question12'>What is the structure of this non-functional requirement?</a></li>
                 <li><a id='question13'>What is the UI design of this non-functional requirement?</a></li>
                 <li><a id='question14'>What was the development process related to this non-functional requirement?</a></li>
+                <li><a disabled value>----------------------------</a></li>
+                <li><a id='question15'>What architecture patterns are used in the system?</a></li>
+                <li><a id='question16'>What programming languages are used in the system?</a></li>
+                <li><a id='question17'>How are the architecture patterns in the system implemented?</a></li>
               </ul>
             </li>
             <li class="dropdown" id='featureSelector' style="display:none">
@@ -126,36 +130,38 @@
               </div>
 
               <div class="second-column">
-                <!-- <div class="summary panel-body">
-                </div> -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">Summary of results</div>
-                    <div class="summary panel-body">
-                </div>
-                
-                
-                <div class="divider panel-body" id="wordButtons"></div>
-                <div class="divider panel-body" id="groupButtons"></div>
-                  
-                
-                </div>
-                
-                <div class="panel panel-default">
-                    <div class="panel-heading">Result graph</div>
-                    <div class="panel-body" id='interactive_diagram_svg'>
-                      
+
+                <div class="panel panel-default panel-upper">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapsel">Summary of results</a>
+                      </h4>
                     </div>
-                    <div class="message panel-body"></div>
+                    <div id="collapsel" class="panel-collapse collapse">
+                        <div class="summary panel-body"> </div>                 
+                        <div class="divider panel-body" id="wordButtons"></div>
+                        <div class="divider panel-body" id="groupButtons"></div>
                 </div>
-                <!-- <div id='interactive_diagram_svg'>
-                </div> -->
+                </div>
+                <div class="panel panel-default panel-lower">
+                    <div class="panel-heading result-graph">Result graph</div>
+                    <div class="panel-body" id='interactive_diagram_svg'>
+                </div>
                 
               </div>
           
            </div>
           </div>
+          <div id="graphModal" class="modal">
 
-        
+              <!-- Modal content -->
+              <div class="modal-content" id="graphModalContent" >
+                <span class="close">&times;</span>
+                <p>Result graph</p>
+              </div>
+      
+          </div>
+
       </section>
     </main>   
   </body>

@@ -9,7 +9,7 @@ from nltk.stem import WordNetLemmatizer
 class InformationRetriever:   
     
     def __init__(self):
-        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS13')
+        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS14')
     
     def read_data(self, file):
 

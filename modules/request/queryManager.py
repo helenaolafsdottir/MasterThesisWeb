@@ -7,7 +7,7 @@ import urllib.request
 class InformationRetriever:
 
     def __init__(self):
-        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS13')
+        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS14')
 
     def query(self, query):
         self.sparql.setQuery(query)
