@@ -96,6 +96,7 @@ const program = (() => {
         }
         svg = document.querySelector("svg");
         if(svg){deleteEl(svg)}
+        empty(graph)
         createClusterGraphQuestion3(wordClusters)    
         
       });
@@ -127,11 +128,7 @@ const program = (() => {
         createClusterGraphQuestion1(relevantSentences)
         
       });
-      
-      console.log('wordbuttons: ',wordButtons)
-      console.log('btn: ', btn)
-      wordButtons.appendChild(btn);   
-      console.log('added button: ', wordButtons)
+      wordButtons.appendChild(btn);  
     }
   }
   function addGroupButtonsToPage(relevantSentences, feature, question){

@@ -19,9 +19,9 @@ parser.add_argument('blaa')
 
 
 class Test(Resource):
+    
     @app.route('/', methods=["GET","POST"])
     def index():
-
         return render_template('index.html')
 
     @app.route('/query/question', methods=['POST'])

@@ -60,7 +60,7 @@ function createClusterGraphQuestion1(sentences){
 
     // Create the input graph
     var g = new dagreD3.graphlib.Graph({compound:true})
-    .setGraph({edgesep: 20, ranksep: 200, nodesep:10, rankdir: 'RL'})
+    .setGraph({edgesep: 30, ranksep: 200, nodesep:10, rankdir: 'RL'})
     .setDefaultEdgeLabel(function() { return {}; });
 
 
@@ -290,7 +290,7 @@ function createClusterGraph(relevantSentences, feature){
     console.log(groups)
     // Create the input graph
     var g = new dagreD3.graphlib.Graph({compound:true})
-    .setGraph({edgesep: 20, ranksep: 200, nodesep:10, rankdir: 'RL'})
+    .setGraph({edgesep: 30, ranksep: 200, nodesep:10, rankdir: 'RL'})
     .setDefaultEdgeLabel(function() { return {}; });
 
     // Create the requirementAnalysis and feature categories
@@ -428,7 +428,7 @@ function createClusterGraphQuestion3(wordClusters){
     else{
     // Create the input graph
     var g = new dagreD3.graphlib.Graph({compound:true})
-    .setGraph({edgesep: 20, ranksep: 200, nodesep:10, rankdir: 'LR'})
+    .setGraph({edgesep: 30, ranksep: 200, nodesep:10, rankdir: 'LR'})
     .setDefaultEdgeLabel(function() { return {}; });
 
     //Create super-groups

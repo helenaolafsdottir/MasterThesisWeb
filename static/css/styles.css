@@ -29,21 +29,26 @@ main {
 }
 
 .first-column {
-  width: 38%;
+  width: 30%;
   float: left;
   font-size: 6px;
   height: 100%;
   
 }
 .second-column {
-  width: 61%;
+  width: 100%; */
   float: right;
   font-size:12px;
   height: 100%;
+
 }
 
 .results{
   height: 100%;
+  resize: horizontal;
+  width: 30%;
+  float: left;
+  font-size: 6px;
 }
 .pre-scrollable{
   max-height: 100%;
@@ -82,7 +87,10 @@ main {
 }
 
 .node text {
-  font: 12px sans-serif;
+  font: 20px sans-serif;
+}
+.cluster text{
+  font: 24px sans-serif;
 }
 #test-circle {
   fill: #fff;
@@ -101,6 +109,7 @@ main {
 
 .modal-body {
   padding-top: 80px;
+  display: flex;
 }
 
 
@@ -172,16 +181,18 @@ svg {
   width: 100%;
 }
 #interactive_diagram_svg{
-  height: 90%;
+  height: 98%;
 }
 .panel-body {
   padding: 0;
 }
-/* .panel-upper {
-  height: 45%;
-}*/
+.panel-upper {
+  width: 100%
+}
 .panel-lower {
-  height:90%
+  height:90%;
+  margin: 0;
+  width: 100%;
 }
 
 .clusters rect {
