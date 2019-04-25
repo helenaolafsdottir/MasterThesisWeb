@@ -56,10 +56,14 @@ class Test(Resource):
                 for cluster in results:
                     word = cluster['word']
                     updatedCluster = []
+                    print('current word: ', word)
+                    print('current cluster: ', cluster['cluster'])
                     for sentence in cluster['cluster']:
                         sentenceType = queryManager.getSentenceType(sentence['sentence'])
                         if sentenceType != None:
+                            print('current sentencetype: ', sentenceType)
                             for instance in sentenceType:
+                                print('current instance: ', instance)
                                 # The uncertain and non-information categories shouldn't be of interest to the user.
                                 if 'Uncertain' not in instance['type'] and 'Non-Information' not in instance['type']:
                                     updatedCluster.append(instance)

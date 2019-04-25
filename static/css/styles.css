@@ -22,21 +22,20 @@ body {
 main {
   display: flex;
   flex-direction: column;
-  /* max-width: 1200px; */
   margin: 0 auto;
   background-color: #efeff5;
   height: 100%;
 }
 
 .first-column {
-  width: 30%;
+  width: 40%;
   float: left;
   font-size: 6px;
   height: 100%;
   
 }
 .second-column {
-  width: 100%; */
+  width: 100%;
   float: right;
   font-size:12px;
   height: 100%;
@@ -46,7 +45,7 @@ main {
 .results{
   height: 100%;
   resize: horizontal;
-  width: 30%;
+  width: 40%;
   float: left;
   font-size: 6px;
 }
@@ -145,7 +144,7 @@ input {
 }
 
 .h1 {
-  font-size: 40px;
+  font-size: 35px;
 }
 .h2 {
   font-size: 25px;
@@ -163,7 +162,13 @@ input {
   font-size: 12px;
 }
 
-
+img {
+  /* size: 10% !important; */
+  max-width:70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 p {
   font-size: 1em;
@@ -173,8 +178,12 @@ p {
 }
 .panel-heading {
   font-size: 1em;
+  font-weight: bold;
 }
-
+.panel-title {
+  font-size: 1em;
+  font-weight: bold;
+}
 
 svg {
   height: 97%;
@@ -191,7 +200,7 @@ svg {
 }
 .panel-lower {
   height:90%;
-  margin: 0;
+  margin: 0; 
   width: 100%;
 }
 
@@ -227,12 +236,13 @@ text {
 [chosen = "True"] {
   background: #e5e5e5;
   outline: none;
-  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-          box-shadow: inset 0px 0px 5px #c1c1c1;
+  -webkit-box-shadow: inset 0px 0px 5px #999999;
+     -moz-box-shadow: inset 0px 0px 5px #999999;
+          box-shadow: inset 0px 0px 5px #999999;
 }
 [chosen = "False"] {
   background: #ededed;
+  color: #b3b3b3;
 }
 
 

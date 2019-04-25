@@ -9,7 +9,7 @@ from nltk.stem import WordNetLemmatizer
 class InformationRetriever:   
     
     def __init__(self):
-        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS14')
+        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS18')
     
     def read_data(self, file):
 
@@ -126,7 +126,7 @@ class InformationRetriever:
                             if word == wordToMatch:
                                 cluster.append(sentence)
 
-        cluster = list(set(cluster)) #set removes duplicates, then I change it to a list again.
+        cluster = list(set(cluster)) #removing duplicates
         
         finalCluster = []
         for sentence in cluster:
@@ -157,7 +157,7 @@ class InformationRetriever:
         return sentenceClusters
 
     def getCategoryOfSentence(self, sentence):
-        TreudeData, TreudeDataFormat2 = self.read_data('TreudeData.txt')
+        TreudeData, TreudeDataFormat2 = self.read_data('TreudeData.txt') #TODO: remove the former output
 
         #print(TreudeDataFormat2)
         #for x in TreudeDataFormat2:

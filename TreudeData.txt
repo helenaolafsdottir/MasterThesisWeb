@@ -1,6 +1,6 @@
 ﻿2 Requirement Analysis
 
-In order to start gathering requirements, first it is necessary to identify each group affected by this project and understand everyoneâ€™s needs (section Stakeholders Analysis 2.1).
+In order to start gathering requirements, first it is necessary to identify each group affected by this project and understand everyone's needs (section Stakeholders Analysis 2.1).
 {[identify] [group] [ ]}
 With that information in hand, an initial list of the desired functional and non-functional requirements (see sections Functional Requirements 2.2 and Non-Functional Requirements 2.3) can be put into the Product Backlog in the form of user stories
 
@@ -8,7 +8,7 @@ Every sprint these requirements may change, reason why in this section are descr
 {[describe] [final requirements] [in section]}{[change] [sprint] [ ]}
 2.1 Stakeholder Analysis
 
-Potential clients of the project, simplified as â€œclientsâ€� from now on, are companies in need of an e-commerce solution, especially those looking for an interface from where to sell goods or services to individuals or other companies.
+Potential clients of the project, simplified as clients from now on, are companies in need of an e-commerce solution, especially those looking for an interface from where to sell goods or services to individuals or other companies.
 {[sell] [goods] [to individuals]}{[sell] [goods] [to other companies]}{[sell] [services] [to individuals]}{[sell] [services] [to other companies]}
 They need a system that satisfies their current requirements and allows them to easily implement future required functionalities.
 {[implement] [future required functionalities] [ ]}
@@ -24,7 +24,7 @@ They need to easily understand the sample code and quickly identify those lines 
 {[identify] [lines] [with shop logic]}{[identify] [lines] [of code]}
 Code quality and correct use of technologies may be important for them.
 
-End users or customers 7 , equally mentioned as â€œusersâ€� and â€œcustomersâ€� in this document, are those actors of the system who would buy in the web-shop in case it went live.
+End users or customers, equally mentioned as users and customers in this document, are those actors of the system who would buy in the web-shop in case it went live.
 
 Even being an hypothetical situation, this template will be used as a bootstrap project so eventually it will become a real web-shop with end users.
 {[use] [template] [as bootstrap project]}
@@ -122,8 +122,8 @@ When online payment is involved in an application, payment data needs to be proc
 
 The system to process and store this data needs to be PCI DSS8 compliant.
 {[process] [data] [ ]}{[store] [data] [ ]}
-Being a sample web-shop it is most appropriate in this case to leave this role to the payment platform, thus sending any payment data to the templateâ€™s web server must be strictly avoided.
-{[send] [payment data] [to templateâ € ™ s web server]}
+Being a sample web-shop it is most appropriate in this case to leave this role to the payment platform, thus sending any payment data to the template's web server must be strictly avoided.
+{[send] [payment data] [to template's web server]}
 The template should be intuitive and use latest design tendencies, especially those allowing a faster navigation experience.
 {[use] [latest design tendencies] [ ]}
 The user should be able to use all functionalities of the web-shop in a smooth way, trying to minimize the number of times the page is fully reloaded. 
@@ -196,7 +196,7 @@ These tasks require a more abstract level of use cases, focused on user goals in
 {[call] [top-level use cases] [ ]}
 A top-level use case describes a single elementary business process that allows a particular user to fulfill a goal. 
 {[describe] [single elementary business process] [ ]}
-In this system there are mainly three goals that a customer may want to achieve when he uses the web-shop, as shown in Figure 3.6
+In this system there are mainly three goals that a customer may want to achieve when he uses the web-shop, as shown in Figure 3.6.
 {[use] [web-shop] [ ]}{[show] [] [in Figure]}
 The first one consist of browsing the catalog and selecting those products of interest.
 {[select] [products] [of interest]}
@@ -208,8 +208,8 @@ All low-level use cases defined earlier are actually providing the functionaliti
 {[provide] [functionalities] [ ]}
 Both low-level and top-level use cases are being used indistinctly throughout this document to elaborate other diagrams and descriptions, its use responding mostly to the level of abstraction that fits best the explanation. 
 {[use] [top-level use cases] [throughout document]}{[fit] [level] [of abstraction]}
-In any case, the term â€œtop-levelâ€� is expressly used when referring to this type of use case.
-{[use] [€ œtop-levelâ €] [ ]}
+In any case, the term top-level is expressly used when referring to this type of use case.
+{[use] [top-level] [ ]}
 3.2 System behavior model
 
 Almost all the low-level use cases of this project consist of only one interaction between the user and the system.
@@ -306,7 +306,7 @@ From now on the order can only change from an open to a complete state, and vice
 {[change] [] [from open versa]}
 The second diagram (Figure 3.12) describes the whole process of managing the shopping cart and eventually purchasing these products in the checkout process.
 {[describe] [whole process] [of managing]}{[describe] [whole process] [of purchasing]}{[manage] [shopping cart] [ ]}{[purchase] [products] [in checkout process]}
-This diagram will become especially useful when designing the checkout interface, as it clearly displays the requirements of each step of the checkout process
+This diagram will become especially useful when designing the checkout interface, as it clearly displays the requirements of each step of the checkout process.
 {[design] [checkout interface] [ ]}{[display] [requirements] [of step]}
 At the beginning of the process a new cart is created
 {[create] [new cart] [at beginning]}
@@ -324,7 +324,7 @@ The moment the previous cart becomes an order, a new cart is created for the cus
 {[create] [new cart] [for customer]}
 4 Design
 
-The software design describes the final details of a system before it is implemented
+The software design describes the final details of a system before it is implemented.
 {[describe] [final details] [of system]}
 During the design process decisions are taken in order to meet the gathered requirements, decisions that are then applied to the system defined in the section Specification 3. 
 {[define] [] [in section specification]}{[apply] [decisions] [to system]}
@@ -332,7 +332,7 @@ Both physical and logical designs of the system are described in detail in the c
 {[describe] [physical logical designs] [with overview]}{[describe] [physical logical designs] [in current chapter]}{[describe] [physical logical designs] [in detail]}
 Every technology used is carefully justified and the major characteristics are explained (section Description of Used Technologies 4.2.1). 
 
-The selection of a technology is a decisive process aimed to obtain the optimal results of a project
+The selection of a technology is a decisive process aimed to obtain the optimal results of a project.
 {[obtain] [optimal results] [of project]}
 An unwise decision can sometimes seriously affect the total resources needed or the successful fulfillment of the proposed objectives.
 
@@ -342,11 +342,11 @@ It is also important to design correctly the structure of the system, for exampl
 
 The designed system follows a client-server architecture with three tiers: the client, the web application server and the data server tier.
 
-The data tier corresponds to the SPHERE.IO backend, which offers a scalable cloud-based platform for the e-commerce data, having the capability of scaling up as the demand increases
+The data tier corresponds to the SPHERE.IO backend, which offers a scalable cloud-based platform for the e-commerce data, having the capability of scaling up as the demand increases.
 {[offer] [scalable cloud-based platform] [for e-commerce data]}{[offer] [SPHERE.IO backend] [for e-commerce data]}
 The application tier needs an enterprise hosting solution, suitable for a company web-shop.
 {[host] [solution suitable] [ ]}
-In order to take advantage of the scalability of the data tier, a good matching web hosting solution would be a cloud service with easy and fast scalability, letting the shop grow as the number of customers grow, without any bottleneck
+In order to take advantage of the scalability of the data tier, a good matching web hosting solution would be a cloud service with easy and fast scalability, letting the shop grow as the number of customers grow, without any bottleneck.
 {[host] [solution] [ ]}
 At the time the system was designed there were only two cloud platforms with built in support for deploying Play applications: Heroku and Cloudbees; although at the end of 2013 the number of services has been doubled and the offer will probably continue to increase in the future.
 {[deploy] [Play applications] [ ]}{[design] [system] [at time]}
@@ -362,7 +362,7 @@ Unlike SPHERE.IO, Heroku is scalable only under demand.
 
 Figure 4.1 illustrates the physical architecture of the system.
 
-As appears in the diagram, any request to a Heroku deployed web application is first processed by one of the many platformâ€™s reverse proxies.
+As appears in the diagram, any request to a Heroku deployed web application is first processed by one of the many platform's reverse proxies.
 {[process] [web application] [ ]}
 The reverse proxy forwards the request to a HTTP cache layer, which returns the page if it is cached, otherwise forwards the request to the corresponding web application [Rob11]. 
 {[return] [page] [ ]}{[return] [reverse proxy] [ ]}
@@ -376,7 +376,7 @@ This is typically the case of the checkout process, as well as any time the cust
 {[log] [customer] [ ]}{[log] [time] [ ]}
 4.2 System Logical Architecture
 
-The logical architecture of the system is designed after the MVC (Model-View-Controller) architectural pattern, which is widely used in web applications design
+The logical architecture of the system is designed after the MVC (Model-View-Controller) architectural pattern, which is widely used in web applications design.
 {[design] [logical architecture] [of system]}{[design] [logical architecture] [after MVC architectural pattern]}{[use] [MVC architectural pattern] [in web applications design]}
 Its use in this project is required, since MVC is the architecture pattern followed by Play Framework, the web framework on which SPHERE.IO Play SDK has been developed.
 {[develop] [SPHERE.IO play SDK] [ ]}{[develop] [web framework] [ ]}
@@ -384,13 +384,13 @@ As the name suggests, the system logic is divided into three components: Model, 
 {[divide] [system logic] [into components]}
 As a rough definition, the Model manages business logic and domain data, the View is responsible of displaying the information, and the Controller is in charge of changing Model and View accordingly to the user input.
 {[manage] [business logic] [ ]}{[manage] [domain data] [ ]}{[display] [information] [ ]}{[change] [Model] [to user input]}{[change] [View] [to user input]}
-The specific MVC design of the current system is shown in Figure 4.2 below
+The specific MVC design of the current system is shown in Figure 4.2 below.
 {[show] [specific MVC design] [in Figure]}{[show] [specific MVC design] [of current system]}
 One of the particularities of this design is that SPHERE.IO Play SDK is the main component of the Model, since it controls all the domain data of the application, as well as most of the business logic. 
 
 Only some business rules are added to the Model in order to validate form input coming from the user, before sending this data to SPHERE.IO Play SDK, as well as some external functionalities such as email sending and online payment. 
 {[send] [data] [to SPHERE.IO play SDK]}{[add] [business rules] [to Model]}
-When the request reaches the web application server, a routing system analyzes the HTTP request and invokes a particular action of the corresponding controller
+When the request reaches the web application server, a routing system analyzes the HTTP request and invokes a particular action of the corresponding controller.
 {[reach] [web application server] [ ]}
 Then the controller interprets all required input parameters coming from the user and requests the appropriate changes to the model. 
 {[request] [appropriate changes] [to model]}
@@ -402,15 +402,15 @@ With this information and some other obtained directly from the model, the view 
 {[generate] [HTML document] [with information]}{[obtain] [] [from model]}
 With this design, a new whole web page must be loaded from the server every time the user wants to interact with the system.
 {[load] [new whole web page] [with design]}{[load] [new whole web page] [from server]}
-This is known as a â€œthin clientâ€� design, because all the logic is located in the server, leaving the client with the only task of rendering the web page. 
+This is known as a thin client design, because all the logic is located in the server, leaving the client with the only task of rendering the web page. 
 {[render] [web page] [ ]}{[locate] [logic] [in server]}
-In comparison with that, a â€œfat clientâ€� hosts all the logic of the system; hence Controller, View and Model are located on the client side, leaving in the server just those parts of the Model responsible for the security and management of persistence.
+In comparison with that, a fat client hosts all the logic of the system; hence Controller, View and Model are located on the client side, leaving in the server just those parts of the Model responsible for the security and management of persistence.
 {[host] [logic] [in comparison]}{[host] [logic] [of system]}{[locate] [controller view] [on client side]}{[locate] [Model] [on client side]}
 A fat client allows the user to interact with the system while never reloading the web page, only updating those specific components of the page that changed during the interaction. 
 {[update] [specific components] [of page]}{[change] [page] [during interaction]}
 This behavior enhances the user experience, because the user can continue interacting with the system while operations are taking place. 
 
-Information can also be presented in an incremental way, so that the user can start interacting with some elements of the page while further information is being retrieved
+Information can also be presented in an incremental way, so that the user can start interacting with some elements of the page while further information is being retrieved.
 {[present] [information] [in incremental way]}{[retrieve] [further information] [ ]}
 Another important fact is that traffic between the client and the system is reduced to simple data with no presentation information, which speeds up the communication with the system and decreases network use.
 
@@ -426,7 +426,7 @@ The amount of resources needed to implement a reliable system with a pure fat cl
 {[implement] [reliable system] [with pure fat client]}
 Moreover the complexity of the code is also very significant, which makes this design not suitable for a template that must be understandable and easy to learn. 
 
-A mixed approach between a fat and a thin client can be the solution to improve the user experience without giving up on the browser logic
+A mixed approach between a fat and a thin client can be the solution to improve the user experience without giving up on the browser logic.
 
 The website can be divided into different contexts that offer the user some common functionalities.
 {[offer] [common functionalities] [ ]}{[offer] [different contexts] [ ]}{[divide] [website] [into different contexts]}
@@ -578,7 +578,7 @@ The new syntax provides a better readability of the code and helps developers to
 {[provide] [better readability] [of code]}{[write] [complex scripts] [ ]}
 The increased readability of the code goes along with a decreased number of lines compared to the same code in JavaScript, around one third fewer lines. 
 
-Another interesting feature is an additional syntax to use JavaScriptâ€™s native prototyping as a class-based system, making object-oriented programming with JavaScript less complex, particularly when it comes to inheritance.
+Another interesting feature is an additional syntax to use JavaScript's native prototyping as a class-based system, making object-oriented programming with JavaScript less complex, particularly when it comes to inheritance.
 
 Improving developer experience is a priority in this project, so CoffeeScript will contribute to make client-side code easier to understand and modify.
 
@@ -622,9 +622,7 @@ Handlebars comes also with better support for paths to access the data.
 {[access] [data] [ ]}
 In short, this solution makes easier to implement templates than Mustache while still keeping logic separated from presentation. 
 {[implement] [templates] [than Mustache]}{[separate] [] [from presentation]}
-There is another project, Dust.js, with the same strong points as Handlebars and with useful additional features like template composition
-
-There is another project, Dust.js, with the same strong points as Handlebars and with useful additional features like template composition
+There is another project, Dust.js, with the same strong points as Handlebars and with useful additional features like template composition.
 
 During the last year LinkedIn has been contributing actively to a separated Dust.js project that the company is using for its website [Bas12]. 
 {[use] [] [for website [ bas12 ]]}
@@ -642,17 +640,17 @@ All these aspects are covered by the User Experience (UX) Model explained here.
 
 It describes, in particular, how the dynamic content will be structured and organized in different screens, and how the user will navigate amongst those screens to reach a particular goal.
 {[reach] [particular goal] [ ]}
-For this project, the designer team together with the developer team decided to implement a layout structure and behavior inspired on different web-shops with innovative design, always focusing on offering the user a smooth interaction with the system
+For this project, the designer team together with the developer team decided to implement a layout structure and behavior inspired on different web-shops with innovative design, always focusing on offering the user a smooth interaction with the system.
 {[offer] [smooth interaction] [with system]}
 Each screen is going to be presented and described with wireframe prototypes, and then the storyboard sequence and navigational paths will illustrate the connections between those screens.
 {[present] [] [with wireframe prototypes]}{[describe] [] [with wireframe prototypes]}
 4.2.2.1 Display products
 
-Product listing is the first functionality that a customer uses when arriving at the web-shop and the one he will be using for longer periods of time, so it needs to have a comfortable way to display and paginate the products
+Product listing is the first functionality that a customer uses when arriving at the web-shop and the one he will be using for longer periods of time, so it needs to have a comfortable way to display and paginate the products.
 {[display] [products] [ ]}{[use] [] [for longer periods]}
-At best, traditional web-shops usually have very rigid ways of listing products: pagination consists of an interface that allows to select the page and the amount of products per page, while display options let the user select between a list or a grid type of view
+At best, traditional web-shops usually have very rigid ways of listing products: pagination consists of an interface that allows to select the page and the amount of products per page, while display options let the user select between a list or a grid type of view.
 {[select] [page] [of products]}{[select] [amount] [of products]}{[select] [] [between list]}{[select] [] [between grid type]}
-So instead of showing a traditional shop catalog, it was considered a better option to let the products flow freely through the web page, using all the width and height possible to show at once the maximum amount of products to the user (Figure 4.12)
+So instead of showing a traditional shop catalog, it was considered a better option to let the products flow freely through the web page, using all the width and height possible to show at once the maximum amount of products to the user (Figure 4.12).
 {[show] [traditional shop catalog] [ ]}{[show] [] [at maximum amount]}{[show] [] [to user]}
 On the other hand, the pagination needs to be natural without losing already viewed products, so when the user reaches the bottom of the page new products should appear automatically under the previous ones. 
 {[reach] [bottom] [of page]}
@@ -680,7 +678,7 @@ The rest of the pages should contain a button to allow the user go back to the l
 
 When scrolling, the header is always kept at the top of the page.
 
-Below the header, a breadcrumb is showing the current category path
+Below the header, a breadcrumb is showing the current category path.
 {[show] [current category path] [ ]}
 Whenever a product is added to the cart, the mini-cart located on the header appears for a few seconds, to let the customer know that the product was added successfully.
 {[add] [product] [to cart]}{[locate] [] [on header]}{[add] [product] [ ]}
@@ -800,7 +798,7 @@ For this reason, in this section only those diagrams that illustrate some specia
 {[display] [diagrams] [in section]}{[display] [diagrams] [for reason]}{[display] [diagrams] [such_as design patterns]}{[describe] [characteristic] [in following sections]}{[apply] [design patterns] [to use cases]}
 The internal class diagram in Figure 4.25 represents the whole browse catalog top-level use case. 
 
-It is worth noticing that usually a client page links first to a server page, which then forwards to a server page with a â€œscalaâ€� extension. 
+It is worth noticing that usually a client page links first to a server page, which then forwards to a server page with a scala extension. 
 {[link] [] [to server page]}
 The first server page symbolizes a file in the Controller component, while the second corresponds to a Scala template from the View, which builds the client page. 
 
@@ -818,7 +816,7 @@ The server page that updates the cart sends to the mini cart component all the i
 {[send] [information] [to mini cart component]}{[update] [server page] [ ]}
 With this data the JavaScript in charge of the cart updates only the mini cart component with the new information. 
 {[update] [mini cart component] [with data]}{[update] [mini cart component] [with new information]}
-Another example is the functionality to load more products when scrolling to the bottom of the page
+Another example is the functionality to load more products when scrolling to the bottom of the page.
 {[load] [more products] [ ]}
 In this case also the corresponding sequence diagram is presented (Figure 4.26) to observe in detail how the components are behaving. 
 {[present] [corresponding sequence diagram] [in case]}
@@ -856,7 +854,7 @@ The next two diagrams illustrate together the place order use case, being Figure
 
 The first diagram has several forms, one for each element to be modified individually: the shipping address, the shipping method, the billing address and finally the payment form. 
 
-The payment form does not appear in the diagram because its submission is not directed to this system, but to the payment platform, as it will be described in the corresponding sequence diagram
+The payment form does not appear in the diagram because its submission is not directed to this system, but to the payment platform, as it will be described in the corresponding sequence diagram.
 {[describe] [] [in corresponding sequence diagram]}
 In any case, it would only consist of a submit button and a dynamic payment form loaded with the data coming from Optile. 
 {[load] [] [with data]}
@@ -890,13 +888,13 @@ Optile requires this notification request to update the payment status of a cert
 {[update] [payment status] [ ]}
 This can easily happen when using PayPal, because the payment needs to be approved first, therefore changing multiple times of status during an undefined period of time.
 {[use] [PayPal] [ ]}{[change] [multiple times] [of status]}{[change] [multiple times] [during undefined period]}
-4.2.4 DESIGN OF THEÂ MODEL COMPONENT
+4.2.4 DESIGN OF THE MODEL COMPONENT
 
 As described at the beginning of the section System Logical Architectural 4.2, the logic of the model component is largely located in the SPHERE.IO Play SDK, which contains all the commerce logic and allows to access all data stored in the e-commerce backend. 
 {[access] [data] [ ]}{[describe] [] [at beginning]}{[locate] [logic] [in SPHERE.IO play SDK]}{[locate] [logic] [of model component]}{[store] [] [in e-commerce backend]}
 The Sphere class shown in the diagram below (Figure 4.33) is precisely the entry point for SPHERE.IO.
 {[show] [] [in diagram]}
-There is also a Payment class, a small library that will help to communicate with the Optile API, that requires the messages to be sent using XML
+There is also a Payment class, a small library that will help to communicate with the Optile API, that requires the messages to be sent using XML.
 {[use] [XML] [ ]}{[send] [messages] [ ]}
 As explained before (see section 4.2.1.2), Optile needs to be implemented in an incremental way, reason why the library can effortless cover all five levels of integration, thus allowing developers to easily switch to the level it fits best for them.
 {[implement] [] [in incremental way]}{[switch] [] [to level]}
@@ -918,7 +916,7 @@ All this logic is then placed in these helper classes and called from the views 
 {[place] [logic] [in helper classes]}{[call] [logic] [from views necessary]}
 Lastly, there are a group of classes related to the web forms and the payment information received by the system (see Figure 4.34).
 
-They handle all the server-side validation for every parameter and may also provide helpful getters and setters to easily convert model data into form data, and vice versa (e.g. an Address class instance would be converted into the appropriate form fields street, city, country, etc.) 
+They handle all the server-side validation for every parameter and may also provide helpful getters and setters to easily convert model data into form data, and vice versa (e.g. an Address class instance would be converted into the appropriate form fields street, city, country, etc.). 
 {[handle] [server-side validation] [for parameter]}{[provide] [setters] [ ]}{[provide] [helpful getters] [ ]}{[convert] [model data] [ ]}
 These form classes also host the methods generating the different content that must be sent back to the client in relation to the result of the form submission. 
 {[generate] [different content] [ ]}
@@ -1004,7 +1002,7 @@ The source code is developed with the support of the Java IDE Intellij IDEA Comm
 {[develop] [source code] [with support]}{[use] [] [for debugging]}{[use] [] [for code edition features]}
 Google Chrome is the preferred web browser, which has a built in developer tool, Chrome DevTools, highly useful to inspect HTML DOM and CSS, as well as debugging JavaScript code.
 
-Git is used as a revision control system
+Git is used as a revision control system.
 {[use] [git] [as revision control system]}
 The most notable characteristic of Git is its distributed system, in which each user has his own local repository where changes are committed.
 
@@ -1012,7 +1010,7 @@ Only when the developer deems it convenient, the local changes are then synchron
 
 The remote repository is hosted by GitHub, with a very interesting social networking functionality useful for future collaboration with the developer community.
 {[host] [remote repository] [with interesting social networking useful]}
-In everydayâ€™s development, Continuous Deployment technique is followed (see Figure 5.1). 
+In everyday's development, Continuous Deployment technique is followed (see Figure 5.1). 
 
 Jenkins is used in the staging environment as a continuous deployment tool, triggering a process to deploy the system every time changes are pushed to the remote repository.
 {[trigger] [process] [ ]}{[deploy] [system] [ ]}{[use] [jenkins] [as continuous deployment tool]}{[use] [jenkins] [in staging environment]}{[push] [time changes] [to remote repository]}{[push] [system] [to remote repository]}
@@ -1068,13 +1066,13 @@ Below is displayed the specific Coffeescript code that implements the handler fo
 {[display] [specific Coffeescript code] [ ]}{[display] [below] [ ]}{[implement] [handler] [for update item]}{[implement] [specific Coffeescript code] [for update item]}
 In this particular case the handler is not called after submission, but after changing the value of the input field for the quantity. 
 {[change] [value] [of input field]}
-It is interesting to notice the use of the â€œonâ€� jQuery method to bind the event handler. 
+It is interesting to notice the use of the on jQuery method to bind the event handler. 
 {[bind] [event handler] [ ]}
 As shown below there are three different ways to bind an event: the first method is preferred and is actually a shortcut of the second one (see Figure 5.4). 
 
 The difference between these two and the last method lies in the object to which the event handler is attached when the script is loaded.
 {[attach] [event handler] [ ]}{[attach] [object] [ ]}{[load] [script] [ ]}
-While the handler is directly attached to the quantity input in the first two options, in the latter is attached to the HTML object identified by â€œcartâ€�, specifying as a parameter the path of the quantity input. 
+While the handler is directly attached to the quantity input in the first two options, in the latter is attached to the HTML object identified by cart, specifying as a parameter the path of the quantity input. 
 {[specify] [path] [as parameter]}{[specify] [path] [of quantity input]}{[attach] [handler] [in latter]}{[attach] [handler] [in first options]}{[attach] [handler] [to quantity input]}{[attach] [] [to HTML object]}
 This difference is important when a particular object that can trigger the event may not exist at load time, which is the case of this form, since all the line items are being loaded via AJAX after the page is loaded. 
 {[trigger] [event] [ ]}{[trigger] [particular object] [ ]}{[load] [line items] [via AJAX]}{[load] [page] [ ]}
@@ -1088,13 +1086,13 @@ This JavaScript timing event executes a function that is called after the specif
 {[execute] [function] [in case]}{[send] [form data] [via AJAX]}{[process] [response] [ ]}{[call] [function] [after specified period]}
 In order to handle forms easily a new instance of the Form class is created, which processes all data related to the form to allow quick access to the information (see Figure 5.6).
 {[handle] [forms] [ ]}{[create] [new instance] [of Form class]}
-The method for sending the form data is simply calling the jQuery â€œajaxâ€� function, additionally specifying in the URL that the request is performed via AJAX. 
-{[send] [form data] [ ]}{[call] [jQuery â] [ ]}{[specify] [] [in URL]}{[perform] [request] [via AJAX]}
+The method for sending the form data is simply calling the jQuery ajax function, additionally specifying in the URL that the request is performed via AJAX. 
+{[send] [form data] [ ]}{[call] [jQuery] [ ]}{[specify] [] [in URL]}{[perform] [request] [via AJAX]}
 The method returns jqXHR, a XMLHttpRequest object with jQuery added information. 
 {[add] [information] [ ]}
 A series of methods can be chained to the jqXHR object, and executed once the server response has been received under certain circumstances.
 {[receive] [server response] [under certain circumstances]}{[execute] [series] [of methods]}
-It is the case of â€œdoneâ€� for successful requests, â€œfailâ€� for failures and â€œalwaysâ€� for any condition; all of them used in this use case.
+It is the case of done for successful requests, fail for failures and always for any condition; all of them used in this use case.
 {[use] [] [in use case]}
 Once the request reaches the server, the routing system built in Play Framework analyses the incoming HTTP method and the request path to decide the action controller to be invoked. 
 {[reach] [server] [ ]}
@@ -1104,14 +1102,14 @@ In addition, routing patterns can also have dynamic parts using the power of reg
 {[use] [power] [of regular expressions]}
 Figure 5.8 below shows the invoked controller action for this particular use case. 
 {[show] [invoked controller action] [for particular use case]}
-Right before the method definition one can notice the â€œWithâ€� annotation, which Play Framework provides in order to attach a set of intercepting filters to an action.
-{[attach] [set] [of intercepting]}{[provide] [â € œwithâ € annotation] [ ]}
+Right before the method definition one can notice the With annotation, which Play Framework provides in order to attach a set of intercepting filters to an action.
+{[attach] [set] [of intercepting]}{[provide] [with annotation] [ ]}
 In this case the filter that intercepts the call is the Form class, in charge of detecting, before the action in called, whether the request from the client was made via AJAX.
 
-The controller has a static attribute of an instance of Playâ€™s native Form, wrapping the class UpdateCart that handles incoming parameters to execute this action. 
+The controller has a static attribute of an instance of Play's native Form, wrapping the class UpdateCart that handles incoming parameters to execute this action. 
 {[wrap] [class UpdateCart] [ ]}{[handle] [incoming parameters] [ ]}{[handle] [class UpdateCart] [ ]}{[execute] [action] [ ]}
 When starting the call, the request is bound to the form instance and is checked for missing or invalid data, in which case errors are prepared for being displayed and the cart page is returned as a bad request (i.e. with a 400 HTTP status code).
-{[bind] [request] [to form instance]}{[check] [request] [ ]}{[prepare] [case errors] [ ]}{[prepare] [missing invalid data] [ ]}{[return] [cart page] [as â €]}
+{[bind] [request] [to form instance]}{[check] [request] [ ]}{[prepare] [case errors] [ ]}{[prepare] [missing invalid data] [ ]}{[return] [cart page] [as a bad request]}
 When the request contains no errors, the SPHERE.IO Play SDK is called to update the cart, setting the new quantity requested for a particular line item.
 {[update] [cart] [ ]}{[set] [new quantity] [ ]}{[request] [] [for particular line item]}{[call] [SPHERE.IO play SDK] [ ]}
 Then the success messages are prepared and the cart page is returned, this time with a 200 HTTP status code. 
@@ -1170,17 +1168,17 @@ The following two figures helps one understand how these templates are being ren
 {[render] [templates] [ ]}
 The first one corresponds to the template itself (Figure 5.13), with the Handlebars expressions surrounded by curly brackets. 
 
-When the expression starts with a hash symbol, the expression corresponds to a helper to control the flow, like the looping statement â€œeachâ€� used here. 
+When the expression starts with a hash symbol, the expression corresponds to a helper to control the flow, like the looping statement each used here. 
 
 Otherwise it refers to a value extracted from the JSON data sent as parameter to the template. 
 {[send] [] [as parameter]}{[send] [] [to template]}
 An extract of the JSON data is presented next (Figure 5.14), as it is received by the client after the request.
 {[receive] [] [after request]}{[present] [extract] [of JSON data]}
-It should be noted that the replaceCart method is only sending to the template one â€œitemâ€� object each time. 
-{[send] [] [to template â €]}
+It should be noted that the replaceCart method is only sending to the template one item object each time. 
+{[send] [] [to template]}
 It is easy then to understand the correspondence between the JSON data and the expressions appearing in the template.
 
-5.2.2 List Products
+5.2.2 LIST PRODUCTS
 {[list] [products] [ ]}
 Product listing is another interesting feature in the implementation process.
 
@@ -1222,12 +1220,12 @@ The only piece missing to have a functional product search is the template rende
 {[render] [search form] [ ]}
 The HTML input name and value are obtained from the fullTextSearch parameter defined before, hence connecting the user filter interface with the SPHERE.IO filter request.
 {[obtain] [HTML input name] [from fullTextSearch parameter]}{[obtain] [value] [from fullTextSearch parameter]}
-As can be observed, in a Scala template expressions to be evaluated with Scala are preceded by a â€œ@â€� sign. 
+As can be observed, in a Scala template expressions to be evaluated with Scala are preceded by a @ sign. 
 
 This way classes can be imported and used directly in the template like is the case with the filter fullTextSearch. 
 {[use] [way classes] [in template]}{[import] [way classes] [ ]}
-It is also interesting to notice how URLs are generated, using the corresponding â€œreverse routingâ€� method for the controller action that handles searches.
-{[use] [corresponding â € œreverse routingâ € method] [for controller action]}{[handle] [searches] [for controller action]}{[handle] [corresponding â € œreverse routingâ € method] [for controller action]}{[generate] [urls] [ ]}
+It is also interesting to notice how URLs are generated, using the corresponding reverse routing method for the controller action that handles searches.
+{[use] [corresponding reverse routing method] [for controller action]}{[handle] [searches] [for controller action]}{[handle] [corresponding reverse routing method] [for controller action]}{[generate] [urls] [ ]}
 Using the methods for sorting (Figure 5.20) and paging (Figure 5.21) is very simple, as the two pieces of code above demonstrates. 
 {[use] [methods] [for sorting]}{[use] [methods] [for paging]}
 Sorting is achieved by specifying the correct sorting criterion, provided via a ProductSort enumeration that contains all the possibilities currently offered by the SDK.
@@ -1258,7 +1256,7 @@ In order to determine the image and sizes for each variant, Handlebars helpers h
 {[determine] [image] [for variant]}{[determine] [sizes] [for variant]}{[use] [handlebars helpers] [ ]}
 The helper to generate the image is displayed in Figure 5.24, which sets as the new context a specific size of the picture, depending on whether the product is featured or not. 
 {[generate] [image] [ ]}{[set] [specific size] [as new context]}{[set] [specific size] [of picture]}{[set] [Figure] [as new context]}{[set] [Figure] [of picture]}{[display] [helper] [in Figure]}
-When a product variant has different sizes, a list of sizes is shown to the customer when he hovers on the â€œquick buyâ€� button, to allow him select the correct size. 
+When a product variant has different sizes, a list of sizes is shown to the customer when he hovers on the quick buy button, to allow him select the correct size. 
 {[select] [correct size] [ ]}{[show] [list] [of sizes]}{[show] [list] [to customer]}
 Next is shown the style applied to the list of sizes, as an example of the use of LESS to generate CSS stylesheets (see Figure 5.25).
 {[show] [style] [ ]}{[show] [next] [ ]}{[generate] [CSS stylesheets] [ ]}{[apply] [] [to list]}
@@ -1278,7 +1276,7 @@ Each notification needs to be handled, otherwise the SPHERE.IO backend may have 
 
 On the other hand, the SPHERE.IO Play SDK was initially designed so that the creation of an order cannot be reversed. 
 {[design] [SPHERE.IO play SDK] [on other hand]}
-This means that once the order is created the customerâ€™s cart does not longer exist, so the only possible moment to create the order is right after the payment has succeed. 
+This means that once the order is created the customer's cart does not longer exist, so the only possible moment to create the order is right after the payment has succeed. 
 
 But then the order creation process can still fail under some expected scenarios and charge the customer without actually buying the items. 
 
@@ -1340,9 +1338,9 @@ The best way to achieve this is mocking the Sphere class that handles the reques
 {[mock] [Sphere class] [ ]}{[handle] [responses] [from SPHERE.IO backend]}{[handle] [requests] [from SPHERE.IO backend]}{[handle] [Sphere class] [from SPHERE.IO backend]}{[simulate] [call] [to backend]}{[get] [controlled information] [as response]}
 This means that during the tests execution, all objects returned by the class whenever a call to the backend is theoretically executed are actually objects constructed by the testing code.
 {[execute] [call] [to backend]}
-Not only this solution allows to execute the tests independently of the systemâ€™s environment, but moreover performance is improved significantly since no remote resources are used, which hastens the feedback provided by the continuous development process. 
+Not only this solution allows to execute the tests independently of the system's environment, but moreover performance is improved significantly since no remote resources are used, which hastens the feedback provided by the continuous development process. 
 {[execute] [tests] [ ]}{[use] [remote resources] [ ]}
-Also, mocking allows to easily test any situation that may prove complicated otherwise, like provoking certain errors from the backend (e.g. a â€œ500 Internal Server Errorâ€� HTTP status code). 
+Also, mocking allows to easily test any situation that may prove complicated otherwise, like provoking certain errors from the backend (e.g. a 500 Internal Server Error HTTP status code). 
 {[test] [situation] [ ]}
 At the moment this project was developed there was no support for mocking coming from the SPHERE.IO Play SDK to ease this process. 
 {[develop] [project] [at moment]}
@@ -1510,7 +1508,7 @@ This test suggested to use minified versions of the JavaScript and CSS files, wh
 {[use] [minified versions] [of JavaScript CSS files]}
 It also reported that there were too many JavaScript and CSS files being fetched before the page could even be loaded, which meant that the browser had to wait until the last file was fetched in order to allow the user take control of it.
 {[fetch] [last file] [ ]}{[load] [page] [ ]}
-It was necessary to find a solution for this, because in order to make the systemâ€™s CoffeeScript more understandable for the developer, the code was split into several files and classes, which in some cases raised the amount of files fetched to more than ten.
+It was necessary to find a solution for this, because in order to make the system's CoffeeScript more understandable for the developer, the code was split into several files and classes, which in some cases raised the amount of files fetched to more than ten.
 {[find] [solution] [ ]}{[split] [code] [into several files]}{[split] [code] [into classes]}{[raise] [several files] [in cases]}{[raise] [classes] [in cases]}
 The best way to face this issue was to use RequireJS, an asynchronously module and file loader for JavaScript files, that allowed to fetch a JavaScript file in the background first, and then load all its dependencies in parallel. 
 {[use] [RequireJS] [ ]}{[fetch] [JavaScript file] [in background]}{[load] [dependencies] [in parallel]}
@@ -1530,7 +1528,7 @@ A first test with a duration of one minute, going from 1 to 250 concurrent users
 {[test] [regular configuration] [of system]}
 After repeating the same test severals time to check for anomalies, the average results show how the web application has no problems with light pages (e.g. a product detail page), although the response time is not stable, which suggests that might have problems with a bigger amount of users (see Figure 6.7). 
 {[repeat] [same test severals time] [ ]}{[check] [] [for anomalies]}{[show] [] [after repeating]}
-On the other hand, heavier pages like any product list, have grave problems with memory, which starts failing with around 170 concurrent users, and then Heroku keeps serving a â€œ503 Service Unavailableâ€� error. 
+On the other hand, heavier pages like any product list, have grave problems with memory, which starts failing with around 170 concurrent users, and then Heroku keeps serving a 503 Service Unavailable error. 
 
 This is more prominent as the number of displayed products increases, being the best example the home page where all products are listed. 
 {[list] [products] [ ]}{[list] [best example] [ ]}

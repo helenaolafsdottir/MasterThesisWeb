@@ -20,7 +20,7 @@
       <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#" style="font-size:1em;"> WebSiteName</a>
+            <a class="navbar-brand" href="#" style="font-size:1em;"><b>SK Navigator</b></a>
           
             <ul class="nav navbar-nav", id='dropdown1' style="height:100%;">
             <li class="dropdown">
@@ -28,25 +28,25 @@
               <span class="caret"></span></a>
               <ul class="dropdown-menu" method='post' id='front-search-question1' class="askQuestion" style="font-size:1em;">
                 <li><a id='question1'>What functionalities exist in the system?</a></li>
-                <li><a id='question2'>What functionality does the feature provide and what is its responsibility?</a></li>
+                <li><a id='question2'>What functionalities does this feature provide?</a></li>
                 <li class='disabled'><a>-</a></li>
-                <li><a id='question3'>Find everything related to this functional requirement?</a></li>
+                <li><a id='question3'>Find everything related to this functional requirement.</a></li>                        <!-- Remove? -->
                 <li><a id='question4'>How is this functionality implemented?</a></li>
                 <li><a id='question5'>What is the behaviour of this functionality?</a></li>
                 <li><a id='question6'>What is the structure of this functionality?</a></li>
                 <li><a id='question7'>What is the UI design of this functionality?</a></li>
                 <li><a id='question8'>What was the development process related to this functionality?</a></li>
                 <li class='disabled'><a>-</a></li>
-                <li><a id='question9'>Find everything related to this non-functional requirement?</a></li>
-                <li><a id='question10'>How is this non-functional requirement implemented?</a></li>
-                <li><a id='question11'>What is the behaviour of this non-functional requirement?</a></li>
-                <li><a id='question12'>What is the structure of this non-functional requirement?</a></li>
-                <li><a id='question13'>What is the UI design of this non-functional requirement?</a></li>
+                <li><a id='question9'>Find everything related to this non-functional requirement.</a></li>                    <!-- Remove? -->
+                <li><a id='question10'>How is this non-functional requirement implemented?</a></li>                           <!-- Remove? -->
+                <li><a id='question11'>What is the behaviour of this non-functional requirement?</a></li>                     <!-- Remove? -->   
+                <li><a id='question12'>What is the structure of this non-functional requirement?</a></li>                     <!-- Remove? -->
+                <li><a id='question13'>What is the UI design of this non-functional requirement?</a></li>                     <!-- Remove? -->
                 <li><a id='question14'>What was the development process related to this non-functional requirement?</a></li>
-                <!-- <li class='disabled'><a>-</a></li>
+                <li class='disabled'><a>-</a></li>
                 <li><a id='question15'>What architecture patterns are used in the system?</a></li>
                 <li><a id='question16'>What programming languages are used in the system?</a></li>
-                <li><a id='question17'>How are the architecture patterns in the system implemented?</a></li> -->
+                <li><a id='question17'>How are the architecture patterns in the system implemented?</a></li>
               </ul>
             </li>
             <li class="dropdown" id='featureSelector' style="display:none">
@@ -133,9 +133,9 @@
 
                 <div class="panel panel-default panel-upper">
                     <div class="panel-heading">
-                      <h4 class="panel-title">
-                        <a data-toggle="collapse" href="#collapsel">Summary of results</a>
-                      </h4>
+                      <div class="panel-title">
+                        <a data-toggle="collapse" href="#collapsel" id="summaryHeader"></a>
+                      </div>
                     </div>
                     <div id="collapsel" class="panel-collapse collapse in">
                         <div class="summary panel-body"> </div>                 

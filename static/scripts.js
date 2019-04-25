@@ -72,7 +72,7 @@ const program = (() => {
     sentenceElement.setAttribute("id", "reqSentence")
     summary.appendChild(sentenceElement)
 
-    wordButtons.appendChild(el('p', 'The following are the words used to connect:'));
+    wordButtons.appendChild(el('p', 'Words used to connect:'));
     for(let wordCluster of wordClusters) {
       //Bold the Treude words of the sentence
       var reqSentence = document.getElementById("reqSentence").innerHTML;
@@ -107,7 +107,7 @@ const program = (() => {
   function addFeatureButtonsToPage (relevantSentences){
     features = ["Display product", "Purchase product", "User management"]
 
-    wordButtons.appendChild(el('p', 'The following are the features of the system:'));
+    wordButtons.appendChild(el('p', 'The features of the system:'));
     for(let feature of features){
       //Add button for each feature
       var btn = document.createElement("BUTTON");
@@ -131,6 +131,66 @@ const program = (() => {
       wordButtons.appendChild(btn);  
     }
   }
+
+  function alterGroupNaming(){
+    buttons = document.getElementsByClassName('groupButtonForGraph')
+    for(button of buttons){
+      button.innerHTML
+      if(button.innerHTML == 'FunctionalRequirementAndBehaviour'){
+        button.innerHTML = 'Functional requirement & behaviour'
+      }
+      else if(button.innerHTML == 'UseCase'){
+        button.innerHTML = 'Use case'
+      }
+      else if(button.innerHTML == 'UserStory'){
+        button.innerHTML = 'User story'
+      }
+      else if(button.innerHTML == 'NonFunctionalRequirementAndBehaviour'){
+        button.innerHTML = 'Non-functional requirement & behaviour'
+      }
+      else if(button.innerHTML == 'RequirementGeneral'){
+        button.innerHTML = 'Requirements - general'
+      }
+      else if(button.innerHTML == 'Document_Organisation'){
+        button.innerHTML = 'Document organisation'
+      }
+      else if(button.innerHTML == 'DevelopmentPractice'){
+        button.innerHTML = 'Development practice'
+      }
+      else if(button.innerHTML == 'U-Architecture'){
+        button.innerHTML = 'UI design - architecture'
+      }
+      else if(button.innerHTML == 'U-Implementation'){
+        button.innerHTML = 'UI design - implementation'
+      }
+      else if(button.innerHTML == 'S-Architecture'){
+        button.innerHTML = 'Structure - architecture'
+      }
+      else if(button.innerHTML == 'S-TechnologySolution'){
+        button.innerHTML = 'Structure - technology solution'
+      }
+      else if(button.innerHTML == 'S-SourceCode'){
+        button.innerHTML = 'Structure - source code'
+      }
+      else if(button.innerHTML == 'B-Architecture'){
+        button.innerHTML = 'Behaviour - architecture'
+      }
+      else if(button.innerHTML == 'B-TechnologySolution'){
+        button.innerHTML = 'Behaviour - technology solution'
+      }
+      else if(button.innerHTML == 'B-General'){
+        button.innerHTML = 'Behaviour - general'
+      }
+      else if(button.innerHTML == 'D-Architecture'){
+        button.innerHTML = 'Data - architecture'
+      }
+      else if(button.innerHTML == 'D-Implementation'){
+        button.innerHTML = 'Data - implementation'
+      }
+    }
+    
+  }
+
   function addGroupButtonsToPage(relevantSentences, feature, question){
     
     if(question == 'Q3' || question == 'Q4' || question == 'Q5' || question == 'Q6' || question == 'Q7' || question == 'Q8' || question == 'Q9' || question == 'Q10' || question == 'Q11' || question == 'Q12' || question == 'Q13' || question == 'Q14' || question == 'Q17' ){
@@ -147,7 +207,7 @@ const program = (() => {
       groups = ["FunctionalRequirementAndBehaviour", "UseCase"]
     }
 
-    groupButtons.appendChild(el('p', 'The following are the groups shown in the graph:'));
+    groupButtons.appendChild(el('p', 'Groups shown in the graph:'));
     
     for(let group of groups){
       var btn = document.createElement("BUTTON");
@@ -180,6 +240,17 @@ const program = (() => {
       groupButtons.appendChild(btn);   
     }
   }
+
+  function addQuestionHeader(question){
+    summaryHeader = document.getElementById('summaryHeader')
+    summaryHeader.innerHTML = question;
+  }
+  
+  function addChosenFeature(feature){
+    chosenFeature = el('p', 'Chosen feature: ' + feature);
+    chosenFeature.setAttribute("id", "reqSentence")
+    groupButtons.appendChild(chosenFeature)
+  }
   
   
 
@@ -208,23 +279,33 @@ const program = (() => {
       //groupResults(relevantSentences)
       addFeatureButtonsToPage(relevantSentences)
       addGroupButtonsToPage(relevantSentences, '', "Q1")
+      addQuestionHeader('What functionalities exist in the system?')
       createClusterGraphQuestion1(relevantSentences)
-      
+      alterGroupNaming()
     }
     if(currentQuestion == 'feature1'){
       //groupResults(relevantSentences)
+      addQuestionHeader('What functionalities does this feature provide?')
+      addChosenFeature('Display products')
       addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
       createClusterGraph(relevantSentences, "displayProduct")
+      alterGroupNaming()
     }
     if(currentQuestion == 'feature2'){
       //groupResults(relevantSentences)
-      addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
+      addQuestionHeader('What functionalities does this feature provide?')
+      addChosenFeature('Purchase products')
+      addGroupButtonsToPage(relevantSentences, "purchaseProduct", "Q2")
       createClusterGraph(relevantSentences, "purchaseProduct")
+      alterGroupNaming()
     }
     if(currentQuestion == 'feature3'){
       //groupResults(relevantSentences)
-      addGroupButtonsToPage(relevantSentences, "displayProduct", "Q2")
+      addQuestionHeader('What functionalities does this feature provide?')
+      addChosenFeature('User management')
+      addGroupButtonsToPage(relevantSentences, "userManagement", "Q2")
       createClusterGraph(relevantSentences, "userManagement")
+      alterGroupNaming()
     }
     if(currentQuestion.includes('question3')){
       if(relevantSentences == 'There are no results for this requirement.'){
@@ -236,8 +317,10 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question3', '')
         addGroupButtonsToPage(relevantSentences, '', "Q3")
+        addQuestionHeader('Find everything related to this functional requirement.')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
     if(currentQuestion.includes('question4')){
@@ -250,8 +333,10 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question4', '')
         addGroupButtonsToPage(relevantSentences, '', "Q4")
+        addQuestionHeader('How is this functionality implemented?')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
   
@@ -265,8 +350,10 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question5', '')
         addGroupButtonsToPage(relevantSentences, '', "Q5")
+        addQuestionHeader('What is the behaviour of this functionality?')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
     if(currentQuestion.includes('question6')){   
@@ -279,8 +366,10 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question6', '')
         addGroupButtonsToPage(relevantSentences, '', "Q6")
+        addQuestionHeader('What is the structure of this functionality?')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
     if(currentQuestion.includes('question7')){   
@@ -293,8 +382,10 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question7', '')
         addGroupButtonsToPage(relevantSentences, '', "Q7")
+        addQuestionHeader('What is the UI design of this functionality?')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
     if(currentQuestion.includes('question8')){   
@@ -307,8 +398,10 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question8', '')
         addGroupButtonsToPage(relevantSentences, '', "Q8")
+        addQuestionHeader('What was the development process related to this functionality?')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
     if(currentQuestion.includes('question9')){   
@@ -321,8 +414,10 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question9', '')
         addGroupButtonsToPage(relevantSentences, '', "Q9")
+        addQuestionHeader('Find everything related to this non-functional requirement.')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
     if(currentQuestion.includes('question10')){   
@@ -335,8 +430,10 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question10', '')
         addGroupButtonsToPage(relevantSentences, '', "Q10")
+        addQuestionHeader('How is this non-functional requirement implemented?')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
     if(currentQuestion.includes('question11')){   
@@ -349,8 +446,10 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question11', '')
         addGroupButtonsToPage(relevantSentences, '', "Q11")
+        addQuestionHeader('What is the behaviour of this non-functional requirement?')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
     if(currentQuestion.includes('question12')){   
@@ -363,6 +462,7 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question12', '')
         addGroupButtonsToPage(relevantSentences, '', "Q12")
+        addQuestionHeader('What is the structure of this non-functional requirement?')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
       }        
@@ -377,8 +477,10 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question13', '')
         addGroupButtonsToPage(relevantSentences, '', "Q13")
+        addQuestionHeader('What is the UI design of this non-functional requirement?')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
     if(currentQuestion.includes('question14')){   
@@ -391,62 +493,27 @@ const program = (() => {
       else{
         currUserStory = currentQuestion.replace('question14', '')
         addGroupButtonsToPage(relevantSentences, '', "Q14")
+        addQuestionHeader('What was the development process related to this non-functional requirement?')
         addReqSentenceAndButtonsToPage(currUserStory, relevantSentences)
         createClusterGraphQuestion3(relevantSentences)
+        alterGroupNaming()
       }        
     }
     if(currentQuestion == 'question15'){
+      addQuestionHeader('What architecture patterns are used in the system?')
       findWordMatch(relevantSentences, 'Architecture patterns')
     }
     if(currentQuestion == 'question16'){
+      addQuestionHeader('What programming languages are used in the system?')
       findWordMatch(relevantSentences, 'Programming languages')
     }
-    if(currentQuestion == 'question17'){
-      
-      console.log('relevantSentences: ', relevantSentences)
+    if(currentQuestion == 'question17'){ 
       printWords(relevantSentences, 'Architecture patterns')
-
       addGroupButtonsToPage(relevantSentences, '', "Q17")
+      addQuestionHeader('How are the architecture patterns in the system implemented?')
       addReqSentenceAndButtonsToPage('',relevantSentences)
-      createClusterGraphQuestion3(relevantSentences)
-
-      //findWordMatch(relevantSentences, 'Architecture patterns')
-      
-      
-      // matches = findWordMatch(relevantSentences, 'Architecture patterns')
-      // wordMatches = matches[0]
-      // sentenceMatches = matches[1]
-      // console.log(wordMatches)
-      // console.log(sentenceMatches)
-
-
-
-
-      //createClusterGraphWitt(wordMatches, sentenceMatches)
-      // $.ajax({
-      //   type: "POST",
-      //   url: "../modules/request/witt.py",
-      //   data: { param: sentenceMatches}
-      // }).done(function( o ) {
-      //    console.log('Python call worked!')
-      //    console.log(sentenceMatches)
-      // });
-    //   fetch('http://127.0.0.1:5000/query/witt', 
-    //   {
-    //     'method': 'POST',
-    //     'headers': {
-    //       'Content-Type': "application/json"
-    //     },
-    //     'body':  JSON.stringify({'sentenceMatches': sentenceMatches})
-    // })
-    //   .then(data =>{
-    //     data.json().then(stuff => console.log('stuff: ', stuff))
-    //   }) 
-    //   .catch((error) => {
-    //     console.error('Villa við að sækja gögn', error);
-    //     showMessage('Villa við að sækja gögn');
-    //   });
-      
+      createClusterGraphQuestion3(relevantSentences)    
+      alterGroupNaming()
     }
 }
 
@@ -610,11 +677,21 @@ const program = (() => {
         div.classList.add('paragraph')
         //div.classList.add(Object.keys(section)[0]);
         for (let paragraphObj of paragraphs) {
-          sentence = el('p', paragraphObj['sentence']);
-          if (paragraphObj['Highlighted'] === 'True') {
-            sentence.classList.add('highlighted');
+          if(paragraphObj['sentence'].startsWith('ImageToDisplay')){
+            imagePath = paragraphObj['sentence'].replace('ImageToDisplay','..\\')
+            imgDiv = el('img')
+            imgDiv.setAttribute('src', imagePath)
+            imgDiv.setAttribute('class', 'imgDiv')
+            div.append(imgDiv)
           }
-          div.appendChild(sentence);
+          else{
+            sentence = el('p', paragraphObj['sentence']);
+            if (paragraphObj['Highlighted'] === 'True') {
+              sentence.classList.add('highlighted');
+            }
+            div.appendChild(sentence);
+            div.appendChild(el('p', ' ')) //Adding space between sentences
+          }
         }
         results.appendChild(div);
       }
@@ -645,6 +722,7 @@ const program = (() => {
     graph = domains.querySelector	("#interactive_diagram_svg")
     jQuery("#question1").click(function(e){
       // TODO: create a function for the next four lines - they reset everything.
+      unhighlightAllSentences()
       hideSelector("featureSelector")
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
@@ -667,6 +745,7 @@ const program = (() => {
       e.preventDefault();
     });
     jQuery("#feature1").click(function(e){
+      unhighlightAllSentences()
       hideSelector("featureSelector")
       empty(summary)
       empty(wordButtons)
@@ -679,6 +758,7 @@ const program = (() => {
       e.preventDefault();
     });
     jQuery("#feature2").click(function(e){
+      unhighlightAllSentences()
       hideSelector("featureSelector")
       empty(summary)
       empty(wordButtons)
@@ -691,6 +771,7 @@ const program = (() => {
       e.preventDefault();
     });
     jQuery("#feature3").click(function(e){
+      unhighlightAllSentences()
       hideSelector("featureSelector")
       empty(summary)
       empty(wordButtons)
@@ -709,6 +790,7 @@ const program = (() => {
       showSelector("userStorySelector", "question3")
     });
     jQuery(".req").click(function(e){
+      unhighlightAllSentences()
       question = this.parentNode.parentNode.parentNode.className.replace(' open', '')
       requirement = this.textContent
       hideSelector("featureSelector")
@@ -808,6 +890,7 @@ const program = (() => {
       fetchResults('http://127.0.0.1:5000/query/question', 'question16');
     });
     jQuery("#question17").click(function(e){
+      unhighlightAllSentences()
       hideSelector("featureSelector")
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")

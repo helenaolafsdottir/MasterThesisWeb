@@ -7,7 +7,7 @@ import urllib.request
 class InformationRetriever:
 
     def __init__(self):
-        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS14')
+        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS18')
 
     def query(self, query):
         self.sparql.setQuery(query)
@@ -124,7 +124,7 @@ class InformationRetriever:
             return 'Error in query'
 
     def getSentenceType(self, sentence):
-        #print(sentence)
+        print('query manager sentence: ', sentence)
         query = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>'\
                 'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>'\
                 'PREFIX owl: <http://www.w3.org/2002/07/owl#>'\
