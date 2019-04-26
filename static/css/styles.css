@@ -59,8 +59,9 @@ main {
 }
 
 .summary {
-  margin-left: 8px;
+  margin-left: 0px;
   margin-top: 8px;
+  padding-left: 20px !important;
 } 
 
 .btn {
@@ -71,8 +72,10 @@ main {
 .divider{
   height:auto;
   display:inline-block;
-  margin-left: 8px;
+  margin-left: 20px;
+  margin-top: 8px;
   margin-bottom: 8px;
+
 }
 
 .node {

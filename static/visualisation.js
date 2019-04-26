@@ -26,6 +26,35 @@ function scaleDiagram(){
     }
 }
 
+function sentenceWrap(sentence){
+    wrappedSentence = ''
+    sentenceSplitted = sentence.split(' ')
+    sentenceWordCount = sentenceSplitted.length
+    if(sentenceWordCount>20){
+        firstPart = sentenceSplitted.slice(0,20)
+        secondPart = sentenceSplitted.slice(20, sentenceWordCount)
+        wrappedSentence = firstPart.join(' ')
+        wrappedSentence += ' \n'
+
+        if(secondPart.length>20){
+            secPart = secondPart.slice(0,20)
+            thirdPart = secondPart.slice(20, secPart.length)            
+            wrappedSentence += secPart.join(' ')
+            wrappedSentence += ' \n'
+            wrappedSentence += thirdPart.join(' ')
+        }
+        else{
+            wrappedSentence += secondPart.join(' ')
+        }
+    }
+    else{
+        wrappedSentence = sentence
+    }
+    console.log(wrappedSentence)
+    return wrappedSentence
+    
+}
+
 function createClusterGraphQuestion1(sentences){
     unhighlightAllSentences()
     features = ["Display product", "Purchase product", "User management"]
@@ -76,10 +105,8 @@ function createClusterGraphQuestion1(sentences){
         
             // create nodes, add them to their categories and create an edge to the feature
             if(sentence['type'].includes(group)){
-                if(group=='UserStory'){
-                    console.log('Found user story!')
-                }
-                g.setNode(sentence['sentence'], {label:sentence["sentence"]})
+                wrappedSentence = sentenceWrap(sentence['sentence'])
+                g.setNode(sentence['sentence'], {label:wrappedSentence})
                 highlightMatchingSentence(sentence['sentence'])
                 
                 g.setParent(sentence['sentence'], group)
@@ -305,7 +332,8 @@ function createClusterGraph(relevantSentences, feature){
         
             // create nodes, add them to their categories and createa an edge to the feature
             if(sentence['type'].includes(group)){
-                g.setNode(sentence['sentence'], {label:sentence["sentence"]})
+                wrappedSentence = sentenceWrap(sentence['sentence'])
+                g.setNode(sentence['sentence'], {label:wrappedSentence})
                 g.setParent(sentence['sentence'], group)
                 g.setEdge(sentence['sentence'], feature, {label: 'BelongsTo', curve: d3.curveBasis})
                 
@@ -555,8 +583,8 @@ function createClusterGraphQuestion3(wordClusters){
                 for (let cluster of wordCluster['cluster']){
                     if(!(group == 'FunctionalRequirementAndBehaviour' && cluster['sentence'].startsWith('As a ')) && !(group == 'NonFunctionalRequirementAndBehaviour' && cluster['sentence'].startsWith('As a '))){
                         if(cluster['type'].replace(baseURI,'') == group){
-
-                            g.setNode(cluster['sentence'], {label: cluster['sentence']})
+                            wrappedSentence = sentenceWrap(cluster['sentence'])
+                            g.setNode(cluster['sentence'], {label: wrappedSentence})
     
                             //append to its group
                             type = cluster['type'].replace(baseURI,'')
@@ -596,11 +624,13 @@ function createClusterGraphQuestion3(wordClusters){
         for(sentence of userStorySentences){
             if(sentence['type'].replace(baseURI,'') == 'NonFunctionalRequirementAndBehaviour' && commonGroups.includes('NonFunctionalRequirementAndBehaviour')){
                 console.log('create nonfunc')
+                
                 g.setNode('UserStoryFunc', {label: 'UserStory', clusterLabelPos: 'top', style: 'fill: #fff7e6'});
                 g.setParent('UserStoryFunc', 'NonFunctionalRequirementAndBehaviour');
                 
                 //create node
-                g.setNode(sentence['sentence'],{label: sentence['sentence']})
+                wrappedSentence = sentenceWrap(sentence['sentence'])
+                g.setNode(sentence['sentence'],{label: wrappedSentence})
                 g.setParent(sentence['sentence'], 'UserStoryFunc');
                 g.setEdge( sentence['edge'], sentence['sentence'], {curve: d3.curveBasis})
 
@@ -611,7 +641,8 @@ function createClusterGraphQuestion3(wordClusters){
                 g.setParent('UserStoryNonFunc', 'FunctionalRequirementAndBehaviour');
                 
                 //create node
-                g.setNode(sentence['sentence'],{label: sentence['sentence']})
+                wrappedSentence = sentenceWrap(sentence['sentence'])
+                g.setNode(sentence['sentence'],{label: wrappedSentence})
                 g.setParent(sentence['sentence'], 'UserStoryNonFunc');
                 g.setEdge( sentence['edge'], sentence['sentence'], {curve: d3.curveBasis})
 

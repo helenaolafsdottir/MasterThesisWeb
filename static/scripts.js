@@ -72,6 +72,8 @@ const program = (() => {
     sentenceElement.setAttribute("id", "reqSentence")
     summary.appendChild(sentenceElement)
 
+    summary.style.borderBottom = '1px solid black'
+
     wordButtons.appendChild(el('p', 'Words used to connect:'));
     for(let wordCluster of wordClusters) {
       //Bold the Treude words of the sentence
@@ -249,7 +251,8 @@ const program = (() => {
   function addChosenFeature(feature){
     chosenFeature = el('p', 'Chosen feature: ' + feature);
     chosenFeature.setAttribute("id", "reqSentence")
-    groupButtons.appendChild(chosenFeature)
+    summary.appendChild(chosenFeature)
+    summary.style.borderBottom = '1px solid black'
   }
   
   
@@ -655,6 +658,7 @@ const program = (() => {
   //Currently not using this function!
   function onChangeQuestion(){
     empty(summary)
+    summary.style.borderBottom = ''
     svg = d3.getElementById("svg")
     storedResults = JSON.parse(JSON.stringify(initData));
     var selectObj = document.getElementById('front-search-question')
@@ -730,6 +734,7 @@ const program = (() => {
       empty(wordButtons)
       empty(groupButtons)
       empty(graph)
+      summary.style.borderBottom = ''
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -751,6 +756,7 @@ const program = (() => {
       empty(wordButtons)
       empty(groupButtons)
       empty(graph)
+      summary.style.borderBottom = ''
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -764,6 +770,7 @@ const program = (() => {
       empty(wordButtons)
       empty(groupButtons)
       empty(graph)
+      summary.style.borderBottom = ''
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -777,6 +784,7 @@ const program = (() => {
       empty(wordButtons)
       empty(groupButtons)
       empty(graph)
+      summary.style.borderBottom = ''
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -800,6 +808,7 @@ const program = (() => {
       empty(wordButtons)
       empty(groupButtons)
       empty(graph)
+      summary.style.borderBottom = ''
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -870,6 +879,7 @@ const program = (() => {
       empty(wordButtons)
       empty(groupButtons)
       empty(graph)
+      summary.style.borderBottom = ''
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -884,6 +894,7 @@ const program = (() => {
       empty(wordButtons)
       empty(groupButtons)
       empty(graph)
+      summary.style.borderBottom = ''
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
@@ -898,6 +909,7 @@ const program = (() => {
       empty(wordButtons)
       empty(groupButtons)
       empty(graph)
+      summary.style.borderBottom = ''
       svg = domains.querySelector('svg');
       if(svg){deleteEl(svg)}
       storedResults = JSON.parse(JSON.stringify(initData));
