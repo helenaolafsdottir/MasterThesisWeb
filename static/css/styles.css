@@ -27,14 +27,9 @@ main {
   height: 100%;
 }
 
-.first-column {
-  width: 40%;
-  float: left;
-  font-size: 6px;
-  height: 100%;
-  
-}
 .second-column {
+  display:flex;
+  flex-flow: column;
   width: 100%;
   float: right;
   font-size:12px;
@@ -114,7 +109,6 @@ main {
   display: flex;
 }
 
-
 h1 {
   font-size: 100px;
   margin-top: 40px;
@@ -127,7 +121,6 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin-bottom: 20px;
 }
 
@@ -166,7 +159,6 @@ input {
 }
 
 img {
-  /* size: 10% !important; */
   max-width:70%;
   display: block;
   margin-left: auto;
@@ -197,6 +189,7 @@ svg {
 }
 .panel-body {
   padding: 0;
+  height: auto;
 }
 .panel-upper {
   width: 100%
@@ -230,11 +223,9 @@ text {
   stroke-width: 1.5px;
 }
 
-
 .noRequirementMessage {
   font-size: 1em;
 }
-
 
 [chosen = "True"] {
   background: #e5e5e5;
@@ -246,44 +237,4 @@ text {
 [chosen = "False"] {
   background: #ededed;
   color: #b3b3b3;
-}
-
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  height: 80%;
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
 }

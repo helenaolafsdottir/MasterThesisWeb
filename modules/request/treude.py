@@ -7,78 +7,60 @@ from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
     
 class InformationRetriever:   
-    
-    def __init__(self):
-        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS18')
-    
+
+    # Read data from the txt file storing the results from Treude's tool
     def read_data(self, file):
 
         with open(file, encoding='utf-8-sig') as f:
-            allData = []
-            allDataFormat2 = {}
+            allData = {}
             oneSentence = []
             i=0
-            for j, line in enumerate(f):
-                
+            for j, line in enumerate(f):         
                 if j==i:
                     sentence = line.strip()
                     oneSentence.append(sentence)
                 elif j==i+1:
                     treudeResult = line.strip()
-                    #oneSentence.append(treudeResult)
-                    testy = re.findall(r'\{(.*?)\}', treudeResult)
-                    #print(testy)
-                    thisRes = []
-                    for thingy in testy:
-                        testy2 = re.findall(r'\[(.*?)\]', thingy)
-                        #print(testy2)
-                        thisRes.append(testy2)
-                    oneSentence.append(thisRes)
+                    treudeResults = re.findall(r'\{(.*?)\}', treudeResult)
+                    treudeResultList = []
+                    for oneResult in treudeResults:
+                        oneResultFormatted = re.findall(r'\[(.*?)\]', oneResult)
+                        treudeResultList.append(oneResultFormatted)
+                    oneSentence.append(treudeResultList)
                 if j % 2 == 1:
-                    #print(oneSentence)
-                    #print('---')
-                    allData.append({"sentence":oneSentence[0],"treudeResult":oneSentence[1]})
-                    #print(oneSentence)
-                    allDataFormat2[oneSentence[0]] = oneSentence[1]
+                    allData[oneSentence[0]] = oneSentence[1]
                     oneSentence = []
-                    i+=2
-                    
+                    i+=2                    
                 
-        return allData, allDataFormat2
+        return allData
 
-
-
+    # Returns the stem of the word provided as input
     def stem(self, word):   
         return PorterStemmer().stem(word)
-        
-
+       
+    # Returns the lemmatization of the word provided as input
     def lemma(self, word): 
         return WordNetLemmatizer().lemmatize(word)
 
-
+    # Removes stopwords from a list of words
     def remove_stopwords(self, wordlist):
         
         stopWords = set(stopwords.words('english'))
         filteredWordList = []
-        
         for word in wordlist:
             if word not in stopWords:
                 filteredWordList.append(word)
                 
         return filteredWordList
                 
-
+    # Returns a list of unique words that appear in the textual data provided as input
     def create_wordbank(self, data):
         wordBank = []
         for x in data.values():
             if(len(x)>0):
-            #print(x)
-            
                 for result in x:
-                    #print(result)
                     for words in result:
                         words = words.split(' ')
-                        
                         for word in words:
                             if word != '':
                                 word = self.lemma(word)
@@ -90,19 +72,18 @@ class InformationRetriever:
         
         return wordBank
 
-
-
+    # Check whether a specific word is contained in a list of words (wordbank)
     def matchWordToWordBank(self, word, wordBank):
         word = word.lower()
         word = self.lemma(word)
         word = self.stem(word)
-        
+
         if word in wordBank:
             return True
         else:
             return False
             
-
+    # Returns the cluster of a specific word, i.e. all sentences that have task phrases containing this specific word
     def findWordClusters(self, wordToMatch, treudeData, sentenceToCluster):
 
         wordToMatch = wordToMatch.lower()
@@ -110,7 +91,6 @@ class InformationRetriever:
         wordToMatch = self.stem(wordToMatch)
         
         cluster = []
-        
         for result in treudeData:
             sentence = result
             if sentence != sentenceToCluster: #We don't want the sentence itself to be a result
@@ -134,7 +114,7 @@ class InformationRetriever:
 
         return finalCluster
         
-        
+    # Returns a list of clusters for the sentence provided as input
     def findSentenceClusters(self, sentence, treudeData, wordBank):
         
         treudeValues = treudeData[sentence]   
@@ -156,22 +136,13 @@ class InformationRetriever:
         
         return sentenceClusters
 
+    # Retrieves sentences' task phrases
+    # Creates a list of unique words from the task phrases
+    # Returns a list of clusters for the sentence provided as input
     def getCategoryOfSentence(self, sentence):
-        TreudeData, TreudeDataFormat2 = self.read_data('TreudeData.txt') #TODO: remove the former output
-
-        #print(TreudeDataFormat2)
-        #for x in TreudeDataFormat2:
-        #    print(x)
-        #    print(len(TreudeDataFormat2[x]))
-        #    print(TreudeDataFormat2[x])
-        #    print('----------------------')
-
-        wordBank = self.create_wordbank(TreudeDataFormat2)    
-
-        #print(wordBank)
-        #print(len(wordBank))
-
-        sentenceClusters = self.findSentenceClusters(sentence, TreudeDataFormat2, wordBank)
+        TreudeData = self.read_data('TreudeData.txt')
+        wordBank = self.create_wordbank(TreudeData)    
+        sentenceClusters = self.findSentenceClusters(sentence, TreudeData, wordBank)
         
         return sentenceClusters['clusters']
 
