@@ -14,7 +14,7 @@ const program = (() => {
    */
   function fetchResults(domain, currentQuestion) {
     //fetch(`${domain}`, {'method': 'POST', 'body': {'currQuestion': currentQuestion}})
-    fetch('http://127.0.0.1:5000/query/question', 
+    fetch('hinriksnaer.pythonanywhere.com/query/question', 
       {
         'method': 'POST',
         'headers': {
@@ -346,7 +346,7 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      fetchResults('http://127.0.0.1:5000/query/question', 'question1');
+      fetchResults('hinriksnaer.pythonanywhere.com/query/question', 'question1');
       e.preventDefault();
     });
 
@@ -360,21 +360,21 @@ const program = (() => {
       clearUIElements(domains)
       hideSelector("featureSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      fetchResults('http://127.0.0.1:5000/query/question', 'feature1');
+      fetchResults('hinriksnaer.pythonanywhere.com/query/question', 'feature1');
       e.preventDefault();
     });
     jQuery("#feature2").click(function(e){
       clearUIElements(domains)
       hideSelector("featureSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      fetchResults('http://127.0.0.1:5000/query/question', 'feature2');
+      fetchResults('hinriksnaer.pythonanywhere.com/query/question', 'feature2');
       e.preventDefault();
     });
     jQuery("#feature3").click(function(e){
       clearUIElements(domains)
       hideSelector("featureSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      fetchResults('http://127.0.0.1:5000/query/question', 'feature3');
+      fetchResults('hinriksnaer.pythonanywhere.com/query/question', 'feature3');
       e.preventDefault();
     });
 
@@ -391,7 +391,7 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      fetchResults('http://127.0.0.1:5000/query/question', question + requirement);
+      fetchResults('hinriksnaer.pythonanywhere.com/query/question', question + requirement);
       e.preventDefault();
     });
     jQuery("#question4").click(function(e){
@@ -455,7 +455,7 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      fetchResults('http://127.0.0.1:5000/query/question', 'question15');      
+      fetchResults('hinriksnaer.pythonanywhere.com/query/question', 'question15');      
     });
     jQuery("#question16").click(function(e){
       clearUIElements(domains)
@@ -463,7 +463,7 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      fetchResults('http://127.0.0.1:5000/query/question', 'question16');
+      fetchResults('hinriksnaer.pythonanywhere.com/query/question', 'question16');
     });
     jQuery("#question17").click(function(e){
       clearUIElements(domains)
@@ -471,7 +471,7 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      fetchResults('http://127.0.0.1:5000/query/question', 'question17');
+      fetchResults('hinriksnaer.pythonanywhere.com/query/question', 'question17');
     });
     renderFullJsonData(storedResults);
   }
