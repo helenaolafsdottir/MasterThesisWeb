@@ -97,7 +97,7 @@ function createClusterGraphQuestion1(sentences){
     // Run the renderer. This is what draws the final graph.
     render(d3.select("svg g"), g);
 
-    scaleDiagram()
+    //scaleDiagram()
 
     //Clicking sentences will take you to the relevant place in the document
     $(document).ready(function() {
@@ -204,14 +204,14 @@ function createClusterGraphQuestion2(relevantSentences, feature){
     // Run the renderer. This is what draws the final graph.
     render(d3.select("svg g"), g);
 
-    scaleDiagram()
+    //scaleDiagram()
 
     d3.selectAll("svg g .output .nodes .node")
 
     //Clicking sentences will take you to the relevant place in the document
     $(document).ready(function() {
         $('.node').click(function() {
-            
+
             //Make the sentences of the graph clickable
             var class_header = $(this).attr('class').split(' ');
             var node_name = class_header[class_header.length - 1]
@@ -482,7 +482,7 @@ function createClusterGraphTreudeQuestions(wordClusters){
         render(d3.select("svg g"), g);
     }
     
-    scaleDiagram()
+    //scaleDiagram()
 
     //Clicking sentences will take you to the relevant place in the document
     $(document).ready(function() {

@@ -43,10 +43,20 @@ function sentenceWrap(sentence){
 
         if(secondPart.length>20){
             secPart = secondPart.slice(0,20)
-            thirdPart = secondPart.slice(20, secPart.length)            
+            thirdPart = secondPart.slice(20, sentenceWordCount)            
             wrappedSentence += secPart.join(' ')
             wrappedSentence += ' \n'
-            wrappedSentence += thirdPart.join(' ')
+
+            if(thirdPart.length>20){
+                thiPart = thirdPart.slice(0,20)
+                fourthPart = thirdPart.slice(20, sentenceWordCount)
+                wrappedSentence += thiPart.join(' ')
+                wrappedSentence += ' \n' 
+
+                wrappedSentence += fourthPart.join(' ')
+            }else{
+                wrappedSentence += thirdPart.join(' ')
+            }
         }
         else{
             wrappedSentence += secondPart.join(' ')
