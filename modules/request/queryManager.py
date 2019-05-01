@@ -99,17 +99,9 @@ class InformationRetriever:
         types = []
         #try:
         queryResult = self.graph.query(query)   
-        #print('queryresult: ', queryResult)
         for item in queryResult:
-            # print('sentence: ', item[0])
-            # print('type: ', item[1])
-            # print('')
             types.append({'sentence': item[0], 'type': item[1]})
-        #results = queryResult['results']['bindings']
-        #if results:
-            #for r in results:
-                #types.append({'sentence': r['label']['value'], 'type': r['typ']['value']}) 
-            return types
+        return types
         #except:      
         #    return 'Error in query'
     

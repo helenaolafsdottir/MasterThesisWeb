@@ -73,7 +73,6 @@ class SDNavigator(Resource):
                     updatedCluster = []
                     for sentence in cluster['cluster']:
                         sentenceType = queryManager.getSentenceType(sentence['sentence'])
-                        #print('sentenceType: ', sentenceType)
                         if sentenceType != None:
                             for instance in sentenceType:
                                 # Filter out all results that are not implementation related
