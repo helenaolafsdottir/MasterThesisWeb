@@ -1,12 +1,24 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 import urllib.request
+from owlready2 import *
 
 # Retrieves data from the ontology using the SPARQL query language
 class InformationRetriever:
 
     # Connect to the ontology server
     def __init__(self):
-        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS18')
+        #self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS18')
+
+                
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        owl_path = os.path.join(BASE_DIR, "ontology.owl")
+        onto = get_ontology('file://C:/Users/Lenovo/Documents/Helena/Chalmers/MasterThesis/WebSystem/MasterThesisWeb/ontology.owl').load()
+        #print('onto: ', onto)
+        
+        my_world = World()
+        my_world.get_ontology('file://C:/Users/Lenovo/Documents/Helena/Chalmers/MasterThesis/WebSystem/MasterThesisWeb/ontology.owl').load() #path to the owl file is given here
+        sync_reasoner(my_world)  #reasoner is started and synchronized here
+        self.graph = my_world.as_rdflib_graph()
 
     # Constructs SPARQL query
     def query(self, query):
@@ -14,6 +26,7 @@ class InformationRetriever:
         self.sparql.setReturnFormat(JSON)
         return self.sparql.query().convert()
     
+
     # Used for question: What functionalities does this feature provide?
     # Retrieves all functional requirements and use cases related to the feature provided as input
     def getOneFeatureAndRelevantClasses(self, feature):
@@ -36,19 +49,16 @@ class InformationRetriever:
         query = query.format(feature=feature)
         types = []
         try:
-            queryResult = self.query(query)
-            results = queryResult['results']['bindings']
-            if results:
-                for r in results:
-                    types.append({'sentence': r['lab']['value'], 'type': r['typ']['value']}) 
-                return types
-        except:      
+            queryResult = self.graph.query(query)
+            for item in queryResult:
+                types.append({'sentence': item[1], 'type': item[2]})
+            return types            
+        except:
             return 'Error in query'
 
     # Used for question: What functionalities exist in the system?
     # Retrieves all functional requirements and use cases related to the features of the system
     def getAllFeatureAndRelevantClasses(self):
-
         query = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>'\
                 'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>'\
                 'PREFIX owl: <http://www.w3.org/2002/07/owl#>'\
@@ -65,12 +75,10 @@ class InformationRetriever:
                 '}}'
         types = []
         try:
-            queryResult = self.query(query)
-            results = queryResult['results']['bindings']
-            if results:
-                for r in results:
-                    types.append({'feature': r['feature']['value'],'sentence': r['lab']['value'], 'type': r['typ']['value']}) 
-                return types
+            queryResult = self.graph.query(query)
+            for item in queryResult:
+                types.append({'feature': item[0], 'sentence': item[1], 'type': item[2]})
+            return types
         except:      
             return 'Error in query'
 
@@ -86,17 +94,24 @@ class InformationRetriever:
                 'FILTER (?label="{sentence}")' \
                 'FILTER (regex(str(?typ ),"^(?!http://www.w3.org/2002/07/owl#).+")) . ' \
                 '}}'
+        #print('curr sentence: ', sentence)
         query = query.format(sentence=sentence)
         types = []
-        try:
-            queryResult = self.query(query)
-            results = queryResult['results']['bindings']
-            if results:
-                for r in results:
-                    types.append({'sentence': r['label']['value'], 'type': r['typ']['value']}) 
-                return types
-        except:      
-            return 'Error in query'
+        #try:
+        queryResult = self.graph.query(query)   
+        #print('queryresult: ', queryResult)
+        for item in queryResult:
+            # print('sentence: ', item[0])
+            # print('type: ', item[1])
+            # print('')
+            types.append({'sentence': item[0], 'type': item[1]})
+        #results = queryResult['results']['bindings']
+        #if results:
+            #for r in results:
+                #types.append({'sentence': r['label']['value'], 'type': r['typ']['value']}) 
+            return types
+        #except:      
+        #    return 'Error in query'
     
 
     

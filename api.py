@@ -73,6 +73,7 @@ class SDNavigator(Resource):
                     updatedCluster = []
                     for sentence in cluster['cluster']:
                         sentenceType = queryManager.getSentenceType(sentence['sentence'])
+                        #print('sentenceType: ', sentenceType)
                         if sentenceType != None:
                             for instance in sentenceType:
                                 # Filter out all results that are not implementation related
@@ -213,6 +214,6 @@ class SDNavigator(Resource):
 ##
 api.add_resource(SDNavigator, '/')
 
-
+#api.add_resource(Todo, '/todos/<todo_id>')
 if __name__ == '__main__':
     app.run(debug=True)
