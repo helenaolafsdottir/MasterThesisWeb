@@ -61,17 +61,15 @@ function searchMatchingSentences(sentences){
     for(x in sentences){
         for(textnodes of text){
             if(textnodes.tagName == 'H1' || textnodes.tagName == 'H2' || textnodes.tagName == 'H3' || textnodes.tagName == 'H4' || textnodes.tagName == 'H5'){
-                //for(x in sentences){
-                    if(textnodes.innerHTML == sentences[x]){
-                        if(window.location.hash == sentences[x]){
-                            textnodes.setAttribute('id', sentences[x+1])
-                            window.location.hash = sentences[x+1]
-                        }else{
-                            textnodes.setAttribute('id', sentences[x])
-                            window.location.hash = sentences[x]
-                        }
+                if(textnodes.innerHTML == sentences[x]){
+                    if(window.location.hash == sentences[x]){
+                        textnodes.setAttribute('id', sentences[x+1])
+                        window.location.hash = sentences[x+1]
+                    }else{
+                        textnodes.setAttribute('id', sentences[x])
+                        window.location.hash = sentences[x]
                     }
-                //}
+                }
             }
             else{
                 for(child of textnodes.childNodes){

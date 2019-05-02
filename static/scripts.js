@@ -462,7 +462,7 @@ const program = (() => {
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
       fetchResults('https://hinriksnaer.pythonanywhere.com/query/question', 'question15');  
-      //fetchResults('http://127.0.0.1:5000/query/question', 'question16');    
+      //fetchResults('http://127.0.0.1:5000/query/question', 'question15');    
     });
     jQuery("#question16").click(function(e){
       clearUIElements(domains)
