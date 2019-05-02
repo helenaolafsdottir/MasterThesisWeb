@@ -116,6 +116,7 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
 import urllib.request
 from owlready2 import *
+import os
 
 # Retrieves data from the ontology using the SPARQL query language
 class InformationRetriever:
@@ -124,15 +125,18 @@ class InformationRetriever:
     def __init__(self):
         #self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS18')
 
-                
-        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-        owl_path = os.path.join(BASE_DIR, "ontology.owl")
-        onto = get_ontology('file://C:/Users/Lenovo/Documents/Helena/Chalmers/MasterThesis/WebSystem/MasterThesisWeb/ontology.owl').load()
-        #print('onto: ', onto)
         
+        print('asdfjasldfasdfdkjas;dlkfja;lsdkfja;lskdjfa;lskdjfaslkdjfa;sldlkfjas;ldkfjas;lkdljf')
+        #BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+        #owl_path = os.path.join(BASE_DIR, "ontology.owl")
+        #onto = get_ontology('file:///home/hinriksnaer/MasterThesisWeb/ontology.owl').load()
+        #print('onto: ', onto)
+        #print(os.getcwd())
         my_world = World()
-        my_world.get_ontology('file://C:/Users/Lenovo/Documents/Helena/Chalmers/MasterThesis/WebSystem/MasterThesisWeb/ontology.owl').load() #path to the owl file is given here
-        sync_reasoner(my_world)  #reasoner is started and synchronized here
+        my_world.get_ontology('file:///home/hinriksnaer/MasterThesisWeb/ontology.owl').load() #path to the owl file is given here
+        print('my world is')
+        print(my_world)
+        #sync_reasoner(my_world)  #reasoner is started and synchronized here
         self.graph = my_world.as_rdflib_graph()
 
     # Constructs SPARQL query

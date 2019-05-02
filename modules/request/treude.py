@@ -140,7 +140,7 @@ class InformationRetriever:
     # Creates a list of unique words from the task phrases
     # Returns a list of clusters for the sentence provided as input
     def getCategoryOfSentence(self, sentence):
-        TreudeData = self.read_data('TreudeData.txt')
+        TreudeData = self.read_data(r'~/MasterThesisWeb/TreudeData.txt')
         wordBank = self.create_wordbank(TreudeData)    
         sentenceClusters = self.findSentenceClusters(sentence, TreudeData, wordBank)
         
