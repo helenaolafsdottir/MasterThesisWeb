@@ -40,7 +40,7 @@ main {
 .results{
   height: 100%;
   resize: horizontal;
-  width: 40%;
+  width: 50%;
   float: left;
   font-size: 6px;
 }
@@ -185,7 +185,7 @@ svg {
   width: 100%;
 }
 #interactive_diagram_svg{
-  height: 98%;
+  height: 95%;
 }
 .panel-body {
   padding: 0;
@@ -237,4 +237,13 @@ text {
 [chosen = "False"] {
   background: #ededed;
   color: #b3b3b3;
+}
+
+.askQuestionUserStories {
+  height: auto !important;
+  max-height: 500px !important;
+}
+.askQuestionUserStories li a {
+  width: 1000px;
+  white-space:normal;
 }
