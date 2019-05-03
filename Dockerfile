@@ -13,3 +13,5 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 
 RUN python3 fetch_wordnet.py
+
+CMD python3 api.py
