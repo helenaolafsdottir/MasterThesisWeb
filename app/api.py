@@ -5,7 +5,7 @@ import os
 from flask import Flask, request, send_from_directory, render_template, Markup, redirect, url_for
 from flask_restful import reqparse, abort, Api, Resource
 from modules.request import queryManager, treude, witt
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 api = Api(app)
@@ -13,6 +13,7 @@ queryManager = queryManager.InformationRetriever()
 treude = treude.InformationRetriever()
 witt = witt.InformationRetriever()
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 class SDNavigator(Resource):
     
@@ -23,6 +24,7 @@ class SDNavigator(Resource):
     
     # retrieves data relevant to the question asked
     @app.route('/query/question', methods=['POST'])
+    @cross_origin()
     def question():
         
         data = request.data
