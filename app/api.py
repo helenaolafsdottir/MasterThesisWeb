@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-from flask import Flask, request, send_from_directory, render_template, Markup, redirect, url_for
-from flask_restful import reqparse, abort, Api, Resource
 import json
 import base64
+import os
+from flask import Flask, request, send_from_directory, render_template, Markup, redirect, url_for
+from flask_restful import reqparse, abort, Api, Resource
 from modules.request import queryManager, treude, witt
 from flask_cors import CORS
 
@@ -216,4 +217,5 @@ api.add_resource(SDNavigator, '/')
 
 #api.add_resource(Todo, '/todos/<todo_id>')
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    port = os.getenv("PORT", 5000)
+    app.run(debug=True, host='0.0.0.0', port=port)
