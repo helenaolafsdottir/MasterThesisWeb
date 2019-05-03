@@ -1,4 +1,4 @@
-const API_URL = 'http://0.0.0.0:5000/query/question';
+const API_URL = 'http://web/query/question';
 
 const program = (() => {
 
