@@ -2,7 +2,7 @@ FROM heroku/heroku:18
 
 RUN apt update
 
-RUN apt upgrade -y
+#RUN apt upgrade -y
 
 RUN apt install python3.7 python3-pip openjdk-8-jre-headless openjdk-8-jdk-headless -y
 
