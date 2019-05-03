@@ -6,4 +6,4 @@ release:
   command:
     - echo 'Starting the server!'
 run:
-  web: python3 /app/api.py
+  web: bash /app/api.py
