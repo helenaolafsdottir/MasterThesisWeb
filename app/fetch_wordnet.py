@@ -1,2 +1,2 @@
 import nltk
-nltk.download("wordnet")
+nltk.download("wordnet", download_dir="/app")
