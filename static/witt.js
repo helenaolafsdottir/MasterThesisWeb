@@ -57,56 +57,61 @@ function findMatch(section, wordToMatch){
  */
 function searchMatchingSentences(sentences){
     currLoc = ''
+    sentenceToFind = ''
     text = d3.select('.results').node().childNodes
+    outerloop:
     for(x in sentences){
-        for(textnodes of text){
-            if(textnodes.tagName == 'H1' || textnodes.tagName == 'H2' || textnodes.tagName == 'H3' || textnodes.tagName == 'H4' || textnodes.tagName == 'H5'){
-                if(textnodes.innerHTML == sentences[x]){
-                    if(window.location.hash == sentences[x]){
-                        textnodes.setAttribute('id', sentences[x+1])
-                        window.location.hash = sentences[x+1]
-                    }else{
-                        textnodes.setAttribute('id', sentences[x])
-                        window.location.hash = sentences[x]
-                    }
-                }
+        currHash = window.location.hash //current location in document
+        sentenceWords = sentences[x].split(' ')
+        sentenceWordsLength = sentenceWords.length
+        i=0;
+        for(word of sentenceWords){
+            if(currHash.includes(word)!=false){
+                i++;
             }
-            else{
-                for(child of textnodes.childNodes){
+        }
+        if(i == sentenceWordsLength){
+            //Found current location!
+            currLoc = sentences[x]
+            break outerloop;
+        }
+    }
 
-                    if(child.innerHTML == sentences[x]){
-                        console.log('found mathcing sentence')
-                        hashString = window.location.hash //current location in document
-                        sentenceWords = sentences[x].split(' ')
-                        sentenceWordsLength = sentenceWords.length
-                        i=0;
+    if(currLoc == ''){
+        //no sentence chosen - we want to find the location of the first sentence.
+        sentenceToFind = sentences[0]
+    }
+    else{
+        //Some sentence was found - we need to figure out which one to find next.
+        noOfSentences = sentences.length
+        
+        looop:
+        for(x in sentences){
+            if(currLoc == sentences[x]){
+                if(x == sentences.length-1){
+                    //we are located at the last sentence - go back to first
+                    sentenceToFind = sentences[0]
+                }
+                else{
+                    sentenceToFind = sentences[parseInt(x)+1]
+                }
+                break looop;
+            }
+        }
+    }
 
-                        for(word of sentenceWords){
-                            if(hashString.includes(word)!=-1){
-                                i++;
-                            }
-                        }
-                        if(i == sentenceWordsLength){
-                            currLoc = sentences[x]
-                            console.log('curLoc: ', currLoc)
-                        }
-                        if(currLoc == sentences[x]){
-                            child.setAttribute('id', sentences[parseInt(x)+1])
-                            if(sentences.length < (parseInt(x))){
-                                console.log('HERE')
-                                console.log(sentences[0])
-                                window.location.hash = sentences[0]
-                            }else{
-                                console.log(sentences[parseInt(x)+1])
-                                window.location.hash = sentences[parseInt(x)-1]    
-                            }
-                        }
-                        else{
-                            child.setAttribute('id', sentences[x])
-                            window.location.hash = sentences[x]
-                        }
-                        break;
-                    }
+    for(textnodes of text){
+        if(textnodes.tagName == 'H1' || textnodes.tagName == 'H2' || textnodes.tagName == 'H3' || textnodes.tagName == 'H4' || textnodes.tagName == 'H5'){
+            if(textnodes.innerHTML == sentenceToFind){
+                textnodes.setAttribute('id', sentenceToFind)
+                window.location.hash = sentenceToFind
+            }
+        }
+        else{
+            for(child of textnodes.childNodes){
+                if(child.innerHTML == sentenceToFind){
+                    textnodes.setAttribute('id', sentenceToFind)
+                    window.location.hash = sentenceToFind
                 }
             }
         }
