@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from flask import Flask, request, send_from_directory, render_template, Markup, redirect, url_for
 from flask_restful import reqparse, abort, Api, Resource
 import json

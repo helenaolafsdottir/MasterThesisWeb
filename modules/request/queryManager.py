@@ -127,11 +127,11 @@ class InformationRetriever:
                 
         BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         owl_path = os.path.join(BASE_DIR, "ontology.owl")
-        onto = get_ontology('file://C:/Users/Lenovo/Documents/Helena/Chalmers/MasterThesis/WebSystem/MasterThesisWeb/ontology.owl').load()
+        onto = get_ontology(owl_path).load()
         #print('onto: ', onto)
         
         my_world = World()
-        my_world.get_ontology('file://C:/Users/Lenovo/Documents/Helena/Chalmers/MasterThesis/WebSystem/MasterThesisWeb/ontology.owl').load() #path to the owl file is given here
+        my_world.get_ontology(owl_path).load() #path to the owl file is given here
         sync_reasoner(my_world)  #reasoner is started and synchronized here
         self.graph = my_world.as_rdflib_graph()
 
