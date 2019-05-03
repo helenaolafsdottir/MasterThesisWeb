@@ -1,4 +1,4 @@
-const API_URL = 'http://web/query/question';
+const API_URL = 'http://thesis-ontology.herokuapp.com/query/question';
 
 const program = (() => {
 
