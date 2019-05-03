@@ -1,4 +1,4 @@
-const API_URL = 'https://apis.is/isnic?domain=';
+const API_URL = 'http://0.0.0.0:5000/query/question';
 
 const program = (() => {
 
@@ -15,7 +15,7 @@ const program = (() => {
   function fetchResults(domain, currentQuestion) {
     //fetch(`${domain}`, {'method': 'POST', 'body': {'currQuestion': currentQuestion}})
     //fetch('https://hinriksnaer.pythonanywhere.com/query/question', 
-    fetch('http://127.0.0.1:5000/query/question', 
+    fetch(API_URL, 
       {
         'method': 'POST',
         'headers': {
@@ -25,7 +25,6 @@ const program = (() => {
     })
       .then(data =>{
         data.json().then(stuff => renderResponseToUserQuery(stuff, currentQuestion))
-        
       }) 
       .catch((error) => {
         console.error('Error fetching data', error);

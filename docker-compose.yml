@@ -1,0 +1,8 @@
+version: "2"
+services:
+  webapp:
+    build: ./
+    image: helena-thesis:webapp
+    command: python3 /app/api.py
+    ports:
+      - "5000:5000"

@@ -1,6 +1,15 @@
-FROM debian:buster-slim
+FROM python:3.7
 
 RUN apt update
 
-RUN apt install python3-dev python3-venv openjdk-8-jdk openjdk-8-jre
+RUN apt upgrade -y
 
+RUN apt install openjdk-8-jre-headless openjdk-8-jdk-headless -y
+
+COPY ./app /app
+
+WORKDIR /app
+
+RUN pip install -r requirements.txt
+
+RUN python3 fetch_wordnet.py
