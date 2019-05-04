@@ -223,7 +223,7 @@ class InformationRetriever:
 
     def getSentenceTypes(self, sentences):
         filterString = ''
-        for sentence of sentences:
+        for sentence in sentences:
             filterStringAddition = " (?label="%s") ||" % sentence
             filterString.append(filterStringAddition)
 
