@@ -92,7 +92,7 @@ class SDNavigator(Resource):
                     updatedResults.append({'word': word, 'cluster': updatedCluster})
                 
                 results = updatedCluster
-            else
+            else:
                 results = "There are no results for this requirement."
                     
                     
