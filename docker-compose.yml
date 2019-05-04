@@ -16,5 +16,3 @@ services:
       context: ./
       dockerfile: Dockerfile_Fuseki
     image: helena-thesis:fuseki
-    ports:
-      - "3030:3030"

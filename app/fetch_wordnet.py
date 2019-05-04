@@ -1,3 +1,3 @@
 import nltk
-nltk.download("wordnet", download_dir="/app/nltk_data")
-nltk.download("stopwords", download_dir="/app/nltk_data")
+nltk.download("wordnet", download_dir="/usr/share/nltk_data")
+nltk.download("stopwords", download_dir="/usr/share/nltk_data")

@@ -4,10 +4,9 @@ from owlready2 import *
 
 # Retrieves data from the ontology using the SPARQL query language
 class InformationRetriever:
-
     # Connect to the ontology server
     def __init__(self):
-        self.sparql = SPARQLWrapper('http://fuseki/MasterThesisDS18')
+        self.sparql = SPARQLWrapper('http://fuseki:3030/MasterThesisDS18')
 
                 
         # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
