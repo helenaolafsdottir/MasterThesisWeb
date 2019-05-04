@@ -79,7 +79,7 @@ class SDNavigator(Resource):
                     updatedCluster = []
                     clusterSentences = cluster['cluster']
                     for clusterSentence in clusterSentences:
-                        sentences.append[clusterSentence['sentence']]
+                        sentences.append(clusterSentence['sentence'])
                     
                     print('sentences: ', sentences)
                     
