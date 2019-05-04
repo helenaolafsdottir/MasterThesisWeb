@@ -225,7 +225,7 @@ class InformationRetriever:
         filterString = ''
         for sentence in sentences:
             filterStringAddition = " (?label=\"{0}\") ||".format(sentence)
-            filterString.append(filterStringAddition)
+            filterString = filterString + filterStringAddition
 
         print(filterString)
         filterString = filterString[:-2]
