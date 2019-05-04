@@ -209,7 +209,6 @@ class InformationRetriever:
                 'FILTER (?label="{sentence}")' \
                 'FILTER (regex(str(?typ ),"^(?!http://www.w3.org/2002/07/owl#).+")) . ' \
                 '}}'
-        #print('curr sentence: ', sentence)
         query = query.format(sentence=sentence)
         types = []
         #try:
@@ -221,31 +220,31 @@ class InformationRetriever:
         #    return 'Error in query'
     
 
-    def getSentenceTypes(self, sentences):
-        filterString = ''
-        for sentence in sentences:
-            filterStringAddition = " (?label=\"{0}\") ||".format(sentence)
-            filterString = filterString + filterStringAddition
-            
-        filterString = filterString[:-2]
-        filterString = 'FILTER (' + filterString + ')'
+    # def getSentenceTypes(self, sentences):
+    #     filterString = ''
+    #     for sentence in sentences:
+    #         filterStringAddition = " (?label=\"{0}\") ||".format(sentence)
+    #         filterString = filterString + filterStringAddition
 
-        query = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>'\
-                'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>'\
-                'PREFIX owl: <http://www.w3.org/2002/07/owl#>'\
-                'PREFIX onto: <http://www.semanticweb.org/masterThesisOntology#> '\
-                'SELECT ?label ?typ WHERE {{'  \
-                '?type rdfs:label ?label .' \
-                '?type rdf:type ?typ .' \
-                '{filterString}'\
-                'FILTER (regex(str(?typ ),"^(?!http://www.w3.org/2002/07/owl#).+")) . ' \
-                '}}'
+    #     filterString = filterString[:-2]
+    #     filterString = 'FILTER (' + filterString + ')'
+
+    #     query = 'PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>'\
+    #             'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>'\
+    #             'PREFIX owl: <http://www.w3.org/2002/07/owl#>'\
+    #             'PREFIX onto: <http://www.semanticweb.org/masterThesisOntology#> '\
+    #             'SELECT ?label ?typ WHERE {{'  \
+    #             '?type rdfs:label ?label .' \
+    #             '?type rdf:type ?typ .' \
+    #             '{filterString}'\
+    #             'FILTER (regex(str(?typ ),"^(?!http://www.w3.org/2002/07/owl#).+")) . ' \
+    #             '}}'
         
-        query = query.format(filterString=filterString)
-        types = []
+    #     query = query.format(filterString=filterString)
+    #     types = []
         
-        queryResult = self.graph.query(query)   
-        for item in queryResult:
-            types.append({'sentence': item[0], 'type': item[1]})
-        return types
+    #     queryResult = self.graph.query(query)   
+    #     for item in queryResult:
+    #         types.append({'sentence': item[0], 'type': item[1]})
+    #     return types
         

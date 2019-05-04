@@ -70,47 +70,47 @@ class SDNavigator(Resource):
             else: currUserStory = currQuestion.replace('question10','')
             results = treude.getCategoryOfSentence(currUserStory)
 
-            if len(results)>0:
-                sentences = []
-                updatedResults = []
-                for cluster in results:
-                    word = cluster['word']
-                    updatedCluster = []
-                    clusterSentences = cluster['cluster']
-                    for clusterSentence in clusterSentences:
-                        sentences.append(clusterSentence['sentence'])
-                                    
-                    sentencesWithTypes = queryManager.getSentenceTypes(sentences)
-                    if sentencesWithTypes != None:
-                        for instance in sentencesWithTypes:
-                            if 'S-Architecture' in instance['type'] or 'S-TechnologySolution' in instance['type'] or 'S-SourceCode' in instance['type'] or 'B-TechnologySolution' in instance['type'] or 'B-General' in instance['type'] or 'D-Architecture' in instance['type'] or 'U-Architecture' in instance['type'] or 'U-Implementation' in instance['type']:
-                                updatedCluster.append(instance)
-
-                    updatedResults.append({'word': word, 'cluster': updatedCluster})
-                
-                results = updatedCluster
-            else:
-                results = "There are no results for this requirement."
-                    
-                    
             # if len(results)>0:
+            #     sentences = []
             #     updatedResults = []
             #     for cluster in results:
             #         word = cluster['word']
             #         updatedCluster = []
-            #         for sentence in cluster['cluster']:
-            #             sentenceType = queryManager.getSentenceType(sentence['sentence'])
-            #             if sentenceType != None:
-            #                 for instance in sentenceType:
-            #                     # Filter out all results that are not implementation related
-            #                     if 'S-Architecture' in instance['type'] or 'S-TechnologySolution' in instance['type'] or 'S-SourceCode' in instance['type'] or 'B-TechnologySolution' in instance['type'] or 'B-General' in instance['type'] or 'D-Architecture' in instance['type'] or 'U-Architecture' in instance['type'] or 'U-Implementation' in instance['type']:
-            #                         updatedCluster.append(instance)
-                    
-            #         updatedResults.append({'word': word, 'cluster': updatedCluster})
+            #         clusterSentences = cluster['cluster']
+            #         for clusterSentence in clusterSentences:
+            #             sentences.append(clusterSentence['sentence'])
+                                    
+            #         sentencesWithTypes = queryManager.getSentenceTypes(sentences)
+            #         if sentencesWithTypes != None:
+            #             for instance in sentencesWithTypes:
+            #                 if 'S-Architecture' in instance['type'] or 'S-TechnologySolution' in instance['type'] or 'S-SourceCode' in instance['type'] or 'B-TechnologySolution' in instance['type'] or 'B-General' in instance['type'] or 'D-Architecture' in instance['type'] or 'U-Architecture' in instance['type'] or 'U-Implementation' in instance['type']:
+            #                     updatedCluster.append(instance)
 
-            #     results = updatedResults
+            #         updatedResults.append({'word': word, 'cluster': updatedCluster})
+                
+            #     results = updatedCluster
             # else:
             #     results = "There are no results for this requirement."
+                    
+                    
+            if len(results)>0:
+                updatedResults = []
+                for cluster in results:
+                    word = cluster['word']
+                    updatedCluster = []
+                    for sentence in cluster['cluster']:
+                        sentenceType = queryManager.getSentenceType(sentence['sentence'])
+                        if sentenceType != None:
+                            for instance in sentenceType:
+                                # Filter out all results that are not implementation related
+                                if 'S-Architecture' in instance['type'] or 'S-TechnologySolution' in instance['type'] or 'S-SourceCode' in instance['type'] or 'B-TechnologySolution' in instance['type'] or 'B-General' in instance['type'] or 'D-Architecture' in instance['type'] or 'U-Architecture' in instance['type'] or 'U-Implementation' in instance['type']:
+                                    updatedCluster.append(instance)
+                    
+                    updatedResults.append({'word': word, 'cluster': updatedCluster})
+
+                results = updatedResults
+            else:
+                results = "There are no results for this requirement."
         
         elif "question5" in currQuestion or "question11" in currQuestion:
             if("question5" in currQuestion): currUserStory = currQuestion.replace('question5','')
