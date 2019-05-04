@@ -1,0 +1,21 @@
+FROM heroku/heroku:18
+
+RUN apt update
+
+RUN apt install openjdk-8-jre-headless openjdk-8-jdk-headless -y
+
+WORKDIR /tmp
+
+RUN wget https://www-us.apache.org/dist/jena/binaries/apache-jena-fuseki-3.11.0.zip -O fuseki.zip
+
+WORKDIR /opt
+
+RUN unzip /tmp/fuseki.zip
+
+RUN mv apache-* jena-fuseki/
+
+WORKDIR /opt/jena-fuseki/
+
+COPY ./app/modules/request/ontology.owl /opt/jena-fuseki/ontology.owl
+
+CMD ["/opt/jena-fuseki/fuseki-server", "--file=/opt/jena-fuseki/ontology.owl", "/MasterThesisDS18"]
