@@ -7,7 +7,7 @@ class InformationRetriever:
 
     # Connect to the ontology server
     def __init__(self):
-        self.sparql = SPARQLWrapper('http://localhost:3030/MasterThesisDS18')
+        self.sparql = SPARQLWrapper('http://fuseki:3030/MasterThesisDS18')
 
                 
         # BASE_DIR = os.path.dirname(os.path.abspath(__file__))

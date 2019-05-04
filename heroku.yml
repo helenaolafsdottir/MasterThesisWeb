@@ -1,7 +1,9 @@
 build:
   docker:
-    web: Dockerfile
+    web: Dockerfile_Web
+    fuseki: Dockerfile_Fuseki
 release:
   image: web
+  image: fuseki
   command:
     - echo 'Starting the server!'

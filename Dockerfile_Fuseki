@@ -18,4 +18,4 @@ WORKDIR /opt/jena-fuseki/
 
 COPY ./app/modules/request/ontology.owl /opt/jena-fuseki/ontology.owl
 
-CMD ["/opt/jena-fuseki/fuseki-server", "--file=/opt/jena-fuseki/ontology.owl", "/MasterThesisDS"]
+CMD ["/opt/jena-fuseki/fuseki-server", "--file=/opt/jena-fuseki/ontology.owl", "/MasterThesisDS18"]
