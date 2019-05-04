@@ -1,8 +1,20 @@
 version: "2"
 services:
   webapp:
-    build: ./
+    build:
+      context: ./
+      dockerfile: Dockerfile_Web
     image: helena-thesis:webapp
     #command: python3.7 /app/api.py
     ports:
       - "5000:5000"
+    depends_on:
+      - fuseki
+
+  fuseki:
+    build:
+      context: ./
+      dockerfile: Dockerfile_Fuseki
+    image: helena-thesis:fuseki
+    ports:
+      - "3030:3030"
