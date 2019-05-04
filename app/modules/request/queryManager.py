@@ -224,7 +224,7 @@ class InformationRetriever:
     def getSentenceTypes(self, sentences):
         filterString = ''
         for sentence in sentences:
-            filterStringAddition = " (?label="{0}") ||".format(sentence)
+            filterStringAddition = " (?label=\"{0}\") ||".format(sentence)
             filterString.append(filterStringAddition)
 
         print(filterString)
