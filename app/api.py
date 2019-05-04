@@ -54,7 +54,6 @@ class SDNavigator(Resource):
                     for sentence in cluster['cluster']:
                         sentenceType = queryManager.getSentenceType(sentence['sentence'])
                         if sentenceType != None:
-                            print(sentenceType)
                             for instance in sentenceType:
                                 # The uncertain and non-information categories shouldn't be of interest to the user.
                                 if 'Uncertain' not in instance['type'] and 'Non-Information' not in instance['type']:
@@ -80,9 +79,7 @@ class SDNavigator(Resource):
                     clusterSentences = cluster['cluster']
                     for clusterSentence in clusterSentences:
                         sentences.append(clusterSentence['sentence'])
-                    
-                    print('sentences: ', sentences)
-                    
+                                    
                     sentencesWithTypes = queryManager.getSentenceTypes(sentences)
                     if sentencesWithTypes != None:
                         for instance in sentencesWithTypes:
