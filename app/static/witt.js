@@ -5,7 +5,7 @@
  * @param {string} lookingFor - Specifies what the user was looking for, e.g. architecture patterns
  */
 function printWords(resultsFound, lookingFor){
-    summary.append(el('p', lookingFor + ` mentioned in the text:`));
+    summary.append(el('p', `Possible ` + lookingFor + ` mentioned in the text:`));
     for(clusters of resultsFound){
         summary.append(el('li', clusters['word']))
     }
@@ -139,7 +139,7 @@ function findWordMatch(relevantSentences, lookingFor){
     wordMatches = [...new Set(wordMatches)];
 
     //show the matched words in the summary div
-    summary.append(el('p', lookingFor + ` mentioned in the text:`));
+    summary.append(el('p', `Possible ` + lookingFor + ` mentioned in the text:`));
     for(match of wordMatches){
         
         techWord = el('li', match)
