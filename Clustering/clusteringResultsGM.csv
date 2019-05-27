@@ -1,0 +1,301 @@
+Their primary need towards the template is to verify that their implementation is adjusting to both developers and clients needs |1|2||
+||||
+Accordingly it has been considered that the initial appropriate set of functionalities for this project include those related to browsing and purchasing products as well as management of a customer account |2|2||
+||||
+From here the user can select a category then all products belonging to that category or any descendent will be displayed |2|2||
+||||
+Whenever a set of products is listed those products on sale will be highlighted and the user will be given the option to sort and filter amongst all products |2|2||
+||||
+The sorting can be performed by name or price and the filtering by price and color |2|2||
+||||
+Clicking on a product thumbnail redirects the user to the product detail page where besides name and price also a description is shown |2|2||
+||||
+Here the user is able to select any color and size to visualize the corresponding picture |2|1||
+||||
+In any moment the user can add the selected product to the shopping cart afterwards the updated cart contents and total price will be displayed |0|0||
+||||
+Accessing the cart details also grants the user the possibility to change the number of units of an item or remove any particular item from the shopping cart |0|0||
+||||
+From here the user can choose to start the checkout process where he is asked to fill a form with shipping information ie shipping address and method and billing information ie billing address and payment data |0|1||
+||||
+Right before finishing the checkout process the user is informed of all introduced shipping and billing information as well as the order summary |0|0||
+||||
+Once the checkout process is finished another summary is shown along with a successful purchase message |0|0||
+||||
+The user can decide to sign up in our systems in which case he must provide his full name email address and a password |1|1||
+||||
+After signing up he is redirected to his user profile where he can update his personal data change his password manage his address book or review his previous orders in detail |1|1||
+||||
+The address book allows the user to store a set of postal addresses that can later be selected as shipping or billing address in the checkout process |1|1||
+||||
+The user is allowed to add new addresses to the address book as well as update or remove any stored address |1|1||
+||||
+While logged in the user can choose to log out in order to become an anonymous customer |1|0||
+||||
+In any moment he can log in again providing his email address and password |1|1||
+||||
+In case the user forgot his password he can request to recover it by entering his email address in which case an email is then sent to the address provided containing a web link can then be accessed within the next hour where the user can provide a new password |1|1||
+||||
+As mentioned earlier the system has three functionalities where all use cases fall into display products purchase products and manage customer account Figure |2|2||
+||||
+The customer can either list a set of products or display a particular product |2|2||
+||||
+Further additional functionalities can be applied to the product listing individually or combined together in order to alter the list itself ie filtering or the way the products are listed ie sorting and pagination |2|2||
+||||
+When placing an order the customer may be requested to pay online in which case the payment platform will provide the necessary means |0|0||
+||||
+Anonymous as much as registered customers can place orders but only customers that have been identified are able to list their own orders otherwise they are requested to identify themselves |1|2||
+||||
+Finally for the use cases related to account management Figure a registered customer can manage his address book ie add update or remove postal addresses or update his account ie change his personal data or password |1|1||
+||||
+He can as well decide to log out from the system and become an anonymous customer |1|1||
+||||
+As an anonymous customer he can sign up a new account or log in with an existing one |1|1||also put on user story instance?
+||||
+In case he can not remember his credentials he will be given the option to recover his password |1|1||
+||||
+The first one consist of browsing the catalog and selecting those products of interest |2|2||
+||||
+At some moment the user can decide to review the selected items and eventually buy them which is the second goal |2|0||
+||||
+Finally the third goal involves checking the payment or shipping status of the order or any additional related information |0|0||
+||||
+In this case the user will usually go to the home page select a category and then filter or sort the products until he eventually finds one of interest |2|2||
+||||
+Then he will probably ask for the details of the product and next he will add it to the shopping cart |2|0||
+||||
+Once the customer has some line items in his shopping cart the next step is to navigate to the cart page |0|0||
+||||
+Here the user can remove or modify his line items until he is ready to start the checkout process |0|0||
+||||
+There after entering all shipping and billing information the customer will confirm the purchase and the system will request the payment platform to process the payment displaying the order details in response to the customer |0|0||
+||||
+This scenario requires the customer to previously sign up to the system and purchase some items as a registered customer |1|1||
+||||
+Then at any moment the user can go to the login page and enter the login information to access his customer profile |1|0||
+||||
+There he can select to list all his orders and select the one he wants to view in detail |2|2||
+||||
+Therefore every product has at least one variant each one with different price or attributes |2|2||
+||||
+Similarly a cart can be associated with one of the shipping methods available in the system resulting in a shipping item necessary to manage taxes |0|0||
+||||
+Both products and shipping methods have a particular tax category that can be variable for products and fixed in the case of shipping |0|2||
+||||
+When one of these elements are added to the cart a tax rate is assigned to the item according to this tax category and the shipping address of the cart |0|0||
+||||
+As mentioned above carts can have a shipping address but can have as well a billing address |0|1||
+||||
+A cart can belong to a registered customer otherwise it is considered to have an anonymous customer |0|0||
+||||
+Once the checkout is finished a cart becomes an order with information about the current payment shipping and order status |0|0||
+||||
+If the customer was not anonymous this order will be associated with that customer along with any of his previous orders |0|0||
+||||
+Every customer can also have a list of addresses comprising the address book |1|0||
+||||
+Products addresses and shipping methods can change or disappear over time but the orders associated with them must stay in the system for an indefinite period of time having exactly the original information |0|2||
+||||
+While the current cart may optionally have associated information this information is mandatory in an order instance |0|0||
+||||
+So assuming that taxes are not included the net total price in the cart must be the sum of all the line item prices ie the quantity in each line item multiplied by the corresponding variant price associated with it plus the price of the shipping method selected |0|0||
+||||
+In order to calculate the gross total price taxes must be added up to this resulting net price |0|0||
+||||
+Taxes are calculated multiplying the price of each shipping or line item by its corresponding tax rate |0|0||
+||||
+Lastly when the shipping address is set in the cart all tax rates from shipping and line items are calculated |0|2||
+||||
+Only those products that include a tax category corresponding to the zone eg state country of the shipping address can be part of the cart |0|1||
+||||
+Missing the tax category means that the price can not be calculated thus the product is not available in that zone |0|2||
+||||
+Once the checkout is finished the cart becomes an order being this an irreversible change |0|0||
+||||
+From now on the order can only change from an open to a complete state and vice versa |0|0||
+||||
+At the beginning of the process a new cart is created |0|0||
+||||
+Once the cart contains an item it can be further updated then at any moment the user can start or exit the checkout process |0|0||
+||||
+Initially the checkout process requires a shipping address to display the shipping methods then it requires a shipping method to display billing options |0|1||
+||||
+When the user provides the billing information and finalizes the checkout the system charges the customer |0|0||
+||||
+The order is then created after the payment platform confirms that the payment was successful |0|0||
+||||
+The moment the previous cart becomes an order a new cart is created for the customer in order to start the process once again |0|0||
+||||
+A commandline interface CLI is also available especially aimed for managing SPHEREIO user accounts and projects from a commandline shell |1|0||
+||||
+Display products |2|2||
+||||
+When clicking on a product thumbnail the user will be redirected to the product detail of the variant he had selected Figure if any |2|2||
+||||
+There he can select any other color variant in which case a new page will be loaded in order to update the URL to let the user share the product URL that points to this particular color |2|0||
+||||
+He can also select a different size but in this case the page is not reloading as it was considered that the user does not have a need to share the exact size |2|0||
+||||
+At any time the user can see again the contents of his shopping cart when hovering the cart button on the header that will be closed automatically when moving the cursor away from the minicart |2|0||
+||||
+Purchase Products |0|2||
+||||
+In order to start the checkout process the user will first access the cart detail page by clicking on the cart button |0|0||
+||||
+When the customer is logged in his address book will appear on the right side allowing him to select one of his addresses which data will then be copied to the corresponding address form |0|1||
+||||
+User management |1|1||
+||||
+Before attempting to access his profile page the user needs to identify himself to the system |1|0||
+||||
+In case the user forgot his password the login form contains an option to recover it which renders a modal window where an email address is requested when the option is clicked |1|1||
+||||
+Submitting this form will send an email to the user with a new URL that redirects to the same login page but with a different modal window to enter a new password |1|1||
+||||
+Once the password is submitted the modal window closes thus showing the login form again to allow the user enter his new credentials |1|1||
+||||
+When the user selects an address the form changes into edition mode highlighting the address and copying its data to the empty form |1|1||
+||||
+A button at the top allows the user to return the form to its initial mode |1|1||
+||||
+Whenever the user adds updates or removes an address the list of addresses is updated accordingly |1|0||
+||||
+The initial process to access the client page is the same as any other use case the customer navigates to the server page which forwards the information to the template which builds the client page |2|0||
+||||
+Once the checkout form is filled and the customer decides to submit it the data is sent directly to the payment platform in order to avoid being PCI compliant |0|0||
+||||
+The platform proceeds charging the customer and then redirects him to the system |0|2||
+||||
+The payment platform redirects the customer to a different server page based on whether the charging operation was successful |0|0||
+||||
+The order is therefore only created when the customer is redirected to the successful server page |0|0||
+||||
+To solve this issue the order is created but always with a pending payment status |0|0||
+||||
+The system also requires a class to send emails through any email system of preference |1|1||
+||||
+This system allows future developers to add new ways of handling form submissions without affecting the core of the system |1|0||
+||||
+List Products |2|2||
+||||
+The different variants are displayed as small pictures and when the user hovers the cursor on these pictures the thumbnail variant changes to the hovered one replacing all variant related information |2|0||
+||||
+When a product variant has different sizes a list of sizes is shown to the customer when he hovers on the “ quick buy ” button to allow him select the correct size |2|2||
+||||
+This means that once the order is created the customer ’ s cart does not longer exist so the only possible moment to create the order is right after the payment has succeed |0|0||
+||||
+Of course a payment cancellation can always be requested in failure cases the customer is usually already charged but then he is refunded depending on the payment provider |0|0||
+||||
+First the cart is checked for any changes then the customer is charged and only when it is successful the order is created |0|0||
+||||
+B11 Browse Products |2|2||
+||||
+List products |2|2||
+||||
+As a customer I want to list all products of the shop |2|2||user story
+||||
+Filter by category |2|2||
+||||
+As a customer I want to see only those products that belong to a particular category and any category descendant so that I can narrow down the list to what fits best my needs |2|2||user story
+||||
+Filter by price |2|2||
+||||
+As a customer I want to see only those products from the product list which prices fall within a specific price range so that I can narrow down the list to best fit my economic requirements |2|2||user story
+||||
+Filter by color |2|2||
+||||
+As a customer I want to see only those products from the product list which main color matches any of the colors I selected so that I can narrow down the list to best fit my liking |2|2||user story
+||||
+Sort by name |2|2||
+||||
+As a customer I want to sort the products from the product list by their name in an ascendant or descendant order |2|2||user story
+||||
+Sort by price |2|2||
+||||
+As a customer I want to sort the products from the product list by their price in an ascendant or descendant order |2|2||user story
+||||
+Pagination |2|2||
+||||
+The product list needs to be displayed divided into pages and the customer should be given the ability to browse through them |2|2||
+||||
+Product detail |2|2||
+||||
+As a customer I want to see all information regarding a particular product and its variants so that I can make a better decision about buying it |2|2||user story
+||||
+Breadcrumb |2|0||
+||||
+As a customer I want to be informed of my location inside the category tree via a breadcrumb so that it can help me to navigate and have a better understanding of the webshop structure |2|2||user story
+||||
+Empty list message |2|2||
+||||
+As a customer I want to be informed with an informative message when a product list request has no results |2|2||user story
+||||
+Not found message |2|2||
+||||
+As a customer I want to be informed with an informative message when a category or product I requested can not be found |2|2||user story
+||||
+B12 Purchase Products |0|2||
+||||
+Add item to cart |0|0||
+||||
+As a customer I want to add a particular product to the shopping cart so that I can buy it with the next order |0|0||user story
+||||
+Update item in cart |0|0||
+||||
+As a customer I want to change the number of units of a particular item in the shopping cart so that I can buy a different quantity of the product with the next order |0|0||user story
+||||
+Remove item from cart |0|0||
+||||
+As a customer I want to remove a particular item from the shopping cart so that I do not buy it with the next order |0|0||user story
+||||
+Place order |0|0||
+||||
+As a customer I want to place an order so that I can actually buy the items in my shopping cart |0|0||user story
+||||
+Payment |0|0||
+||||
+As a customer I want to be able to pay online my orders so that I can pay immediately the moment I buy them instead of using other possibly unpleasant billing options |0|0||user story
+||||
+List orders |0|2||
+||||
+As a registered customer I want to see a list of my orders so that I can see all the purchases I did in the past |0|2||user story
+||||
+Mini cart |0|0||
+||||
+As a customer I want to be able to see my current shopping cart from any page via a socalled minicart so that I can always be aware of its contents and pricing details |0|0||user story
+||||
+B13 User Management |1|1||
+||||
+As an anonymous customer I want to sign up a new customer account so that I can place orders more easily and take advantage of many other benefits |1|1||user story
+||||
+Log in |1|1||
+||||
+As an anonymous customer I want to log in with an existing customer account so that I take advantage of the benefits of being a registered customer |1|0||user story
+||||
+Log out |1|1||
+||||
+As a registered customer I want to logout from my customer account so that nobody else can use it from the same machine |1|1||user story
+||||
+Recover password |1|1||
+||||
+As an anonymous customer I want to be able to recover my password so that I can log in with my account when I forget my current password |1|1||user story
+||||
+Update account |1|1||
+||||
+As a registered customer I want to update my personal data such as the email address used |1|1||user story
+||||
+Change password |1|1||
+||||
+As a registered customer I want to change my current password to another one of my choice |1|1||user story
+||||
+Add address |1|1||
+||||
+As a registered customer I want to add a postal address to my address book so that I can select it as shipping or billing address when placing an order |1|1||user story
+||||
+Update address |1|1||
+||||
+As a registered customer I want to update the data of a particular postal address from my address book so that it corresponds to my current situation |1|1||user story
+||||
+Remove address |1|1||
+||||
+As a registered customer I want to remove a particular postal address from my address book so that I can not longer select it when placing an order |1|1||user story
