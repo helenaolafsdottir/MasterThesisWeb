@@ -1,0 +1,179 @@
+After repeating the same test severals time to check for anomalies, the average results show how the web application has no problems with light pages (e.g. a product detail page), although the response time is not stable, which suggests that might have problems with a bigger amount of users (see Figure 6.7).|testing
+|
+Cucumber is used in this project as a tool to write these acceptance tests, allowing to write the rules in plain text (see Figure 6.5), while describing the technical details of each rule in Ruby in a separated file.|testing
+|
+Particular attention must be paid with the checkout process in order to avoid fraud.|testing
+|
+And although it was not explicitly a requirement, it has been considered important to run some performance tests in order to detect and possibly fix those issues that may slow down the application (section Performance Tests 6.3).|testing
+|
+Five people were selected for this test [Nie12], all with different profiles of online shopping experience and computer expertise.|testing
+|
+On the other hand, a test was designed in order to evaluate the operability and likeability of the template by the users.|testing
+|
+Tests must therefore be independent from the backend data used.|testing
+|
+Although major part of the required security is located on the e-commerce and payment platforms, there are some risks server side that must be top priority when it comes to online shopping.|testing
+|
+Template testing is useful to check the correct behavior of some common elements, such as the mini-cart or the breadcrumb generation shown in Figure 6.2.|testing
+|
+Here the average response time was of 58 milliseconds, which is more or less the average of the whole web-shop when no bigger issues are affecting the performance.|testing
+|
+In this case, the memory fails before reaching 100 users.|testing
+|
+This means that unit testing will be preferably used to test everything that can be possibly covered by it, while acceptance tests will be left for giving feedback about the proper functioning of the system to the future clients.|testing
+|
+But this system may not be convenient for most of the projects if the tests are meant to be too strict.|testing
+|
+Acceptance tests are ensuring that the main requirements agreed for the project are met in the current version.|testing
+|
+6.2 Usability tests|testing
+|
+It also reported that there were too many JavaScript and CSS files being fetched before the page could even be loaded, which meant that the browser had to wait until the last file was fetched in order to allow the user take control of it.|testing
+|
+In this example, the only element that is actually interesting to modify amongst tests is the list of products returned, all other stubbed methods and mocked objects are just adding unnecessary complexity to the code.|testing
+|
+But this system would easily lead to fraud, because the user could try to access the page directly without being charged.|testing
+|
+Submitting the form each time the input value is changed can lead to an excess of calls to the server if the user changes the quantity value too often.|testing
+|
+With iterative methodologies, usability tests would be ideally performed by the end of the sprint, so that tasks for fixing any issue resulting from the test output can be assigned to the next sprint.|testing
+|
+Lastly, a load of 1.000 concurrent users during 3 minutes was tested against the light product list page with these four processing units (see Figure 6.9).|testing
+|
+Traditional web-shops usually reload when moving from one checkout step to the other, and it can be sometimes difficult to change the data of a step that is not immediately before the active one.|testing
+|
+A load test was also performed against the system to check the maximum operating capacity and detect bottlenecks.|testing
+|
+This memory issue may be related to a memory leak from Play Framework or from the same application, but in any case probably has a solution that should be found in order to increase the performance of the system.|testing
+|
+The best way to face this issue was to use RequireJS, an asynchronously module and file loader for JavaScript files, that allowed to fetch a JavaScript file in the background first, and then load all its dependencies in parallel.|testing
+|
+The content is not checked, as this should be already verified by the unit tests.|testing
+|
+For example, most of them had problems with the lack of loading animations when AJAX is performing a request in the background, which is something that has repeatedly been postponed, although it is practically implemented since the beginning.|testing
+|
+Formal usability tests are still necessary in order to receive feedback from some controlled and prepared environments, giving a more reliable source of information.|testing
+|
+JUnit is the testing framework provided by Play to implement unit tests for the web application, allowing testing each route in the routing system, each controller action and each template individually.|testing
+|
+As explained in the section Development Environment 5.1, this project follows a continuous deployment process which requires functional tests to be implemented along with the feature, to ensure the functionality is working correctly every time a change is merged with the project.|testing
+|
+This problem has two solutions: either the number of processing units is increased, so the load can be distributed and units can be replaced when they fail, or the unit can be upgraded to have double memory.|testing
+|
+In order to prove it is allowed, the template should be completed with automated functional tests, being careful of keeping these tests independent from the backend data in use.|testing
+|
+Besides the initial design was not contemplating the possible need to manipulate the response, so mostly all classes had private constructors, thus forcing the necessity to mock practically all SDK classes involved in the system and stub every method before any test could actually be executed.|testing
+|
+This way it was possible to detect a bug in the endless scroll for the product list, which executed repeated calls to the web application server even when there were no more product available.|testing
+|
+For this to work, every new feature developed for the system should always go along with tests validating that feature.|testing
+|
+6.1.1 UNIT TESTS|testing
+|
+The test was executed with Blitz, a very interesting tool that allows to easily integrate load testing in the Continuous Integration process, although in this case only the online tool provided in their website is going to be used for these one-time tests.|testing
+|
+To prove that, Play Framework provides Selenium WebDriver to start a test browser and FluentLenium to easily write tests with it, wrapping the Selenium WebDriver in a convenient API with a fluent interface.|testing
+|
+The results are completely satisfactory, with very stable responses except for one timeout period after the first minute, which could be related to Heroku reacting to the load or simply isolated network problems.|testing
+|
+The test should analyze the HTTP status code, content type and charset of the response are correct, as well as to verify that the content is well formed and displays correct information.|testing
+|
+In Figure 6.3 below it is shown how the Sphere class is mocked with certain products to be returned by the product request.|testing
+|
+6 System Tests|testing
+|
+This means that during the tests execution, all objects returned by the class whenever a call to the backend is theoretically executed are actually objects constructed by the testing code.|testing
+|
+So in the end only the classes related to browsing products were completely mocked, ensuring at least some example tests to include with the template until a better approach is discussed and provided with the SPHERE.IO Play SDK.|testing
+|
+Figure 6.4 below shows an example of how the test browser navigates to the home page and there clicks on a category, which displays the category page.|testing
+|
+All these issues are affecting negatively the feeling of control the user has.|testing
+|
+A major difficulty of developing functional tests in this project is that they should work with any set of commerce data, so that when developers switch from the test web-shop data to their own, the tests are still functional.|testing
+|
+It was necessary to find a solution for this, because in order to make the system’s CoffeeScript more understandable for the developer, the code was split into several files and classes, which in some cases raised the amount of files fetched to more than ten.|testing
+|
+Also, mocking allows to easily test any situation that may prove complicated otherwise, like provoking certain errors from the backend (e.g. a “500 Internal Server Error” HTTP status code).|testing
+|
+One of the best solutions for the developers would be to offer some methods to directly mock the response from the server, without requiring the developer to understand the internal structure of the SDK.|testing
+|
+The type of result is verified and its content, in this case JSON data, is then analyzed to check the required products are sent.|testing
+|
+The platform should allow to test any web application built on top of it.|testing
+|
+This system triggers only those tests that allow to check the functional requirements of the system, called functional tests, but any other type of automated test can be executed as well to check, for example, that the response time of the system is within the agreed limit.|testing
+|
+6.1.3 Acceptance tests|testing
+|
+In most cases, SDK logic that was intended to work directly had to be simulated first in order to mock other classes, sometimes changing excessively the original behavior of the SDK.|testing
+|
+In some cases it is also hard to know what changes are modifying the price or to review what was entered on previous steps.|testing
+|
+This iteration is repeated until the reports from the tests are satisfactory, meaning that the user story is concluded.|testing
+|
+The results were very satisfactory and provided some issues with clear solutions.|testing
+|
+Some evident examples they gave were the poor feedback the system shows when adding an address or selecting one during the checkout process.|testing
+|
+Not only this process proved to be notably complex, but also testing code became messy and at some point it was even difficult to be sure that the tests were really meaningful.|testing
+|
+Unfortunately the former case is still not possible because the FilterExpression is lacking an overridden equals method to compare them, so currently the test would always fail.|testing
+|
+Not only this solution allows to execute the tests independently of the system’s environment, but moreover performance is improved significantly since no remote resources are used, which hastens the feedback provided by the continuous development process.|testing
+|
+Besides, acceptance tests that verify the business logic can be run each time to ensure that the project requirements are met.|testing
+|
+Unit tests are focused on checking the correct behavior of individual components when they are isolated from the rest of the system.|testing
+|
+These tests will validate the proper functioning of the components when they are integrated in the web application.|testing
+|
+Given that this project needed to reach some usability requirements focused both on developers and end users, it was necessary to set up two different scenarios separately.|testing
+|
+Besides measuring the total time it took them to actually buy the items, it is most important to observe their reactions and ask them about their first thoughts regarding what they expect when they perform an operation.|testing
+|
+These aspects should be eventually covered by the set of unit, integration and acceptance tests as a whole; always taking into consideration that unit tests are using fewer resources than the others, in opposition to acceptance tests, which are the most resource-intensive of all.|testing
+|
+Automating these tests on a staging system allows to flawlessly merge small pieces of code with the mainline of the project at a rapid pace.|testing
+|
+Increasing up to four processing units solves the problem, but still 10% of the responses end up exceeding 1.000 milliseconds.|testing
+|
+The routing system is tested by verifying that all the required routes are found by the system, while the controller actions are tested setting up different requests and checking the response is as expected.|testing
+|
+The navigation related logic have been separated from the testing logic, so that tests are better isolated and the navigation code is reused.|testing
+|
+A first test with a duration of one minute, going from 1 to 250 concurrent users, will serve to test the regular configuration of the system, which consists of a single processing unit with 512MB of memory RAM in Heroku.|testing
+|
+Integration tests are in charge of checking that the previously tested components are correctly working together.|testing
+|
+For example some data needs a careful treatment, like user related data such as addresses, passwords and payment information.|testing
+|
+6.3 Performance tests|testing
+|
+If the number of processing units is increased by one, having then two units, then the product detail page shows stable responses and the product list page with few products has no more memory problems, but the home page is still having trouble, this time at 170 concurrent users (see Figure 6.8).|testing
+|
+These type of tests need to be supervised by the client of the product, usually non-technical people.|testing
+|
+Given that acceptance tests are guaranteeing the correctness of the current version, it is imperative to use real data instead of mocking it.|testing
+|
+Unlike unit testing, here the tests only need to verify that the response is the expected when an action is requested.|testing
+|
+After that, the search request prepared for the backend is examined with Mockito, verifying that the correct filters were applied and the second page was actually requested before mocking the response.|testing
+|
+On the other hand, heavier pages like any product list, have grave problems with memory, which starts failing with around 170 concurrent users, and then Heroku keeps serving a “503 Service Unavailable” error.|testing
+|
+6.1.2 Integration tests|testing
+|
+This process already acts like an informal usability test every sprint.|testing
+|
+Figure 6.1 presents an extract of the source code in charge of mocking the search request for products.|testing
+|
+The functional tests are designed after the descriptions given for the functional requirements of the system, which are detailed in the Appendix B.1.|testing
+|
+Error messages are always specified along with every action, so it becomes easy for non-technical people to identify any issue.|testing
+|
+6.1 Functional test|testing
+|
+The negative evaluation responds to missing features rather than bad design or implementation.|testing
+|
+The selected technology to mock Java code was Mockito, a very popular testing framework due to the simplicity of the resulting code, yet a complete solution like any of the alternatives.|testing

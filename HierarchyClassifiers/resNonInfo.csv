@@ -1,0 +1,39 @@
+Almost all the low-level use cases of this project consist of only one interaction between the user and the system.|non-information
+|
+About five teams used the web-shop as a template, achieving notable results as well.|non-information
+|
+The previously explained use cases are mostly useful to define the scope of the project and understand its functionalities.|non-information
+|
+3.3 Conceptual Model|non-information
+|
+But this is not the case of this project whatsoever, the use cases defined here are precisely very common amongst web-shops, so any operation offered by this system is considered to be selfexplanatory.|non-information
+|
+All low-level use cases defined earlier are actually providing the functionalities to fulfill these three goals.|non-information
+|
+During the last year LinkedIn has been contributing actively to a separated Dust.js project that the company is using for its website [Bas12].|non-information
+|
+Around September, a smaller hackathon of six hours was held internally, only for the staff of commercetools GmbH.|non-information
+|
+This hackathon consisted of developing an application connecting two or more of the participant platforms, amongst which was SPHERE.IO.|non-information
+|
+4.1 System Physical Architecure|non-information
+|
+3.2 System behavior model|non-information
+|
+Contestants could use the web-shop of the current project as a template to implement their applications or just as documentation of the SPHERE.IO Play SDK.|non-information
+|
+This may be useful for projects that require very detailed information about the system to be developed, possibly because its behavior is very specific and unique.|non-information
+|
+The conceptual model of this system is then presented and, for each use case, is explained the expected behavior of the system with the user.|non-information
+|
+But these use cases are too granular for other purposes, such as defining acceptance tests or describing the sequence of user interactions with the system.|non-information
+|
+For example, these use cases can be helpful to estimate tasks and elaborate the development plan, as well as a guide to determine the necessary functional tests for the system.|non-information
+|
+These tasks require a more abstract level of use cases, focused on user goals instead of functionalities, sometimes called top-level use cases.|non-information
+|
+3.1 Use Case Model|non-information
+|
+They may want to use the template as a live documentation of how to use the system or directly use it as a bootstrap project on which to build their own web-shop.|non-information
+|
+Constantly during the project development, the tool Chrome DevTools was used to check the performance of the web-shop, paying special attention to repeated calls or some unexpected behavior resulting from a flaw in the software.|non-information

@@ -1,0 +1,421 @@
+2 Requirement Analysis|r-general
+|
+2.2 FUNCTIONAL REQUIREMENTS|r-general
+|
+2.3 Non-functional requirements|r-general
+|
+4.2.2.1 Display products|feature
+|
+4.2.2.2 Purchase Products|feature
+|
+4.2.2.3 User  management|feature
+|
+5.2.2 List Products|feature
+|
+A button at the top allows the user to return the form to its initial mode.|use case
+|
+A cart can belong to a registered customer, otherwise it is considered to have an anonymous customer.|functionality & behaviour
+|
+A command-line interface (CLI) is also available, especially aimed for managing SPHERE.IO user accounts and projects from a command-line shell.|feature
+|
+Accessing the cart details also grants the user the possibility to change the number of units of an item or remove any particular item from the shopping cart.|use case
+|
+Accordingly, it has been considered that the initial appropriate set of functionalities for this project include those related to browsing and purchasing products, as well as management of a customer account.|feature
+|
+Add address|functionality & behaviour
+|
+Add item to cart:|functionality & behaviour
+|
+After signing up he is redirected to his user profile, where he can update his personal data, change his password, manage his address book or review his previous orders in detail.|use case
+|
+Anonymous as much as registered customers can place orders, but only customers that have been identified are able to list their own orders, otherwise they are requested to identify themselves.|functionality & behaviour
+|
+As a customer, I want the web-shop with a human-readable URL structure, so that I can identify the type of content before visiting the web page|functionality & behaviour
+|
+As a customer, I want to add a particular product to the shopping cart, so that I can buy it with the next order (1).|functionality & behaviour
+|
+As a customer, I want to be able to pay online my orders, so that I can pay immediately the moment I buy them instead of using other possibly unpleasant billing options (4)|functionality & behaviour
+|
+As a customer, I want to be able to see my current shopping cart from any page via a so-called mini-cart, so that I can always be aware of its contents and pricing details (5).|functionality & behaviour
+|
+As a customer, I want to be informed of my location inside the category tree via a breadcrumb, so that it can help me to navigate and have a better understanding of the web-shop structure (6).|functionality & behaviour
+|
+As a customer, I want to be informed with an informative message when a category or product I requested cannot be found (10).|functionality & behaviour
+|
+As a customer, I want to be informed with an informative message when a product list request has no results (5).|functionality & behaviour
+|
+As a customer, I want to change the number of units of a particular item in the shopping cart, so that I can buy a different quantity of the product with the next order (6).|functionality & behaviour
+|
+As a customer, I want to learn how to purchase an item for the first time in less than 5 minutes (7).|non-functional
+|
+As a customer, I want to list all products of the shop (1).|functionality & behaviour
+|
+As a customer, I want to place an order, so that I can actually buy the items in my shopping cart (2).|functionality & behaviour
+|
+As a customer, I want to remove a particular item from the shopping cart, so that I do not buy it with the next order (3).|functionality & behaviour
+|
+As a customer, I want to see all information regarding a particular product and its variants, so that I can make a better decision about buying it (1).|functionality & behaviour
+|
+As a customer, I want to see only those products from the product list which main color matches any of the colors I selected, so that I can narrow down the list to best fit my liking (4).|functionality & behaviour
+|
+As a customer, I want to see only those products from the product list which prices fall within a specific price range, so that I can narrow down the list to best fit my economic requirements (3).|functionality & behaviour
+|
+As a customer, I want to see only those products that belong to a particular category and any category descendant, so that I can narrow down the list to what fits best my needs (2).|functionality & behaviour
+|
+As a customer, I want to sort the products from the product list by their name in an ascendant or descendant order (9).|functionality & behaviour
+|
+As a customer, I want to sort the products from the product list by their price in an ascendant or descendant order (8).|functionality & behaviour
+|
+As a developer, I want to be able to perform simple changes on user interface elements of the template in less than 10 minutes (4).|non-functional
+|
+As a developer, I want to be able to safely change the set of data fetched from the platform without affecting the proper functioning of the template, at least in 95% of the cases (6).|non-functional
+|
+As a developer, I want to be able to test any new feature of my web application with unit, integration and acceptance tests, in less than 2 person-hour (4).|non-functional
+|
+As a developer, I want to identify and understand a particular business logic code of the template in less than 1 person-hour (2).|non-functional
+|
+As a developer, I want to learn how the application is structured and how I can modify and extend it to build my own web-shop in less than 8 person-hour (3).|non-functional
+|
+As a merchant, I want my web-shop with a SEO-friendly URL structure, so that my web-shop can improve its ranking position in Internet search engines (8).|non-functional
+|
+As a registered customer, I want to add a postal address to my address book, so that I can select it as shipping or billing address when placing an order (5)|functionality & behaviour
+|
+As a registered customer, I want to change my current password to another one of my choice (5).|functionality & behaviour
+|
+As a registered customer, I want to logout from my customer account, so that nobody else can use it from the same machine (5).|functionality & behaviour
+|
+As a registered customer, I want to remove a particular postal address from my address book, so that I cannot longer select it when placing an order (5).|functionality & behaviour
+|
+As a registered customer, I want to see a list of my orders, so that I can see all the purchases I did in the past (5).|functionality & behaviour
+|
+As a registered customer, I want to update my personal data such as the email address used (6).|functionality & behaviour
+|
+As a registered customer, I want to update the data of a particular postal address from my address book, so that it corresponds to my current situation (6).|functionality & behaviour
+|
+As an anonymous customer, he can sign up a new account or log in with an existing one.|use case
+|
+As an anonymous customer, I want to be able to recover my password, so that I can log in with my account when I forget my current password (7).|functionality & behaviour
+|
+As an anonymous customer, I want to log in with an existing customer account, so that I take advantage of the benefits of being a registered customer (4).|functionality & behaviour
+|
+As an anonymous customer, I want to sign up a new customer account, so that I can place orders more easily and take advantage of many other benefits (4).|functionality & behaviour
+|
+As mentioned above carts can have a shipping address, but can have as well a billing address.|functionality & behaviour
+|
+As mentioned earlier, the system has three functionalities where all use cases fall into: display products, purchase products and manage customer account (Figure 3.2).|feature
+|
+At any time the user can see again the contents of his shopping cart when hovering the cart button on the header, that will be closed automatically when moving the cursor away from the mini-cart.|use case
+|
+At some moment, the user can decide to review the selected items and eventually buy them, which is the second goal.|use case
+|
+At the beginning of the process a new cart is created|functionality & behaviour
+|
+B.1 Functional Requirements|r-general
+|
+B.1.1 Browse Products|feature
+|
+B.1.2 Purchase Products|feature
+|
+B.1.3 User Management|feature
+|
+B.2 Non-Functional Requirements|r-general
+|
+B.2.1 Usability|non-functional
+|
+B.2.2 Maintainability|non-functional
+|
+B.2.3 FUNCTIONABILITY  |r-general
+|
+Before attempting to access his profile page, the user needs to identify himself to the system.|use case
+|
+Both products and shipping methods have a particular tax category, that can be variable for products and fixed in the case of shipping.|functionality & behaviour
+|
+Breadcrumb|non-functional
+|
+Change password:|functionality & behaviour
+|
+Changeability|non-functional
+|
+Clicking on a product thumbnail redirects the user to the product detail page, where besides name and price also a description is shown.|use case
+|
+Code quality and correct use of technologies may be important for them.|non-functional
+|
+Compliance|non-functional
+|
+Empty list message|functionality & behaviour
+|
+Every customer can also have a list of addresses comprising the address book.|functionality & behaviour
+|
+Filter by category|functionality & behaviour
+|
+Filter by color|functionality & behaviour
+|
+Filter by price|functionality & behaviour
+|
+Finally, for the use cases related to account management (Figure 3.5), a registered customer can manage his address book (i.e. add, update or remove postal addresses) or update his account (i.e. change his personal data or password).|feature
+|
+Finally, the third goal involves checking the payment or shipping status of the order, or any additional related information.|functionality & behaviour
+|
+First the cart is checked for any changes, then the customer is charged and, only when it is successful, the order is created.|use case
+|
+For this reason all nonfunctional requirements are highly focused on those areas.|r-general
+|
+From here the user can choose to start the checkout process, where he is asked to fill a form with shipping information (i.e. shipping address and method) and billing information (i.e. billing address and payment data).|use case
+|
+From here the user can select a category; then all products belonging to that category or any descendent will be displayed.|use case
+|
+From now on the order can only change from an open to a complete state, and vice versa.|functionality & behaviour
+|
+Further additional functionalities can be applied to the product listing, individually or combined together, in order to alter the list itself (i.e. filtering) or the way the products are listed (i.e. sorting and pagination).|r-general
+|
+Furthermore, given that maximizing developer experience (i.e. user experience applied to developers) is one of the main requirements of the project, this system needs technologies to help organizing and simplifying the code, particularly complex because of the logical architecture design.|non-functional
+|
+He can also select a different size, but in this case the page is not reloading, as it was considered that the user does not have a need to share the exact size.|use case
+|
+He can as well decide to log out from the system and become an anonymous customer.|use case
+|
+Here is where code is most required to be understandable.|r-general
+|
+Here the user can remove or modify his line items until he is ready to start the checkout process.|use case
+|
+Here the user is able to select any color and size to visualize the corresponding picture.|use case
+|
+If the customer was not anonymous, this order will be associated with that customer, along with any of his previous orders.|functionality & behaviour
+|
+Improving developer experience is a priority in this project, so CoffeeScript will contribute to make client-side code easier to understand and modify.|non-functional
+|
+In any moment the user can add the selected product to the shopping cart, afterwards the updated cart contents and total price will be displayed.|use case
+|
+In any moment, he can log in again providing his email address and password.|use case
+|
+In case he cannot remember his credentials, he will be given the option to recover his password.|use case
+|
+In case the user forgot his password, he can request to recover it by entering his email address, in which case an email is then sent to the address provided containing a web link can then be accessed within the next hour, where the user can provide a new password.|use case
+|
+In case the user forgot his password, the login form contains an option to recover it, which renders a modal window where an email address is requested when the option is clicked.|use case
+|
+In its first stage, the web-shop template is required mainly to analyze the platform capabilities, show code examples to developers and attract potential customers.|r-general
+|
+In order to calculate the gross total price, taxes must be added up to this resulting net price.|functionality & behaviour
+|
+In order to prove the value of the platform and identify any possible lack of functionality, the application should have all the common features of a regular web-shop.|r-general
+|
+In order to start gathering requirements, first it is necessary to identify each group affected by this project and understand everyone’s needs (section Stakeholders Analysis 2.1).|r-general
+|
+In order to start the checkout process, the user will first access the cart detail page by clicking on the cart button.|use case
+|
+In this case the user will usually go to the home page, select a category and then filter or sort the products until he eventually finds one of interest.|use case
+|
+In this system there are mainly three goals that a customer may want to achieve when he uses the web-shop, as shown in Figure 3.6|non-functional
+|
+Initially the checkout process requires a shipping address to display the shipping methods, then it requires a shipping method to display billing options.|r-general
+|
+Lastly when the shipping address is set in the cart, all tax rates from shipping and line items are calculated.|functionality & behaviour
+|
+Learnability|non-functional
+|
+Likeability:|non-functional
+|
+List orders|functionality & behaviour
+|
+List products|feature
+|
+Log in|non-functional
+|
+Log out|non-functional
+|
+Mini cart|functionality & behaviour
+|
+Missing the tax category means that the price cannot be calculated, thus the product is not available in that zone.|functionality & behaviour
+|
+Moreover the complexity of the code is also very significant, which makes this design not suitable for a template that must be understandable and easy to learn.|non-functional
+|
+Not found message|functionality & behaviour
+|
+Of course a payment cancellation can always be requested in failure cases, the customer is usually already charged but then he is refunded, depending on the payment provider.|use case
+|
+Once the cart contains an item it can be further updated, then at any moment the user can start or exit the checkout process.|use case
+|
+Once the checkout form is filled and the customer decides to submit it, the data is sent directly to the payment platform in order to avoid being PCI compliant.|use case
+|
+Once the checkout is finished a cart becomes an order, with information about the current payment, shipping and order status.|functionality & behaviour
+|
+Once the checkout is finished the cart becomes an order, being this an irreversible change.|use case
+|
+Once the checkout process is finished, another summary is shown along with a successful purchase message.|use case
+|
+Once the customer has some line items in his shopping cart, the next step is to navigate to the cart page|use case
+|
+Once the password is submitted the modal window closes, thus showing the login form again to allow the user enter his new credentials.|use case
+|
+Only those products that include a tax category corresponding to the zone (e.g. state, country) of the shipping address can be part of the cart.|functionality & behaviour
+|
+Operability|non-functional
+|
+Other areas of great importance as well, such as compatibility and performance, are left aside from the current project because of the excessive workload that it means.|functionality & behaviour
+|
+Pagination|non-functional
+|
+Payment:|functionality & behaviour
+|
+Place order|functionality & behaviour
+|
+Product detail|feature
+|
+Product listing is another interesting feature in the implementation process.|r-general
+|
+Products, addresses and shipping methods can change or disappear over time, but the orders associated with them must stay in the system for an indefinite period of time, having exactly the original information|functionality & behaviour
+|
+Recover password|functionality & behaviour
+|
+Remove address|functionality & behaviour
+|
+Remove item from cart|functionality & behaviour
+|
+Right before finishing the checkout process, the user is informed of all introduced shipping and billing information as well as the order summary.|use case
+|
+Security|non-functional
+|
+SEO-Friendly|non-functional
+|
+Similarly, a cart can be associated with one of the shipping methods available in the system, resulting in a shipping item, necessary to manage taxes|functionality & behaviour
+|
+So assuming that taxes are not included, the net total price in the cart must be the sum of all the line item prices (i.e. the quantity in each line item multiplied by the corresponding variant price) associated with it, plus the price of the shipping method selected.|functionality & behaviour
+|
+Sort by name|functionality & behaviour
+|
+Sort by price|functionality & behaviour
+|
+Stability|non-functional
+|
+Submitting this form will send an email to the user with a new URL, that redirects to the same login page but with a different modal window to enter a new password.|use case
+|
+Taxes are calculated multiplying the price of each shipping or line item by its corresponding tax rate.|functionality & behaviour
+|
+Testability:|non-functional
+|
+The address book allows the user to store a set of postal addresses that can later be selected as shipping or billing address in the checkout process.|use case
+|
+The checkout needs to be a secure and robust environment to the user.|non-functional
+|
+The colour scheme should be neutral but pleasant in order to match any web-shop topic, with a winter sports related theme.|non-functional
+|
+The customer can either list a set of products or display a particular product.|feature
+|
+The different variants are displayed as small pictures, and when the user hovers the cursor on these pictures the thumbnail variant changes to the hovered one, replacing all variant related information.|use case
+|
+The first one consist of browsing the catalog and selecting those products of interest.|feature
+|
+The increased readability of the code goes along with a decreased number of lines compared to the same code in JavaScript, around one third fewer lines.|non-functional
+|
+The initial process to access the client page is the same as any other use case: the customer navigates to the server page, which forwards the information to the template, which builds the client page.|use case
+|
+The last level requires the system to be PCI compliant, because it gathers the payment data and queries the platform to charge the customer with the provided data.|non-functional
+|
+The moment the previous cart becomes an order, a new cart is created for the customer in order to start the process once again.|use case
+|
+The new syntax provides a better readability of the code and helps developers to write complex scripts much more easily.|non-functional
+|
+The order is then created after the payment platform confirms that the payment was successful.|functionality & behaviour
+|
+The order is therefore only created when the customer is redirected to the successful server page.|use case
+|
+The payment platform redirects the customer to a different server page based on whether the charging operation was successful.|use case
+|
+The platform proceeds charging the customer and then redirects him to the system.|use case
+|
+The product list needs to be displayed divided into pages and the customer should be given the ability to browse through them (3).|feature
+|
+The sorting can be performed by name or price, and the filtering by price and color.|functionality & behaviour
+|
+The system also requires a class to send emails through any email system of preference.|r-general
+|
+The system must avoid to store or process any payment data. (2)|non-functional
+|
+The system must block any external attacker from reading or modifying sensitive information (6).|non-functional
+|
+The system to process and store this data needs to be PCI DSS8 compliant.|non-functional
+|
+The template should achieve an average of 7 out of 10 points from users when asked of how much do they like it (10).|non-functional
+|
+The template should be intuitive and use latest design tendencies, especially those allowing a faster navigation experience.|non-functional
+|
+The URL structure of each page needs to be user-friendly, meaning it has to be easily identifiable with the product or category linked when reading it.|non-functional
+|
+The user can decide to sign up in our systems, in which case he must provide his full name, email address and a password.|use case
+|
+The user is allowed to add new addresses to the address book, as well as update or remove any stored address.|use case
+|
+The user should be able to use all functionalities of the web-shop in a smooth way, trying to minimize the number of times the page is fully reloaded.|r-general
+|
+Their primary need towards the template is to verify that their implementation is adjusting to both developers and clients needs.|non-functional
+|
+Then at any moment the user can go to the login page and enter the login information to access his customer profile.|use case
+|
+Then he will probably ask for the details of the product and next he will add it to the shopping cart.|use case
+|
+There he can select any other color variant, in which case a new page will be loaded in order to update the URL, to let the user share the product URL that points to this particular color.|use case
+|
+There he can select to list all his orders and select the one he wants to view in detail.|use case
+|
+There, after entering all shipping and billing information, the customer will confirm the purchase and the system will request the payment platform to process the payment, displaying the order details in response to the customer.|use case
+|
+Therefore every product has at least one variant, each one with different price or attributes.|functionality & behaviour
+|
+Therefore the changeability of the code is not affected by the complexity of the presentation logic meant to improve user experience.|non-functional
+|
+These technical problems can be considered a too expensive price to pay in order to improve the user experience.|non-functional
+|
+They need a system that satisfies their current requirements and allows them to easily implement future required functionalities.|r-general
+|
+They need to easily understand the sample code and quickly identify those lines of code with shop logic coming from SPHERE.IO.|non-functional
+|
+This behavior enhances the user experience, because the user can continue interacting with the system while operations are taking place.|non-functional
+|
+This means that once the order is created the customer’s cart does not longer exist, so the only possible moment to create the order is right after the payment has succeed.|functionality & behaviour
+|
+This scenario requires the customer to previously sign up to the system and purchase some items as a registered customer.|use case
+|
+This system allows future developers to add new ways of handling form submissions without affecting the core of the system.|non-functional
+|
+This system improves understandability and changeability of the code, as it will be explained along this section.|non-functional
+|
+This will also speed up the communication with the web server, thereby favoring a more efficient interaction with the web-shop.|non-functional
+|
+This will give an insight of the most common usability issues and the best way to solve them.|non-functional
+|
+To solve this issue, the order is created but always with a pending payment status.|functionality & behaviour
+|
+Understandability|non-functional
+|
+Update account|functionality & behaviour
+|
+Update address|functionality & behaviour
+|
+Update item in cart|functionality & behaviour
+|
+User-Friendly|non-functional
+|
+When a product variant has different sizes, a list of sizes is shown to the customer when he hovers on the “quick buy” button, to allow him select the correct size.|use case
+|
+When clicking on a product thumbnail the user will be redirected to the product detail of the variant he had selected (Figure 4.13), if any.|use case
+|
+When one of these elements are added to the cart, a tax rate is assigned to the item according to this tax category and the shipping address of the cart.|functionality & behaviour
+|
+When placing an order the customer may be requested to pay online, in which case the payment platform will provide the necessary means.|use case
+|
+When the customer is logged in, his address book will appear on the right side, allowing him to select one of his addresses, which data will then be copied to the corresponding address form.|use case
+|
+When the user provides the billing information and finalizes the checkout, the system charges the customer|use case
+|
+When the user selects an address the form changes into edition mode, highlighting the address and copying its data to the empty form.|use case
+|
+Whenever a set of products is listed, those products on sale will be highlighted and the user will be given the option to sort and filter amongst all products.|use case
+|
+Whenever the user adds, updates or removes an address, the list of addresses is updated accordingly.|use case
+|
+While logged in, the user can choose to log out in order to become an anonymous customer.|use case
+|
+While the current cart may optionally have associated information, this information is mandatory in an order instance.|functionality & behaviour
+|
+With that information in hand, an initial list of the desired functional and non-functional requirements (see sections Functional Requirements 2.2 and Non-Functional Requirements 2.3) can be put into the Product Backlog in the form of user stories|r-general

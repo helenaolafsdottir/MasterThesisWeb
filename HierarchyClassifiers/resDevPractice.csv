@@ -1,0 +1,22 @@
+The remote repository is hosted by GitHub, with a very interesting social networking functionality useful for future collaboration with the developer community.|development practice
+Another tool from Google, PageSpeed Insights, is an online performance test that analyzes the web page looking for elements that may affect its fast execution, such as resources that may unnecessary block the page.|development practice
+Therefore it would be considered a good practice to use variables and functions with self-explanatory names and keep a well commented code.|development practice
+The most notable characteristic of Git is its distributed system, in which each user has his own local repository where changes are committed.|development practice
+From a developer point of view the quality of the code takes a very important role, so it should be well organized, easy to understand and reusable.|development practice
+Agile methodologies suggest to elaborate documentation only as needed, without having any required artifacts for each stage as traditional methodologies usually do.|development practice
+It is also important to design correctly the structure of the system, for example identifying and applying the software patterns that can solve existing problems in this particular project.|development practice
+Whenever these steps fail at some point, the process is stopped and feedback is registered in order to solve the problem.|development practice
+Jenkins is used in the staging environment as a continuous deployment tool, triggering a process to deploy the system every time changes are pushed to the remote repository.|development practice
+As explained in the section Development Environment 5.1, this project follows a continuous deployment process which requires functional tests to be implemented along with the feature, to ensure the functionality is working correctly every time a change is merged with the project.|development practice
+While the designers are in charge of creating the interface and aesthetic design, the other external design areas of the system need a more technical approach.|development practice
+This process consists of building and testing the system, running automated acceptance test and deploying the project to production once staging is stable and ready.|development practice
+In everyday’s development, Continuous Deployment technique is followed (see Figure 5.1).|development practice
+The external design of a system requires the developer team to work closely with a designer team.|development practice
+The reason why heavy documentation is not recommended is because requirements are expected to change constantly during the development process, forcing to update every diagram and text each time a change is applied, with the consequent loss of time that could have been otherwise used to develop the product.|development practice
+The code merging also triggers a review process with all developers involved, which results in higher code quality.|development practice
+Git is used as a revision control system|development practice
+The development environment is a portable machine with OS X as operative system.|development practice
+Figure 6.1 presents an extract of the source code in charge of mocking the search request for products.|development practice
+The source code is developed with the support of the Java IDE Intellij IDEA Community Edition, mainly used for its debugging and code edition features.|development practice
+Only when the developer deems it convenient, the local changes are then synchronized with the remote repository, thus making them accessible to the whole team.|development practice
+For this reason, only some simplified diagrams were drawn during the specification and design stages, the necessary to understand the system and share ideas with the SPHERE.IO team.|development practice

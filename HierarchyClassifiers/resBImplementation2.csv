@@ -1,0 +1,121 @@
+A list of variants is received from the server, with matching attributes but different color.|b-techsolution
+|
+An exception to this rule appears within contexts, when the client page asynchronously makes a request to the server.|b-techsolution
+|
+An extract of the JSON data is presented next (Figure 5.14), as it is received by the client after the request.|b-techsolution
+|
+Another important fact is that traffic between the client and the system is reduced to simple data with no presentation information, which speeds up the communication with the system and decreases network use.|b-techsolution
+|
+As in any other background form submission in this project, the server page requests to the model the corresponding change and the related information is forwarded to the initial client page.|b-techsolution
+|
+As mentioned before, form data can be either sent as a regular HTML form submission or via an AJAX call, indistinctly.|b-techsolution
+|
+As well as before the controller requests the appropriate changes to the model, but this time when the model finishes, the controller generates JSON data using the information related to the current request coming from the model.|b-techsolution
+|
+Being a sample web-shop it is most appropriate in this case to leave this role to the payment platform, thus sending any payment data to the template’s web server must be strictly avoided.|b-techsolution
+|
+Both actions end up in the server page for updating the cart, which forwards the new cart information to the cart page.|b-techsolution
+|
+Filters are applied as a chain of filters to any desired controller action, although for simplicity the diagram is not specifying which particular actions are using the filter.|b-techsolution
+|
+First, the customer navigates to the SelectCategory server page, which requests to SPHERE.IO the list of products for a particular category.|b-techsolution
+|
+For that matter, the system reads a file where every request pattern is linked with an action controller (see Figure 5.7), and selects the first pattern that matches the request.|b-techsolution
+|
+For this project the most reasonable option would be to use HTTPS whenever customer data is being transferred.|b-techsolution
+|
+If the handler is not found, the form is submitted in a traditional way to the server via HTML forms.|b-techsolution
+|
+If the validation was successful, the controller sends the corresponding HTTP request to the server, which is analyzed by the routing system and handed over to a controller action the same way as before.|b-techsolution
+|
+In addition, routing patterns can also have dynamic parts using the power of regular expressions.|b-techsolution
+|
+In every asynchronous call, the updated information regarding the current checkout state is forwarded to the checkout page.|b-techsolution
+|
+In the model, SPHERE.IO Play SDK executes the request, which usually involves communication with the SPHERE.IO backend in order to create, read, update or delete (CRUD) some of the stored data.|b-techsolution
+|
+In this case the filter that intercepts the call is the Form class, in charge of detecting, before the action in called, whether the request from the client was made via AJAX.|b-techsolution
+|
+In this request the script itself communicates with the server page ListProducts, which again makes a request to the model, this time asking for the next page.|b-techsolution
+|
+Instead, the protocol of the requests between the client and the web server are decision of the developer.|b-techsolution
+|
+It is worth noticing that usually a client page links first to a server page, which then forwards to a server page with a “scala” extension.|b-techsolution
+|
+It was also designed to support full asynchronous HTTP programming, to serve long-lived requests without tying up other threads.|b-techsolution
+|
+On the other hand, some of the data needs to be requested explicitly to the server, such as the list of shipping methods or the address book of a registered customer, to avoid performing repeated unnecessary calls to the SPHERE.IO backend.|b-techsolution
+|
+Once the action call finishes, the intercepting filter again takes control, receiving as a result of the call a HTML file with a HTTP status code (see Figure 5.10).|b-techsolution
+|
+Once the checkout form submission reaches the server, the system has complete control over the order creation and payment execution, as the next code shows (Figure 5.28).|b-techsolution
+|
+Once the model finishes processing the request, the controller selects the appropriate template and sends all information related to the current request to the view.|b-techsolution
+|
+Once the request is completely built, the list of products is fetched from the SPHERE.IO backend and sent to the client as JSON data.|b-techsolution
+|
+Once the request reaches the server, the routing system built in Play Framework analyses the incoming HTTP method and the request path to decide the action controller to be invoked.|b-techsolution
+|
+Only some business rules are added to the Model in order to validate form input coming from the user, before sending this data to SPHERE.IO Play SDK, as well as some external functionalities such as email sending and online payment.|b-techsolution
+|
+Optile requires this notification request to update the payment status of a certain order, something necessary when there is a change in the payment.|b-techsolution
+|
+So according to the type of incoming request, the filter returns either the result coming from the action call or a JSON response with the same HTTP status code.|b-techsolution
+|
+The action starts building the product search request that is sent to SPHERE.IO backend in order to get the desired list of products, first requesting all products available.|b-techsolution
+|
+The communication between the web application and the SPHERE.IO backend is always held with HTTPS as a requirement of the e-commerce platform.|b-techsolution
+|
+The controller on the client side can handle these events, in which case it gathers the required information and requests the client-side model to validate this information in order to avoid unnecessary calls to the server.|b-techsolution
+|
+The Front Controller is mainly formed by the RoutingSystem, which is in charge of receiving, analyzing and dispatching every request to the appropriate application controller.|b-techsolution
+|
+The handler stops the regular form submission and sends the request via AJAX.|b-techsolution
+|
+The method to load more products calls the server via AJAX, requesting to the controller action below a particular page of a list of products.|b-techsolution
+|
+The reason is that the payment form is never submitted, but its data is sent to the payment server via a JavaScript library, returning a token in exchange that the system can use to charge the customer from the server side.|b-tech solution
+|
+The response is simple data, so no HTML output is built, and it is the client page itself which updates its content with the information sent via forward parameters.|b-techsolution
+|
+The resulting data is sent to the client page, that renders and appends a new Product List component with the received products.|b-techsolution
+|
+The reverse proxy forwards the request to a HTTP cache layer, which returns the page if it is cached, otherwise forwards the request to the corresponding web application [Rob11].|b-techsolution
+|
+The server logic processes both requests the same way thanks to the intercepting filter Form.java, which is in charge of returning the most convenient response to the client.|b-techsolution
+|
+The server page that updates the cart sends to the mini cart component all the information related to the shopping cart contents.|b-techsolution
+|
+The token is attached to the checkout form, so when the customer submits the final form this token is sent to the server.|b-techsolution
+|
+Then the controller interprets all required input parameters coming from the user and requests the appropriate changes to the model.|b-techsolution
+|
+Then the success messages are prepared and the cart page is returned, this time with a 200 HTTP status code.|b-techsolution
+|
+These can be, amongst others, a common link with parameters (link), a form data submission (submit), a forwarding of the request to another element (forward), a generation of HTML output (build) or an import of a JavaScript file (script).|b-techsolution
+|
+These filters intercept the application controller invocation and allows to execute code before and after the action is invoked.|b-techsolution
+|
+This common logic allows to handle properly the response sent by the Form intercepting filter: when required, it forces to handle URL redirections by executing a redirection with JavaScript, otherwise it updates automatically some tagged data from the page and displays the success message.|b-techsolution
+|
+This JSON data is sent back to the controller located on the client, which in turn selects a template and sends this data to the view.|b-techsolution
+|
+This request is executed the moment the customer submits the payment form, and returns a token in response.|b-techsolution
+|
+This server page forwards all necessary information to the corresponding view, which creates the entire client page and sends it back to the customer.|b-techsolution
+|
+To do so, the Handlebars template that renders a single line item is obtained and compiled once when the page is loaded.|b-techsolution
+|
+When starting the call, the request is bound to the form instance and is checked for missing or invalid data, in which case errors are prepared for being displayed and the cart page is returned as a “bad request” (i.e. with a 400 HTTP status code).|b-techsolution
+|
+When the AJAX call started on the client receives the response from the server, the methods chained to the jqXHR are then executed, depending on the HTTP status code obtained.|b-techsolution
+|
+When the request reaches the web application server, a routing system analyzes the HTTP request and invokes a particular action of the corresponding controller|b-techsolution
+|
+When the response is received on the client side, the method appendProducts shown above (Figure 5.22) is called to attach the new data to the previous list and update the information about the next page.|b-techsolution
+|
+When the user is submitting a form, the HTML DOM triggers an event that is then captured by a handler.|b-techsolution
+|
+With that, the view generates a HTML fragment that uses to replace the corresponding component on the web page.|b-techsolution
+|
+With this information and some other obtained directly from the model, the view generates a HTML document that is sent back to the client via a HTTP response.|b-techsolution

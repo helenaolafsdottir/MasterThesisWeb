@@ -1,0 +1,35 @@
+Inside the company there are two major stakeholders: the SPHERE.IO product owners and the developer team.|domain
+|
+In its first stage, the web-shop template is required mainly to analyze the platform capabilities, show code examples to developers and attract potential customers.|domain
+|
+End users or customers, equally mentioned as “users” and “customers” in this document, are those actors of the system who would buy in the web-shop in case it went live.|domain
+|
+5 IMPLEMENTATION|domain
+|
+The product owners need a final product where all the platform features are implemented in order to measure the actual progress of the project.|domain
+|
+As a result, two of the winning projects were based on the web-shop, developed by teams of four members average in within twelve hours.|domain
+|
+Their primary need towards the template is to verify that their implementation is adjusting to both developers and clients needs.|domain
+|
+The external design of a system requires the developer team to work closely with a designer team.|domain
+|
+For this project, the designer team together with the developer team decided to implement a layout structure and behavior inspired on different web-shops with innovative design, always focusing on offering the user a smooth interaction with the system|domain
+|
+These external systems are typically web-shops but can actually be any type of application, even those not related to ecommerce.|domain
+|
+Even being an hypothetical situation, this template will be used as a bootstrap project so eventually it will become a real web-shop with end users.|domain
+|
+5.1 Development Environment|domain
+|
+Potential users of the template are precisely developers, who need to implement a web-shop or a similar application.|domain
+|
+This product also allows them to have a sample web-shop to show to potential clients in meetings and conferences even before the platform is released.|domain
+|
+The checkout needs to be a secure and robust environment to the user.|domain
+|
+The negative evaluation responds to missing features rather than bad design or implementation.|domain
+|
+As a developer, I want to learn how the application is structured and how I can modify and extend it to build my own web-shop in less than 8 person-hour (3).|domain
+|
+The development pipeline consists of three stages: development, staging and production.|domain

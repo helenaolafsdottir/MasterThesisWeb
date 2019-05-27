@@ -1,0 +1,13 @@
+Play Framework is applying the Front Controller and Application Controller design patterns to split the Controller logic between the common logic, located in the Front Controller, and the one specific for each request, called Application Controller.|s-architecture
+|
+As the name suggests, the system logic is divided into three components: Model, View and Controller.|s-architecture
+|
+While a fat client solves some external design issues, it also creates several technical problems.|s-architecture
+|
+The View component is formed of several templates that are directly called by the Controller component, as seen in the internal design diagrams of the system.|s-architecture
+|
+The amount of resources needed to implement a reliable system with a pure fat client is several times higher than the equivalent with a thin client.|s-architecture
+|
+The filter helps developers to build both thin- and fat-client systems on top of the same Controller and View components.|s-architecture
+|
+One of the particularities of this design is that SPHERE.IO Play SDK is the main component of the Model, since it controls all the domain data of the application, as well as most of the business logic.|s-architecture

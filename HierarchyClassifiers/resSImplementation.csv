@@ -1,0 +1,277 @@
+A series of methods can be chained to the jqXHR object, and executed once the server response has been received under certain circumstances.|s-sourcecode
+|
+Unlike SPHERE.IO, Heroku is scalable only under demand.|s-techsolution
+|
+Below is displayed the specific Coffeescript code that implements the handler for the update item in cart use case (see Figure 5.3).|s-sourcecode
+|
+The method returns jqXHR, a XMLHttpRequest object with jQuery added information.|s-sourcecode
+|
+In 2012 a second release was announced, with a core completely rewritten in Scala.|s-techsolution
+|
+Optile is a payment platform that allows to access a set of heterogeneous payment methods and providers (e.g. credit cards, direct debit, PayPal) under a common interface.|s-techsolution
+|
+Similarly to CoffeeScript, LESS is a language that compiles into CSS.|s-techsolution
+|
+The application tier needs an enterprise hosting solution, suitable for a company web-shop.|s-techsolution
+|
+In the second level that form is hosted in the system via a HTML frame or JavaScript.|s-techsolution
+|
+At the time the system was designed there were only two cloud platforms with built in support for deploying Play applications: Heroku and Cloudbees; although at the end of 2013 the number of services has been doubled and the offer will probably continue to increase in the future.|s-techsolution
+|
+If a category slug was provided, the category object is fetched from SPHERE.IO and is used to filter the initial list in the filterBy method, which source code is presented next (Figure 5.16).|s-sourcecode
+|
+In order to determine the image and sizes for each variant, Handlebars helpers have been used.|s-techsolution
+|
+The controller code appears therefore simple and clean of all related presentation logic.|s-sourcecode
+|
+4.2.1.4 CoffeeScript|s-techsolution
+|
+The difference between these two and the last method lies in the object to which the event handler is attached when the script is loaded.|s-sourcecode
+|
+Both services enable a simple automated deployment of the web application to the platform, which will allow developers to have a working hosted application within minutes.|s-techsolution
+|
+Optile has five different main levels of integration: redirected, hosted, half-native and native with and without PCI.|s-techsolution
+|
+Therefore its use is very appropriate, especially since a CoffeeScript compiler comes included in Play Framework.|s-techsolution
+|
+Projects in Play are built and deployed with SBT, a build tool for Scala and Java projects, allowing developers to choose between these two programming languages in order to implement the logic of their web applications.|s-techsolution
+|
+This SDK is designed to be used with Play Framework, and specifically with the Java language version.|s-techsolution
+|
+4.2.1.1 SPHERE.IO|s-techsolution
+|
+The same files host other presentation logic used by the handlers, as well as methods to load new components from JSON data fetched from the server.|s-sourcecode
+|
+The HTML input name and value are obtained from the fullTextSearch parameter defined before, hence connecting the user filter interface with the SPHERE.IO filter request.|s-sourcecode
+|
+To assert on HTML content returned by the implementation, the library Jsoup is used to find and extract the data in a simple and clean way thanks to DOM traversal and CSS selectors.|s-techsolution
+|
+It is a JavaScript implementation of the platform-independent Mustache project, that allows to render input data in a template using a very clean syntax.|s-techsolution
+|
+The CartNotEmpty filter checks the shopping cart has at least one line item, a requirement to access certain areas such as the cart detail page or the checkout, otherwise it redirects to the last visited browsing page.|s-sourcecode
+|
+Google Chrome is the preferred web browser, which has a built in developer tool, Chrome DevTools, highly useful to inspect HTML DOM and CSS, as well as debugging JavaScript code.|s-techsolution
+|
+The method for sending the form data is simply calling the jQuery “ajax” function, additionally specifying in the URL that the request is performed via AJAX.|s-sourcecode
+|
+The API services are using JSON to communicate, always over HTTPS, with previous authorization using OAuth2.|s-techsolution
+|
+As explained earlier (see section 4.2.1.7), the system is using Handlebars templates on the client side in order to generate updated content.|s-techsolution
+|
+Any other type of pattern-based limitation can be applied as well with regular expressions.|s-techsolution
+|
+A typical filter example is the Authorization class, that verifies the customer is correctly identified to the system before accessing a restricted functionality, otherwise it redirects the user to the login screen.|s-sourcecode
+|
+This last visited page is actually saved using the SaveContext filter, so that only actions intercepted by this filter are saved as a return page.|s-sourcecode
+|
+These classes have methods to parse the filter values from the URL query string and build the product search request from those values easily.|s-sourcecode
+|
+When the expression starts with a hash symbol, the expression corresponds to a helper to control the flow, like the looping statement “each” used here.|s-techsolution
+|
+The current project has several technologies that are fixed by the requirements, starting with SPHERE.IO Play SDK.|s-techsolution
+|
+Moreover it also has a compiler for CoffeeScript and LESS, two programming languages that compile into JavaScript and CSS respectively.|s-techsolution
+|
+As opposed to the API, the CLI is not using OAuth2 since all operations are done under a user account.|s-techsolution
+|
+While the handler is directly attached to the quantity input in the first two options, in the latter is attached to the HTML object identified by “cart”, specifying as a parameter the path of the quantity input.|s-techsolution
+|
+But unlike CoffeeScript, LESS does not modify the syntax of CSS, but only extends it with dynamic behavior, such as variables, operations and functions.|s-techsolution
+|
+Figure 5.18 shows the code that declares two of the filters used in this project with the corresponding keyword used in the URL query string.|s-sourcecode
+|
+There is also a Payment class, a small library that will help to communicate with the Optile API, that requires the messages to be sent using XML|s-techsolution
+|
+SPHERE.IO provides a platform to store and process all this data according to commerce business rules, while at the same time offers several ways to access it.|s-techsolution
+|
+As it shows, Play is the web application framework, that uses the programming language Scala in the templates, and Java in both model and controllers.|s-techsolution
+|
+The source code corresponding to some of these actions is presented in this section, along with some detailed explanation.|s-sourcecode
+|
+Handlebars is the web template system used in this project to manage client-side templates.|s-techsolution
+|
+From this page is called the update price details method, which in fact builds several page components and replaces with them the corresponding elements displayed in the page.|s-sourcecode
+|
+Only exception appears when the same method is shared between two pages, in which case it is left in the script for simplicity [Oli10].|s-sourcecode
+|
+Figure 5.27 shows the code snippet that is part of the class that was implemented to help validating the payment form and sending the data.|s-sourcecode
+|
+Moreover, some common logic for successful form submissions is executed, which source code is shown in detail below (see Figure 5.11).|s-sourcecode
+|
+Finally, the Form filter class enables the transparent handling of a form submission response, independently of the technology used.|s-sourcecode
+|
+Next is shown the style applied to the list of sizes, as an example of the use of LESS to generate CSS stylesheets (see Figure 5.25).|s-techsolution
+|
+Otherwise it refers to a value extracted from the JSON data sent as parameter to the template.|s-techsolution
+|
+jQuery is a very powerful and fast JavaScript library that allows to easily do DOM scripting (i.e. HTML elements manipulation and event handling), perform animations and simplify the use of AJAX programming; altogether very necessary in this project.|s-techsolution
+|
+Aside from the methods to control the behavior of the elements, there are methods that allow to replace the page component data with some JSON data fetched from the server.|s-sourcecode
+|
+On the contrary Handlebars templates are compiled, allowing to define helpers to reuse code for presentation.|s-techsolution
+|
+In short, this solution makes easier to implement templates than Mustache while still keeping logic separated from presentation.|s-techsolution
+|
+Nevertheless the selected solution is Optile, because its implementation will benefit more the project than Paymill.|s-techsolution
+|
+While Cloudbees also offers integrated tools to support development of Java projects, Heroku is a much popular alternative with support for several programming languages and a wide range of plugins, thus becoming a preferable option for the project.|s-techsolution
+|
+4.2.1.7 Handlebars.js|s-techsolution
+|
+As seen in Figure 5.9 below, the message method consists of saving on the one hand a success message for the HTML result and, on the other hand, the JSON data with the same success message and the necessary cart information.|s-sourcecode
+|
+Play also includes the Jackson library to manipulate JSON data and native support for the software testing frameworks JUnit and Selenium.|s-techsolution
+|
+It also comes with built-in helpers to control the default flow of the template, such as loops or conditional statements.|s-techsolution
+|
+They handle all the server-side validation for every parameter and may also provide helpful getters and setters to easily convert model data into form data, and vice versa (e.g. an Address class instance would be converted into the appropriate form fields street, city, country, etc.)|s-techsolution
+|
+The SPHERE.IO team chose Java as the first programming language to have a client library due to its versatility.|s-techsolution
+|
+This related information is generated with some other methods located in the forms as well, that convert a model class instance into JSON data.|s-sourcecode
+|
+Another interesting feature is an additional syntax to use JavaScript’s native prototyping as a class-based system, making object-oriented programming with JavaScript less complex, particularly when it comes to inheritance.|s-techsolution
+|
+The final choice of jQuery has been mainly determined by the fact that it has the largest community amongst the options.|s-sourcecode
+|
+Despite this, currently SPHERE.IO Play SDK is supported only in Java projects.|s-techsolution
+|
+Using the methods for sorting (Figure 5.20) and paging (Figure 5.21) is very simple, as the two pieces of code above demonstrates.|s-sourcecode
+|
+In opposite to traditional payment platforms, the successful integration of Optile will attest that this web-shop supports a wide range of payment methods and providers, as well as multiple different ways of integration.|s-techsolution
+|
+On the other hand, the SPHERE.IO Play SDK was initially designed so that the creation of an order cannot be reversed.|s-techsolution
+|
+As can be observed, in a Scala template expressions to be evaluated with Scala are preceded by a “@” sign.|s-techsolution
+|
+The problem resided on a certain incompatibility in the checkout process designed for the SPHERE.IO Play SDK and the workflow expected by Optile.|s-techsolution
+|
+Besides that, merchants can also export and import data between SPHERE.IO and other external systems using elastic.io11 as an integration platform.|s-techsolution
+|
+The query language XPath is used to select the different HTML elements in order to click on them, change their value or verify their existence.|s-techsolution
+|
+In the model SPHERE.IO provides the main commerce business logic of the system, while Optile supports the payment functionality.|s-techsolution
+|
+Although there are other CSS preprocessors like the popular Sass, the provided functionalities are quite similar and Play Framework already comes with a native support of the LESS compiler.|s-techsolution
+|
+The Optile workflow was already explained (see section 4.2.1.2), but the most characteristic behavior to remember is that it uses notification requests in order to keep the payment state of an order updated.|s-techsolution
+|
+Therefore Paymill is not a solution strong enough for this template either, but at least it offers a robust solution until SPHERE.IO and Optile evolve to become fully compatible.|s-techsolution
+|
+This has been solved with a delayed submission, implemented with the JavaScript event setTimeout, which is restarted every time the user changes the input field (see Figure 5.5 for an example of CoffeeScript code based on this functionality).|s-sourcecode
+|
+So far all the tools for accessing and managing the backend data were focused on developers, but merchants have also the possibility to view and update the data using a web application called Merchant Center.|s-techsolution
+|
+Play is an open source web application framework that was first released in 2007 and written in Java.|s-techsolution
+|
+Given that Heroku does not provide an internal SMTP server, the deployed version of this project will need to use an external server like Mailjet, a cloud emailing platform that offers several features that may be of interest for potential clients.|s-techsolution
+|
+The source code is also showing how request parameters are defined in a form, so that Play can bind and validate them.|s-sourcecode
+|
+The server is using HTML5 and JSON files to send information to the client.|s-techsolution
+|
+Additionally, LESS and CoffeeScript are used server-side to generate CSS and JavaScript files, respectively.|s-techsolution
+|
+Regardless it has been considered that Handlebars is a safer option, since the additional features are not indispensable for this project.|s-sourcecode
+|
+That is the reason why it is recommended to use client libraries and SDKs to communicate with the API, and so improving the development experience.|s-techsolution
+|
+As appears in the diagram, any request to a Heroku deployed web application is first processed by one of the many platform’s reverse proxies.|s-sourcecode
+|
+It is interesting to notice the use of the “on” jQuery method to bind the event handler.|s-sourcecode
+|
+A valid alternative is Paymill, a popular payment solution which characteristics are completely opposed to Optile: the integration is very fast and easy, but the payment providers offered are limited to credit card and direct debit.|s-techsolution
+|
+As explained before (see section 4.2.1.2), Optile needs to be implemented in an incremental way, reason why the library can effortless cover all five levels of integration, thus allowing developers to easily switch to the level it fits best for them.|s-techsolution
+|
+In order to take advantage of the scalability of the data tier, a good matching web hosting solution would be a cloud service with easy and fast scalability, letting the shop grow as the number of customers grow, without any bottleneck|s-techsolution
+|
+The example uses the most important features of LESS: variables, here used for colors; functions, used to apply the CSS border-radius property cross-browser; mixins, to remove the default style of the list; and nested rules, to better specify inheritance.|s-techsolution
+|
+LESS will allow to better organize the stylesheet of the web-shop, thus facilitating a swift development, fast edition and easy understanding of its code.|s-techsolution
+|
+The controller has a static attribute of an instance of Play’s native Form, wrapping the class UpdateCart that handles incoming parameters to execute this action.|s-techsolution
+|
+The payment data is sent via JavaScript to the platform, using a library provided by Paymill.|s-techsolution
+|
+Handlebars comes also with better support for paths to access the data.|s-techsolution
+|
+The main alternatives, such as MooTools or YUI Library, are also very satisfactory solutions in the mentioned areas, with no significant differences.|s-techsolution
+|
+There is another project, Dust.js, with the same strong points as Handlebars and with useful additional features like template composition|s-techsolution
+|
+As shown below there are three different ways to bind an event: the first method is preferred and is actually a shortcut of the second one (see Figure 5.4).|s-techsolution
+|
+It is also interesting to notice how URLs are generated, using the corresponding “reverse routing” method for the controller action that handles searches.|s-techsolution
+|
+4.2.1.5 LESS CSS|s-techsolution
+|
+The specific hosting solution used for this project is irrelevant in terms of requirements, given that it is only intended to host the test web-shop for SPHERE.IO, and both platforms promise the same level of quality.|s-techsolution
+|
+4.2.1.3 Play  Framework|s-techsolution
+|
+Disabling a method, such as AJAX submission, is as simple as removing the event handler bound to the submit.|s-techsolution
+|
+CoffeeScript is a programming language that compiles into JavaScript, adding syntactic sugar to greatly improve the developer experience.|s-techsolution
+|
+Some annotations are provided in order to specify constraints to incoming parameters, such as declaring a value required or accepting only a certain range.|s-techsolution
+|
+Besides the framework has a significant influence on several other server-side technologies as well, depending on the support it provides.|s-techsolution
+|
+This is precisely the version that SPHERE.IO Play SDK works with.|s-techsolution
+|
+At the moment this project was developed there was no support for mocking coming from the SPHERE.IO Play SDK to ease this process.|s-techsolution
+|
+The use of Play Framework comes as a requirement to test the suitability of SPHERE.IO Play SDK, which was build to create web-shops using this specific framework.|s-techsolution
+|
+The data tier corresponds to the SPHERE.IO backend, which offers a scalable cloud-based platform for the e-commerce data, having the capability of scaling up as the demand increases|s-techsolution
+|
+This can easily happen when using PayPal, because the payment needs to be approved first, therefore changing multiple times of status during an undefined period of time.|s-techsolution
+|
+Mustache has a so-called logic-less template syntax because there are no explicit control flow statements, all needed logic comes exclusively from the data in the form of booleans, arrays or lambdas.|s-techsolution
+|
+This test suggested to use minified versions of the JavaScript and CSS files, which was an easy task thanks to Play Framework built-in support.|s-techsolution
+|
+The source code below shows the required workflow by SPHERE.IO Play SDK in order to create an order, and how the creation needs to be stopped if the customer changes anything from the cart (Figure 5.26).|s-techsolution
+|
+Paymill, despite of accepting only direct debit and credit cards as payment methods, allows on the other hand to keep control of the workflow along the process, thus allowing to charge the customer only when the order can be created.|s-techsolution
+|
+This library is open source, as it is intended to be improved or used as a reference to build other libraries by the developer community.|s-techsolution
+|
+This second version of Play uses Scala in its web template system.|s-techsolution
+|
+The methods that allow to update the information from the client page are always coming from the JavaScript files, but generally are represented as methods from the client page.|s-techsolution
+|
+This makes LESS very easy to learn and converts a simple CSS-based file into a powerful dynamic stylesheet.|s-techsolution
+|
+A notable initial effort was required in order to integrate Optile in a flexible way.|s-techsolution
+|
+These form classes also host the methods generating the different content that must be sent back to the client in relation to the result of the form submission.|s-techsolution
+|
+It is also worth mentioning that almost all third-party client-side libraries are being fetched from CDNJS, a community-driven CDN22 for web libraries that allows to decrease the loading time considerably.|s-techsolution
+|
+It is also necessary to use the CLI in order to manipulate and query data in batches or for automated jobs, such as importing products into SPHERE.IO.|s-techsolution
+|
+Optile first integration can become a little bit tedious, but its flexibility will be profitable for this project.|s-techsolution
+|
+In order to handle forms easily a new instance of the Form class is created, which processes all data related to the form to allow quick access to the information (see Figure 5.6).|s-techsolution
+|
+But despite of the fact that the payment platform was in the end correctly integrated in the system during the implementation process, the final result was not entirely satisfactory and was replaced for the second option: Paymill.|s-techsolution
+|
+This allows to switch from AJAX to a regular HTML form without any changes, only disabling the form submission handling in JavaScript.|s-techsolution
+|
+The logic of the client side is supported by jQuery and the templating system is implemented with Handlebars.|s-techsolution
+|
+Right before the method definition one can notice the “With” annotation, which Play Framework provides in order to attach a set of intercepting filters to an action.|s-sourcecode
+|
+4.2.1.2 Optile|s-techsolution
+|
+4.2.1.6 jQuery|s-techsolution
+|
+SPHERE.IO is a cloud-based commerce platform, aimed to unify e-commerce data in a single place where any kind of external system can access this information.|s-techsolution
+|
+The first one corresponds to the template itself (Figure 5.13), with the Handlebars expressions surrounded by curly brackets.|s-sourcecode
+|
+Unfortunately some payment providers, such as PayPal, are first requested and then the payment is executed at some moment in the future.|s-sourcecode
+|
+It should be noted that the replaceCart method is only sending to the template one “item” object each time.|s-sourcecode

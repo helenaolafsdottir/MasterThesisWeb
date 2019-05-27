@@ -1,0 +1,101 @@
+The storyboard sequence from Figure 4.18 is showing how this checkout process is distributed with the presented screens.|document organisation
+|
+General structure of a user story described in this document:|document organisation
+|
+Both physical and logical designs of the system are described in detail in the current chapter (sections System Physical Architecture 4.1 and System Logical Architecture 4.2), with an overview of how the resulting product needs to be implemented.|document organisation
+|
+The internal class diagram in Figure 4.25 represents the whole browse catalog top-level use case.|document organisation
+|
+Again, the specification sequence diagram is adapted to the given design, illustrating the different screens that participate in every interaction in the check order top-level use case (see Figure 4.23).|document organisation
+|
+Appendix B Product Backlog|document organisation
+|
+Here are first described the set of use cases that are initially planned for the project, which corresponds to the final Product Backlog (see list in Appendix B Product Backlog).|document organisation
+|
+Figure 6.6 shows how the rules are implemented for registering a new customer account.|document organisation
+|
+Figure 3.7 displays the sequence diagram for the browse catalog top-level use case, one of the many possible success scenarios.|document organisation
+|
+Every sprint these requirements may change, reason why in this section are described only the final requirements that are part of the current Product Backlog of the project (see Appendix B Product Backlog).|document organisation
+|
+All application controllers of the system are shown in Figure 4.39, along with some classes that are used as filters.|document organisation
+|
+As mentioned earlier, the system has three functionalities where all use cases fall into: display products, purchase products and manage customer account (Figure 3.2).|document organisation
+|
+Figure 3.4 shows the use cases related to purchasing products.|document organisation
+|
+The payment form does not appear in the diagram because its submission is not directed to this system, but to the payment platform, as it will be described in the corresponding sequence diagram|document organisation
+|
+In this case also the corresponding sequence diagram is presented (Figure 4.26) to observe in detail how the components are behaving.|document organisation
+|
+The only piece missing to have a functional product search is the template rendering the search form, shown below (Figure 5.19).|document organisation
+|
+The implementation section is describing the actual process followed to develop the web-shop presented in the previous chapters.|document organisation
+|
+The detailed behavior expected for the web-shop is described below.|document organisation
+|
+The checkout top-level use case is shown in Figure 3.8.|document organisation
+|
+Figure 4.27 below is the internal design class diagram for updating and removing line items from the cart.|document organisation
+|
+Figure 5.8 below shows the invoked controller action for this particular use case.|document organisation
+|
+So they need to prove that it is possible for a user to achieve at least the main goals for which he is using the web application, reason why they will be covering the top-level use cases described in the early section Use Case Model 3.1.|document organisation
+|
+The specification section here presented describes the necessary system to fulfill the functional requirements previously gathered|document organisation
+|
+This diagram will become especially useful when designing the checkout interface, as it clearly displays the requirements of each step of the checkout process|document organisation
+|
+For this reason, in this section only those diagrams that illustrate some special behavior or structure are displayed, simplifying any characteristic that is later described in the following sections, such as design patterns that apply to all use cases.|document organisation
+|
+Figure 4.28 below presents the internal sequence diagram corresponding to the update item in cart use case, although the diagram corresponding to the deletion is very similar.|document organisation
+|
+Figure 4.1 illustrates the physical architecture of the system.|document organisation
+|
+The software design describes the final details of a system before it is implemented|document organisation
+|
+An internal class and sequence diagram are resulting from this process, showing the communication between each component.|document organisation
+|
+Figure 4.4 above illustrates the use of technologies in each component.|document organisation
+|
+The conceptual model of this project revolves around the cart concept, while all other system elements are there to provide the required information to the cart, as seen in the class diagram below (Figure 3.10).|document organisation
+|
+Below all necessary templates for the system are displayed (see Figure 4.38), which belong on the one hand to the mini cart and pricing details components, and on the other hand to the use cases for product pagination, checkout and address management.|document organisation
+|
+In particular, the update item in cart use case is going to be explained, which design was already detailed in the section Internal Design 4.2.3.|document organisation
+|
+As mentioned before, the top-level use cases are here more appropriate to describe the user communication with the system.|document organisation
+|
+The use cases for displaying products are shown below in Figure 3.3.|document organisation
+|
+A top-level use case describes a single elementary business process that allows a particular user to fulfill a goal.|document organisation
+|
+The customer is present in all use cases of the system, while the payment platform is only involved in the functionality for purchasing products.|document organisation
+|
+Below, Figure 4.14 and Figure 4.15 presents the storyboard sequence and the navigational paths, respectively, of the screens just described.|document organisation
+|
+The specific MVC design of the current system is shown in Figure 4.2 below|document organisation
+|
+With that information in hand, an initial list of the desired functional and non-functional requirements (see sections Functional Requirements 2.2 and Non-Functional Requirements 2.3) can be put into the Product Backlog in the form of user stories|document organisation
+|
+Below is displayed the specific Coffeescript code that implements the handler for the update item in cart use case (see Figure 5.3).|document organisation
+|
+Since the required functionalities of the present project were mainly designed to test the SPHERE.IO platform, it is no surprise that the platform is present in every single use case of the system whatsoever, so for the sake of readability it will be omitted from the use case diagrams henceforth.|document organisation
+|
+The first diagram (Figure 3.11) describes how a cart instance changes until it becomes a complete order.|document organisation
+|
+The next two diagrams illustrate together the place order use case, being Figure 4.29 focused on the checkout page, and Figure 4.30 on the order creation and display of a summary.|document organisation
+|
+In contrast, the internal sequence diagram of the order creation is much more complex than the class diagram (see Figure 4.31).|document organisation
+|
+In this system there are mainly three goals that a customer may want to achieve when he uses the web-shop, as shown in Figure 3.6|document organisation
+|
+In any case, the term “top-level” is expressly used when referring to this type of use case.|document organisation
+|
+The second diagram (Figure 3.12) describes the whole process of managing the shopping cart and eventually purchasing these products in the checkout process.|document organisation
+|
+The Sphere class shown in the diagram below (Figure 4.33) is precisely the entry point for SPHERE.IO.|document organisation
+|
+Both low-level and top-level use cases are being used indistinctly throughout this document to elaborate other diagrams and descriptions, its use responding mostly to the level of abstraction that fits best the explanation.|document organisation
+|
+Internal design diagrams can become quite complex when trying to represent all files that participate in a use case, particularly when applying some design patterns.|document organisation

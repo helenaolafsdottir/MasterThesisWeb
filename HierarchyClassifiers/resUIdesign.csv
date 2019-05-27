@@ -1,0 +1,147 @@
+The rest of the pages should contain a button to allow the user go back to the last category or product he visited.|u-architecture
+|
+Again, the specification sequence diagram is adapted to the given design, illustrating the different screens that participate in every interaction in the check order top-level use case (see Figure 4.23).|u-architecture
+|
+Pagination requires the desired page and the amount of products per page.|u-architecture
+|
+Both shipping and billing sections have on the left side a form to set the postal address and on the right side the shipping and payment options, respectively.|u-architecture
+|
+In case the product has different sizes available, when hovering the button a list of the different sizes will be shown, so that the user can select the desired size he wants to add to the cart.|u-architecture
+|
+This component has a list of existing addresses on the left and an empty form on the right to add a new address (Figure 4.22).|u-architecture
+|
+This page shows the items and their details, along with the possibility to remove them or change the number of units of each item (Figure 4.16).|u-architecture
+|
+The address book is the only section with a slightly complex design.|u-architecture
+|
+The checkout page is probably one of the least frequented pages of a web-shop, but it is for sure the most important when it comes to user experience.|u-architecture
+|
+A small library called imagesLoaded is also used to fire an event when all the images of the products have been fully loaded, so that Masonry can use the correct final size of each thumbnail.|u-architecture
+|
+For this design it was considered a good idea to display all the steps throughout the page as sections that can be expanded, so that the user modifies them (see Figure 4.17).|u-architecture
+|
+The thumbnail will also include a button to add the selected product variant to the shopping cart.|u-architecture
+|
+This way customers are not fully aware of browsing through pages, from their point of view new products are constantly presented as they scroll down the window of the browser, in what appears to be a large single page.|u-architecture
+|
+On the other hand, the pagination needs to be natural without losing already viewed products, so when the user reaches the bottom of the page new products should appear automatically under the previous ones.|u-architecture
+|
+With this design, a new whole web page must be loaded from the server every time the user wants to interact with the system.|u-architecture
+|
+This functionality is only enabled for color and size attributes variations, as more attributes would saturate the design.|u-architecture
+|
+But the form does not have a submit button, instead it is automatically submitted when the user changes the quantity value.|u-architecture
+|
+The screen for listing products displays the selected filtering options and contains a single form to change them.|u-architecture
+|
+The product thumbnails, besides price and name, will be showing a picture of the product and the different color variants.|u-architecture
+|
+These areas consist of the navigation and architecture design, as well as some parts of the content design.|u-architecture
+|
+Both screens renders the category tree so that the customer can list all products from a particular category at any moment.|u-architecture
+|
+Another example is the functionality to load more products when scrolling to the bottom of the page|u-architecture
+|
+Between contexts the web page is fully reloaded, while operations within the contexts only update some parts of the page [Con13].|u-architecture
+|
+In any case, it would only consist of a submit button and a dynamic payment form loaded with the data coming from Optile.|u-architecture
+|
+The latter consists of some stockable sections, each one containing all information about a particular order, such as the products purchased, the price details and all shipping and billing related information.|u-architecture
+|
+The header contains a mini-cart and the login panel throughout the website.|u-architecture
+|
+This library takes all available space of the parent container and places each product thumbnail in optimal position, forming a condensed grid where elements perfectly fit together.|u-architecture
+|
+Below one can add the selected product variant to the cart, optionally indicating the exact quantity.|u-architecture
+|
+Thumbnails are showing at first a certain product variant, but they should also allow to see and buy a different variant directly from the thumbnail.|u-architecture
+|
+Every change automatically updates the pricing details that are always shown at the bottom of the page.|u-architecture
+|
+This is done in the login screen, a page that also contains a form to register into the system (see Figure 4.20).|u-architecture
+|
+For this project, the designer team together with the developer team decided to implement a layout structure and behavior inspired on different web-shops with innovative design, always focusing on offering the user a smooth interaction with the system|u-architecture
+|
+The resulting screens and navigational path diagram, besides the connections between screens, shows the detailed content of each screen.|u-architecture
+|
+During the checkout process the order summary (i.e. the list of purchased items and pricing details) is displayed all along and kept up to date.|u-architecture
+|
+The search of products can be performed with either regular filters (e.g. all products within a price range) or faceted searches, in which is returned, besides the list of filtered products, all possible options for that attribute and the number of products that belong to each options (e.g. a faceted search for the color attribute returns all possible colors for that search and, for each color, the number of products with that color).|u-architecture
+|
+The storyboard sequence from Figure 4.18 is showing how this checkout process is distributed with the presented screens.|u-architecture
+|
+In the storyboard sequence it is shown how the same interactions defined in the sequence diagrams of the specification are performed through the different screens.|u-architecture
+|
+With no other specific information about these users, it can only be assumed that they need an intuitive layout that allows them to shop with ease in a few clicks.|u-architecture
+|
+In any product list or product detail page, the header also contains the categories and subcategories of the shop to let the user filter products by category.|u-architecture
+|
+One option was to trigger the function whenever the user scrolls, but this event is fired too often when scrolling and would affect negatively the performance of the page.|u-architecture
+|
+All these templates are making use of a main template file that provides a common HTML structure to all the pages, such as the basic contents and imports of scripts and stylesheets.|u-architecture
+|
+Each product thumbnail consists of a picture of the product, its name and price, as well as a list of all color variants available.|u-architecture
+|
+Each screen is going to be presented and described with wireframe prototypes, and then the storyboard sequence and navigational paths will illustrate the connections between those screens.|u-architecture
+|
+Figure 5.15 below illustrates the code of a function that decides when the page needs to load more products and when a button to allow a quick return to the top of the page is shown.|u-architecture
+|
+When scrolling, the header is always kept at the top of the page.|u-architecture
+|
+There the order is created and the order summary is displayed.|u-architecture
+|
+The checkout is also composed of different forms, one for each element that the customer must fill, to allow saving each element individually.|u-architecture
+|
+Once edited, the section closes again and displays a summary with the selected options.|u-architecture
+|
+This screen has an option to add a product to the cart, while the product detail page has a form to let the user specify the quantity of items he wants to add.|u-architecture
+|
+The user profile is a single page with sections to change user data, password, manage the address book and view the list of orders (see Figure 4.21).|u-architecture
+|
+Both actions are performed without reloading the page, just updating the contents of the shopping cart and the pricing details accordingly.|u-architecture
+|
+It was considered a good navigation behavior to save only pages related to products (i.e. product list and detail screens), leaving out checkout and customer management pages.|u-architecture
+|
+As mentioned before, each line item on the page is updated with every successful submission.|u-architecture
+|
+The selected variant will be highlighted, and when hovering a different color the thumbnail will be updated with that variant information, such as picture and price, if different.|u-architecture
+|
+Product listing is the first functionality that a customer uses when arriving at the web-shop and the one he will be using for longer periods of time, so it needs to have a comfortable way to display and paginate the products|u-architecture
+|
+As shown in the Handlebars template presented in Figure 5.23, there are several data that can change amongst variants: image, price, available sizes and, of course, the variant identifier.|u-architecture
+|
+Below the header, a breadcrumb is showing the current category path|u-architecture
+|
+Figure 4.24 below shows the screens and navigational paths diagram, displaying every screen component that belong to the customer profile screen, each with its own data and forms.|u-architecture
+|
+It also has the name of the current category and the list of matching products, with their different variants for color and size.|u-architecture
+|
+Every time a new context is loaded or the user interacts with the web page in some way, an event is fired by HTML DOM.|u-architecture
+|
+When clicking on a section, this one expands showing its contents, while all other sections remain closed.|u-architecture
+|
+It describes, in particular, how the dynamic content will be structured and organized in different screens, and how the user will navigate amongst those screens to reach a particular goal.|u-architecture
+|
+Below in Figure 4.19, the screens and navigational paths diagram expose that all screens have almost the same data, such as a set of line items and some pricing details, while the checkout page and the order summary have also a billing and shipping address, all them with different multiplicities.|u-architecture
+|
+Also when a form is still not available due to missing requirements (e.g. shipping method cannot be displayed until shipping address is set) a message will be shown instead until the requirements are met.|u-architecture
+|
+As a way of guiding the customer through the checkout process, the user can only open new sections sequentially.|u-architecture
+|
+In order to achieve the product grid layout described in the section External Design 4.2.2, the JavaScript library Masonry has been used.|u-architecture
+|
+In the home page all products are displayed sorted by popularity.|u-architecture
+|
+An alternative is to execute the function in a fixed interval of time, that balances a smooth navigation with a fast loading before the user reaches the bottom.|u-architecture
+|
+As explained in the section Internal Design 4.2.3, pages of products are being loaded automatically when the user is near the bottom of the page.|u-architecture
+|
+So instead of showing a traditional shop catalog, it was considered a better option to let the products flow freely through the web page, using all the width and height possible to show at once the maximum amount of products to the user (Figure 4.12)|u-architecture
+|
+By way of example, each product detail page is a different context, but adding a product to the shopping cart only updates the mini-cart displayed, while the user never leaves the page.|u-architecture
+|
+Information can also be presented in an incremental way, so that the user can start interacting with some elements of the page while further information is being retrieved|u-architecture
+|
+The checkout page can be accessed from both mini-cart and cart detail page.|u-architecture
+|
+At best, traditional web-shops usually have very rigid ways of listing products: pagination consists of an interface that allows to select the page and the amount of products per page, while display options let the user select between a list or a grid type of view|u-architecture

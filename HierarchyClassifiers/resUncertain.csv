@@ -1,0 +1,17 @@
+Unlike the use case for removing line items, when updating them the customer is filling a form.|uncertain
+|
+They might create temporal limitations on the template design, but at the same time any suggestion may be quickly adopted with no need to change the web-shop requirements.|uncertain
+|
+In the current use case, if the response was successful, the pricing details and the mini cart will be replaced with new generated content, and each line item will be updated.|uncertain
+|
+Once the web-shop has the platform integrated, the set of payment options can be extended or reduced without any extra implementation effort.|uncertain
+|
+When the method is called, the current contents of the cart are removed from the cart container and each line item is rendered with the template and then appended to it.|uncertain
+|
+There are two interesting state diagrams of this system, both related to the cart element.|uncertain
+|
+On the other hand, the payment platform needs to be carefully chosen, because it has inevitably a great impact on the template reusability and the analysis of the platform.|uncertain
+|
+The cart has forms to update line items, as many as line items are in the cart.|uncertain
+|
+After representing the external design of the system, every diagram of the UX Model needs to be adapted to the chosen technologies.|uncertain
