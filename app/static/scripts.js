@@ -14,8 +14,6 @@ const program = (() => {
    * @param {string} currentQuestion - The question chosen by the user
    */
   function fetchResults(domain, currentQuestion) {
-    //fetch(`${domain}`, {'method': 'POST', 'body': {'currQuestion': currentQuestion}})
-    //fetch('https://hinriksnaer.pythonanywhere.com/query/question', 
     fetch(API_URL, 
       {
         'method': 'POST',
@@ -347,7 +345,6 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      //fetchResults('https://hinriksnaer.pythonanywhere.com/query/question', 'question1');
       fetchResults(API_URL, 'question1');
       e.preventDefault();
     });
@@ -362,7 +359,6 @@ const program = (() => {
       clearUIElements(domains)
       hideSelector("featureSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      //fetchResults('https://hinriksnaer.pythonanywhere.com/query/question', 'feature1');
       fetchResults(API_URL, 'feature1');
       e.preventDefault();
     });
@@ -370,7 +366,6 @@ const program = (() => {
       clearUIElements(domains)
       hideSelector("featureSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      //fetchResults('https://hinriksnaer.pythonanywhere.com/query/question', 'feature2');
       fetchResults(API_URL, 'feature2');
       e.preventDefault();
     });
@@ -378,7 +373,6 @@ const program = (() => {
       clearUIElements(domains)
       hideSelector("featureSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      //fetchResults('https://hinriksnaer.pythonanywhere.com/query/question', 'feature3');
       fetchResults(API_URL, 'feature3');
       e.preventDefault();
     });
@@ -396,7 +390,6 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      //fetchResults('https://hinriksnaer.pythonanywhere.com/query/question', question + requirement);
       fetchResults(API_URL, question + requirement);
       e.preventDefault();
     });
@@ -461,7 +454,6 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      //fetchResults('https://hinriksnaer.pythonanywhere.com/query/question', 'question15');  
       fetchResults(API_URL, 'question15');    
     });
     jQuery("#question16").click(function(e){
@@ -470,7 +462,6 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      //fetchResults('https://hinriksnaer.pythonanywhere.com/query/question', 'question16');
       fetchResults(API_URL, 'question16');
     });
     jQuery("#question17").click(function(e){
@@ -479,7 +470,6 @@ const program = (() => {
       hideSelector("userStorySelector")
       hideSelector("userStoryNonFuncSelector")
       storedResults = JSON.parse(JSON.stringify(initData));
-      //fetchResults('https://hinriksnaer.pythonanywhere.com/query/question', 'question17');
       fetchResults(API_URL, 'question17');
     });
     renderFullJsonData(storedResults);
